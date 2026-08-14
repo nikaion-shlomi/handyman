@@ -170,36 +170,7 @@ export const CONTENT: Record<Lang, Copy> = {
     reviews: {
       eyebrow: 'מדידות מהשטח',
       title: 'מה אומרים אחרי שהלכתי',
-      items: [
-        {
-          quote: 'הגיע בזמן, תלה טלוויזיה 65 אינץ׳ על קיר גבס ושתי מדפים, ויצא בלי להשאיר גרגר אבק. המחיר היה בדיוק מה שסוכם בוואטסאפ.',
-          name: 'מיכל ל׳',
-          job: 'תליית טלוויזיה ומדפים',
-          area: 'רמת גן',
-          stars: 5,
-        },
-        {
-          quote: 'קניתי מטבחון של איקאה והתייאשתי אחרי שעתיים. שלומי הרכיב הכל בערב אחד, כולל חיבור הכיור והברז. חסך לי סופ״ש שלם.',
-          name: 'יוסי א׳',
-          job: 'הרכבת מטבחון',
-          area: 'הרצליה',
-          stars: 5,
-        },
-        {
-          quote: 'דלת הממ״ד לא נסגרה שנה וחצי. שיפצניקים אמרו שצריך להחליף. הוא כיוון צירים ופתר את זה ברבע שעה, בלי למכור לי עבודה מיותרת.',
-          name: 'רונית ש׳',
-          job: 'כיוון דלת',
-          area: 'גבעתיים',
-          stars: 5,
-        },
-        {
-          quote: 'שלחתי תמונה של הברז הדולף בשמונה בבוקר, קיבלתי מחיר תוך עשר דקות והוא היה אצלי למחרת. תקשורת ברורה בלי הפתעות.',
-          name: 'אבי מ׳',
-          job: 'החלפת ברז',
-          area: 'תל אביב',
-          stars: 5,
-        },
-      ],
+      items: [],
     },
     videos: {
       eyebrow: 'תיעוד עבודה',
@@ -312,36 +283,7 @@ export const CONTENT: Record<Lang, Copy> = {
     reviews: {
       eyebrow: 'Measured in the field',
       title: 'What people say after I leave',
-      items: [
-        {
-          quote: 'Arrived on time, mounted a 65-inch TV on a drywall wall plus two shelves, and left without a speck of dust. The price was exactly what we agreed on WhatsApp.',
-          name: 'Michal L.',
-          job: 'TV and shelf mounting',
-          area: 'Ramat Gan',
-          stars: 5,
-        },
-        {
-          quote: 'I bought an IKEA kitchenette and gave up after two hours. Shlomi assembled the whole thing in one evening, sink and tap included. Saved me an entire weekend.',
-          name: 'Yossi A.',
-          job: 'Kitchenette assembly',
-          area: 'Herzliya',
-          stars: 5,
-        },
-        {
-          quote: 'Our safe-room door had not closed in a year and a half. Contractors said it needed replacing. He adjusted the hinges and fixed it in fifteen minutes, without selling me work I did not need.',
-          name: 'Ronit S.',
-          job: 'Door adjustment',
-          area: 'Givatayim',
-          stars: 5,
-        },
-        {
-          quote: 'I sent a photo of the leaking tap at eight in the morning, had a price within ten minutes, and he was here the next day. Clear communication, no surprises.',
-          name: 'Avi M.',
-          job: 'Tap replacement',
-          area: 'Tel Aviv',
-          stars: 5,
-        },
-      ],
+      items: [],
     },
     videos: {
       eyebrow: 'Work log',

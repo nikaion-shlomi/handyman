@@ -6,7 +6,7 @@ import { Reveal } from './Reveal';
 export function Reviews() {
   const { copy } = useLang();
 
-  if (!SHOW_REVIEWS) return null;
+  if (!SHOW_REVIEWS || copy.reviews.items.length === 0) return null;
 
   return (
     <section className="reviews" id="reviews">
