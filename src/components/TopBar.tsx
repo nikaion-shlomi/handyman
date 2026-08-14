@@ -1,3 +1,4 @@
+import { GALLERY } from '../content';
 import { useLang } from '../lang';
 import { GlobeIcon } from '../icons';
 
@@ -16,6 +17,11 @@ export function TopBar() {
           <a className="topbar__link" href="#services">
             {copy.nav.services}
           </a>
+          {GALLERY.length > 0 ? (
+            <a className="topbar__link" href="#gallery">
+              {copy.nav.gallery}
+            </a>
+          ) : null}
           <a className="topbar__link" href="#reviews">
             {copy.nav.reviews}
           </a>

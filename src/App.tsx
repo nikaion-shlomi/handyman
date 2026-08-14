@@ -3,6 +3,7 @@ import { TopBar } from './components/TopBar';
 import { RulerRail } from './components/RulerRail';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
+import { Gallery } from './components/Gallery';
 import { Reviews } from './components/Reviews';
 import { Videos } from './components/Videos';
 import { Contact } from './components/Contact';
@@ -24,6 +25,7 @@ export default function App() {
       <main id="main">
         <Hero />
         <Services />
+        <Gallery />
         <Reviews />
         <Videos />
         <Contact />

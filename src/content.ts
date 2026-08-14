@@ -7,6 +7,10 @@ export const CONTACT = {
   photo: '',
 };
 
+export type Shot = { src: string; shape: 'tall' | 'wide' };
+
+export const GALLERY: Shot[] = [];
+
 export const VIDEOS = ['dQw4w9WgXcQ', 'aqz-KE-bpKQ', 'ScMzIvxBSi4'];
 
 export type Lang = 'he' | 'en';
@@ -14,7 +18,7 @@ export type Lang = 'he' | 'en';
 export type Copy = {
   dir: 'rtl' | 'ltr';
   meta: { title: string; description: string };
-  nav: { services: string; reviews: string; videos: string; contact: string };
+  nav: { services: string; gallery: string; reviews: string; videos: string; contact: string };
   skip: string;
   toggle: { label: string; aria: string };
   hero: {
@@ -33,6 +37,12 @@ export type Copy = {
     lede: string;
     items: { icon: ToolIcon; title: string; body: string }[];
     note: string;
+  };
+  gallery: {
+    eyebrow: string;
+    title: string;
+    lede: string;
+    captions: { title: string; body: string }[];
   };
   reviews: {
     eyebrow: string;
@@ -66,7 +76,13 @@ export const CONTENT: Record<Lang, Copy> = {
       title: 'שלומי הגמי · הנדימן',
       description: 'תיקונים, הרכבות ותליות בבית — עבודה נקייה, מחיר סגור מראש, הגעה תוך 24 שעות.',
     },
-    nav: { services: 'מה אני עושה', reviews: 'לקוחות', videos: 'וידאו', contact: 'יצירת קשר' },
+    nav: {
+      services: 'מה אני עושה',
+      gallery: 'עבודות',
+      reviews: 'לקוחות',
+      videos: 'וידאו',
+      contact: 'יצירת קשר',
+    },
     skip: 'דלגו לתוכן',
     toggle: { label: 'EN', aria: 'החלף לאנגלית' },
     hero: {
@@ -120,6 +136,16 @@ export const CONTENT: Record<Lang, Copy> = {
         },
       ],
       note: 'עבודות חשמל ואינסטלציה מורכבות מועברות לבעל מקצוע מוסמך — אומר את זה מראש, לא באמצע.',
+    },
+    gallery: {
+      eyebrow: 'מהשטח',
+      title: 'עבודות אחרונות',
+      lede: 'תמונות אמיתיות מימי עבודה — בלי סטוק, בלי פילטרים.',
+      captions: [
+        { title: 'גוף תאורה בכניסה לבניין', body: 'החלפת גוף תאורה בתקרת חניה — פירוק, חיווט וסגירה נקייה.' },
+        { title: 'ניקוז וריצוף בחצר', body: 'פתיחת שוחה, טיפול בסתימה והחזרת האבנים למקום.' },
+        { title: 'עבודה בגובה על חזית', body: 'תיקון וקיבוע בחזית הבניין — עם סולם, ציוד וראש שקט.' },
+      ],
     },
     reviews: {
       eyebrow: 'מדידות מהשטח',
@@ -184,7 +210,13 @@ export const CONTENT: Record<Lang, Copy> = {
       title: 'Shlomi Hagami · Handyman',
       description: 'Repairs, assembly and mounting around the house — clean work, price agreed up front, on site within 24 hours.',
     },
-    nav: { services: 'What I do', reviews: 'Clients', videos: 'Video', contact: 'Get in touch' },
+    nav: {
+      services: 'What I do',
+      gallery: 'Work',
+      reviews: 'Clients',
+      videos: 'Video',
+      contact: 'Get in touch',
+    },
     skip: 'Skip to content',
     toggle: { label: 'עב', aria: 'Switch to Hebrew' },
     hero: {
@@ -238,6 +270,16 @@ export const CONTENT: Record<Lang, Copy> = {
         },
       ],
       note: 'Complex electrical and plumbing work goes to a licensed tradesperson — I tell you that up front, not halfway through.',
+    },
+    gallery: {
+      eyebrow: 'From the field',
+      title: 'Recent jobs',
+      lede: 'Real photos from real working days — no stock, no filters.',
+      captions: [
+        { title: 'Entrance light fitting', body: 'Replacing a ceiling light in a car park — strip out, rewire, close up clean.' },
+        { title: 'Drainage and paving', body: 'Opening the manhole, clearing the blockage and relaying the stones.' },
+        { title: 'Work at height', body: 'Repair and fixing on a building facade — ladder, kit and a steady head.' },
+      ],
     },
     reviews: {
       eyebrow: 'Measured in the field',
