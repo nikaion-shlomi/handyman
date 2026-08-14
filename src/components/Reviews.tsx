@@ -54,6 +54,21 @@ function ReviewForm() {
       </button>
 
       <p className="reviewform__note">{copy.reviews.formNote}</p>
+
+      {CONTACT.google ? (
+        <div className="reviewform__google">
+          <a
+            className="btn btn--ghost"
+            href={CONTACT.google}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <StarIcon />
+            {copy.reviews.googleCta}
+          </a>
+          <p className="reviewform__note">{copy.reviews.googleNote}</p>
+        </div>
+      ) : null}
     </form>
   );
 }

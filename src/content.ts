@@ -4,6 +4,7 @@ export const CONTACT = {
   whatsapp: '972503808067',
   email: 'shlomi@example.com',
   instagram: '',
+  google: '',
   photo: '/work/portrait.jpg',
   avatar: '/work/avatar.jpg',
 };
@@ -68,6 +69,8 @@ export type Copy = {
     textPlaceholder: string;
     submit: string;
     formNote: string;
+    googleCta: string;
+    googleNote: string;
     items: { quote: string; name: string; job: string; area: string; stars: number }[];
   };
   videos: {
@@ -186,6 +189,8 @@ export const CONTENT: Record<Lang, Copy> = {
       textPlaceholder: 'ספרו לנו איך היה השירות...',
       submit: 'שליחה',
       formNote: 'הכפתור פותח וואטסאפ עם ההודעה מוכנה — רק ללחוץ שלח.',
+      googleCta: 'כתבו לי ביקורת בגוגל',
+      googleNote: 'הביקורת מתפרסמת בגוגל ובמפות, ונשארת שם לכולם לראות.',
       items: [],
     },
     videos: {
@@ -308,6 +313,8 @@ export const CONTENT: Record<Lang, Copy> = {
       textPlaceholder: 'Tell us how the service was...',
       submit: 'Send',
       formNote: 'The button opens WhatsApp with your message ready — just press send.',
+      googleCta: 'Leave a review on Google',
+      googleNote: 'Your review is published on Google and Maps, where everyone can see it.',
       items: [],
     },
     videos: {

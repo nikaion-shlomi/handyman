@@ -917,6 +917,16 @@ button {
   color: var(--ink-faint);
 }
 
+.reviewform__google {
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+}
+
+.reviewform__google .btn svg {
+  color: var(--accent-deep);
+}
+
 /* ---------- videos ---------- */
 
 .videos {
