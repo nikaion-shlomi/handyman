@@ -10,8 +10,6 @@ export const CONTACT = {
 
 export type Shot = { src: string; shape: 'tall' | 'wide' };
 
-export const SHOW_REVIEWS = false;
-
 export const GALLERY: Shot[] = [
   { src: '/work/carport-light.jpg', shape: 'tall' },
   { src: '/work/wall-mount.jpg', shape: 'tall' },
@@ -61,6 +59,15 @@ export type Copy = {
   reviews: {
     eyebrow: string;
     title: string;
+    empty: string;
+    formTitle: string;
+    formLede: string;
+    nameLabel: string;
+    namePlaceholder: string;
+    textLabel: string;
+    textPlaceholder: string;
+    submit: string;
+    formNote: string;
     items: { quote: string; name: string; job: string; area: string; stars: number }[];
   };
   videos: {
@@ -170,6 +177,15 @@ export const CONTENT: Record<Lang, Copy> = {
     reviews: {
       eyebrow: 'מדידות מהשטח',
       title: 'מה אומרים אחרי שהלכתי',
+      empty: 'עדיין אין חוות דעת. היו הראשונים לכתוב!',
+      formTitle: 'חוות דעת מלקוחות',
+      formLede: 'נשמח לשמוע מה חשבתם על השירות',
+      nameLabel: 'שם',
+      namePlaceholder: 'השם שלך',
+      textLabel: 'חוות דעת',
+      textPlaceholder: 'ספרו לנו איך היה השירות...',
+      submit: 'שליחה',
+      formNote: 'הכפתור פותח וואטסאפ עם ההודעה מוכנה — רק ללחוץ שלח.',
       items: [],
     },
     videos: {
@@ -283,6 +299,15 @@ export const CONTENT: Record<Lang, Copy> = {
     reviews: {
       eyebrow: 'Measured in the field',
       title: 'What people say after I leave',
+      empty: 'No reviews yet. Be the first to write one!',
+      formTitle: 'Client reviews',
+      formLede: 'We would love to hear what you thought of the service',
+      nameLabel: 'Name',
+      namePlaceholder: 'Your name',
+      textLabel: 'Your review',
+      textPlaceholder: 'Tell us how the service was...',
+      submit: 'Send',
+      formNote: 'The button opens WhatsApp with your message ready — just press send.',
       items: [],
     },
     videos: {

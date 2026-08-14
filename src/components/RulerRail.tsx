@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { GALLERY, SHOW_REVIEWS } from '../content';
+import { GALLERY } from '../content';
 import { useLang } from '../lang';
 
 type Mark = { id: string; label: string; pct: number };
@@ -13,7 +13,7 @@ export function RulerRail() {
   const sections = [
     { id: 'services', label: copy.nav.services },
     ...(GALLERY.length > 0 ? [{ id: 'gallery', label: copy.nav.gallery }] : []),
-    ...(SHOW_REVIEWS ? [{ id: 'reviews', label: copy.nav.reviews }] : []),
+    { id: 'reviews', label: copy.nav.reviews },
     { id: 'videos', label: copy.nav.videos },
     { id: 'contact', label: copy.nav.contact },
   ];
