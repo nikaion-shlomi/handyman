@@ -1,4 +1,4 @@
-import { GALLERY } from '../content';
+import { GALLERY, SHOW_REVIEWS } from '../content';
 import { useLang } from '../lang';
 import { GlobeIcon } from '../icons';
 
@@ -22,9 +22,11 @@ export function TopBar() {
               {copy.nav.gallery}
             </a>
           ) : null}
-          <a className="topbar__link" href="#reviews">
-            {copy.nav.reviews}
-          </a>
+          {SHOW_REVIEWS ? (
+            <a className="topbar__link" href="#reviews">
+              {copy.nav.reviews}
+            </a>
+          ) : null}
           <a className="topbar__link" href="#videos">
             {copy.nav.videos}
           </a>

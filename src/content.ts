@@ -10,6 +10,8 @@ export const CONTACT = {
 
 export type Shot = { src: string; shape: 'tall' | 'wide' };
 
+export const SHOW_REVIEWS = false;
+
 export const GALLERY: Shot[] = [
   { src: '/work/carport-light.jpg', shape: 'tall' },
   { src: '/work/wall-mount.jpg', shape: 'tall' },
@@ -91,7 +93,7 @@ export const CONTENT: Record<Lang, Copy> = {
   he: {
     dir: 'rtl',
     meta: {
-      title: 'שלומי הגמי · הנדימן',
+      title: 'שלומי הגמי · אגם אחזקות',
       description: 'אחזקת מבנים ותיקונים — איטום, אינסטלציה, חשמל וריתוך. עבודה נקייה, מחיר סגור מראש, הגעה תוך 24 שעות.',
     },
     nav: {
@@ -104,15 +106,15 @@ export const CONTENT: Record<Lang, Copy> = {
     skip: 'דלגו לתוכן',
     toggle: { label: 'EN', aria: 'החלף לאנגלית' },
     hero: {
-      eyebrow: 'זמין השבוע · גוש דן והשרון',
+      eyebrow: 'זמין השבוע · השפלה והמרכז',
       name: 'שלומי הגמי',
-      trade: 'הנדימן',
+      trade: 'אגם אחזקות',
       claim: 'מהגג ועד הביוב.',
       lede: 'אחזקת מבנים לוועדי בית, לעסקים ולבתים פרטיים — איטום, אינסטלציה, חשמל, ריתוך ותיקונים. מגיע עם הכלים, מראה מה הבעיה לפני שנוגעים, ומנקה אחרי.',
       ctaPrimary: 'שלחו הודעה בוואטסאפ',
       ctaSecondary: 'חייגו אליי',
       stats: [
-        { value: '12', label: 'שנות ותק' },
+        { value: '30', label: 'שנות ותק' },
         { value: '+400', label: 'קריאות בשנה' },
         { value: '24 ש׳', label: 'זמן הגעה' },
       ],
@@ -220,7 +222,7 @@ export const CONTENT: Record<Lang, Copy> = {
       cta: 'פתחו וואטסאפ',
       call: 'חייגו',
       areaLabel: 'אזור שירות',
-      area: 'גוש דן, השרון והמרכז',
+      area: 'באר יעקב · רמלה · חולון · בת ים · נס ציונה · ראשון לציון',
       hoursLabel: 'שעות',
       hours: 'א׳–ה׳ 07:00–19:00 · ו׳ 07:00–13:00',
       phoneLabel: 'טלפון',
@@ -233,7 +235,7 @@ export const CONTENT: Record<Lang, Copy> = {
   en: {
     dir: 'ltr',
     meta: {
-      title: 'Shlomi Hagami · Handyman',
+      title: 'Shlomi Hagami · Agam Maintenance',
       description: 'Building maintenance and repairs — waterproofing, plumbing, electrics and welding. Clean work, price agreed up front, on site within 24 hours.',
     },
     nav: {
@@ -246,15 +248,15 @@ export const CONTENT: Record<Lang, Copy> = {
     skip: 'Skip to content',
     toggle: { label: 'עב', aria: 'Switch to Hebrew' },
     hero: {
-      eyebrow: 'Available this week · Tel Aviv & Sharon',
+      eyebrow: 'Available this week · Central Israel',
       name: 'Shlomi Hagami',
-      trade: 'Handyman',
+      trade: 'Agam Maintenance',
       claim: 'From the roof to the drains.',
       lede: 'Building maintenance for residents’ committees, businesses and private homes — waterproofing, plumbing, electrics, welding and repairs. I bring the tools, show you the problem before anyone touches it, and clean up after.',
       ctaPrimary: 'Message me on WhatsApp',
       ctaSecondary: 'Call me',
       stats: [
-        { value: '12', label: 'Years on the job' },
+        { value: '30', label: 'Years on the job' },
         { value: '400+', label: 'Call-outs a year' },
         { value: '24 h', label: 'Typical response' },
       ],
@@ -362,7 +364,7 @@ export const CONTENT: Record<Lang, Copy> = {
       cta: 'Open WhatsApp',
       call: 'Call',
       areaLabel: 'Service area',
-      area: 'Tel Aviv, the Sharon and central Israel',
+      area: 'Be’er Ya’akov · Ramla · Holon · Bat Yam · Nes Ziona · Rishon LeZion',
       hoursLabel: 'Hours',
       hours: 'Sun–Thu 07:00–19:00 · Fri 07:00–13:00',
       phoneLabel: 'Phone',

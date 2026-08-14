@@ -1,9 +1,12 @@
+import { SHOW_REVIEWS } from '../content';
 import { useLang } from '../lang';
 import { StarIcon } from '../icons';
 import { Reveal } from './Reveal';
 
 export function Reviews() {
   const { copy } = useLang();
+
+  if (!SHOW_REVIEWS) return null;
 
   return (
     <section className="reviews" id="reviews">
