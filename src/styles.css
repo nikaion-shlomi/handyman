@@ -985,6 +985,23 @@ button {
   border: 2px solid var(--ink);
 }
 
+.contact__mono {
+  width: 68px;
+  height: 68px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 0 0 0 3px var(--accent);
+  font-family: var(--display);
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
 .contact__whoname {
   font-family: var(--display);
   font-size: 1.2rem;

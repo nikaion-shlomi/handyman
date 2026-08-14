@@ -34,15 +34,22 @@ export function Contact() {
         </Reveal>
 
         <Reveal delay={110}>
-          {CONTACT.photo ? (
-            <div className="contact__who">
+          <div className="contact__who">
+            {CONTACT.photo ? (
               <img src={CONTACT.photo} alt={copy.hero.name} />
-              <div>
-                <div className="contact__whoname">{copy.hero.name}</div>
-                <div className="contact__whotrade">{copy.hero.trade}</div>
-              </div>
+            ) : (
+              <span className="contact__mono" aria-hidden="true">
+                {copy.hero.name
+                  .split(' ')
+                  .map((word) => word[0])
+                  .join('')}
+              </span>
+            )}
+            <div>
+              <div className="contact__whoname">{copy.hero.name}</div>
+              <div className="contact__whotrade">{copy.hero.trade}</div>
             </div>
-          ) : null}
+          </div>
 
           <dl className="contact__facts">
             <div className="fact">
