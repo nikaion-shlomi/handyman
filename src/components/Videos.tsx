@@ -4,36 +4,35 @@ import { useLang } from '../lang';
 import { PlayIcon } from '../icons';
 import { Reveal } from './Reveal';
 
-function Video({ id, index }: { id: string; index: number }) {
+function Video({ name, index }: { name: string; index: number }) {
   const { copy } = useLang();
   const [playing, setPlaying] = useState(false);
+  const label = copy.videos.items[index] ?? '';
 
   return (
     <Reveal className="vid" delay={index * 70}>
       {playing ? (
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`}
-          title={`${copy.videos.title} ${index + 1}`}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
+        <video
+          className="vid__player"
+          src={`/videos/${name}.mp4`}
+          poster={`/videos/${name}.jpg`}
+          controls
+          autoPlay
+          playsInline
         />
       ) : (
         <button
           type="button"
           className="vid__btn"
           onClick={() => setPlaying(true)}
-          aria-label={`${copy.videos.playLabel} ${index + 1}`}
+          aria-label={`${copy.videos.playLabel}: ${label}`}
         >
-          <img
-            className="vid__thumb"
-            src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
-            alt=""
-            loading="lazy"
-          />
+          <img className="vid__thumb" src={`/videos/${name}.jpg`} alt="" loading="lazy" />
           <span className="vid__play">
             <PlayIcon />
             {copy.videos.playLabel}
           </span>
+          <span className="vid__label">{label}</span>
         </button>
       )}
     </Reveal>
@@ -55,8 +54,8 @@ export function Videos() {
         </Reveal>
 
         <div className="videos__grid">
-          {VIDEOS.map((id, index) => (
-            <Video key={id} id={id} index={index} />
+          {VIDEOS.map((name, index) => (
+            <Video key={name} name={name} index={index} />
           ))}
         </div>
       </div>

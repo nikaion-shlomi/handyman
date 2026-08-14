@@ -11,7 +11,14 @@ export type Shot = { src: string; shape: 'tall' | 'wide' };
 
 export const GALLERY: Shot[] = [];
 
-export const VIDEOS = ['dQw4w9WgXcQ', 'aqz-KE-bpKQ', 'ScMzIvxBSi4'];
+export const VIDEOS = [
+  'bollard-build',
+  'bollard-fitted',
+  'roof-sealing',
+  'tile-grouting',
+  'welding',
+  'services-reel',
+];
 
 export type Lang = 'he' | 'en';
 
@@ -49,7 +56,13 @@ export type Copy = {
     title: string;
     items: { quote: string; name: string; job: string; area: string; stars: number }[];
   };
-  videos: { eyebrow: string; title: string; lede: string; playLabel: string };
+  videos: {
+    eyebrow: string;
+    title: string;
+    lede: string;
+    playLabel: string;
+    items: string[];
+  };
   contact: {
     eyebrow: string;
     title: string;
@@ -186,6 +199,14 @@ export const CONTENT: Record<Lang, Copy> = {
       title: 'ככה זה נראה',
       lede: 'כמה עבודות מצולמות מהתחלה עד הסוף — כדי שתדעו למה לצפות עוד לפני שאני נכנס לדלת.',
       playLabel: 'נגן וידאו',
+      items: [
+        'ייצור עמוד חירום מתקפל',
+        'העמוד מותקן בשטח',
+        'איטום גג',
+        'רובה ופנלים',
+        'ריתוך במקום',
+        'סקירת שירותים',
+      ],
     },
     contact: {
       eyebrow: 'נקודת מגע',
@@ -320,6 +341,14 @@ export const CONTENT: Record<Lang, Copy> = {
       title: 'This is what it looks like',
       lede: 'A few jobs filmed start to finish, so you know what to expect before I walk through the door.',
       playLabel: 'Play video',
+      items: [
+        'Building a folding security bollard',
+        'The bollard fitted on site',
+        'Roof waterproofing',
+        'Grouting and skirting',
+        'Welding on site',
+        'A run through the work',
+      ],
     },
     contact: {
       eyebrow: 'Point of contact',
