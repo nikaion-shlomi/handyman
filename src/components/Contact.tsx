@@ -35,8 +35,8 @@ export function Contact() {
 
         <Reveal delay={110}>
           <div className="contact__who">
-            {CONTACT.photo ? (
-              <img src={CONTACT.photo} alt={copy.hero.name} />
+            {CONTACT.avatar ? (
+              <img src={CONTACT.avatar} alt={copy.hero.name} />
             ) : (
               <span className="contact__mono" aria-hidden="true">
                 {copy.hero.name

@@ -4,12 +4,17 @@ export const CONTACT = {
   whatsapp: '972503808067',
   email: 'shlomi@example.com',
   instagram: '',
-  photo: '',
+  photo: '/work/portrait.jpg',
+  avatar: '/work/avatar.jpg',
 };
 
 export type Shot = { src: string; shape: 'tall' | 'wide' };
 
-export const GALLERY: Shot[] = [];
+export const GALLERY: Shot[] = [
+  { src: '/work/carport-light.jpg', shape: 'tall' },
+  { src: '/work/wall-mount.jpg', shape: 'tall' },
+  { src: '/work/garden-work.jpg', shape: 'tall' },
+];
 
 export const VIDEOS = [
   'bollard-build',
@@ -155,9 +160,9 @@ export const CONTENT: Record<Lang, Copy> = {
       title: 'עבודות אחרונות',
       lede: 'תמונות אמיתיות מימי עבודה — בלי סטוק, בלי פילטרים.',
       captions: [
-        { title: 'גוף תאורה בכניסה לבניין', body: 'החלפת גוף תאורה בתקרת חניה — פירוק, חיווט וסגירה נקייה.' },
-        { title: 'ניקוז וריצוף בחצר', body: 'פתיחת שוחה, טיפול בסתימה והחזרת האבנים למקום.' },
-        { title: 'עבודה בגובה על חזית', body: 'תיקון וקיבוע בחזית הבניין — עם סולם, ציוד וראש שקט.' },
+        { title: 'גוף תאורה בחניה', body: 'החלפת גוף תאורה בתקרת חניה — פירוק, חיווט וסגירה נקייה.' },
+        { title: 'תלייה על קיר חוץ', body: 'קידוח, עיגון ויישור על קיר חיצוני — בעוגן שמתאים לקיר.' },
+        { title: 'עבודה בחצר', body: 'הכנה, כיסוי ופריסה — לפני שמתחילים, אחרי שמסיימים.' },
       ],
     },
     reviews: {
@@ -297,9 +302,9 @@ export const CONTENT: Record<Lang, Copy> = {
       title: 'Recent jobs',
       lede: 'Real photos from real working days — no stock, no filters.',
       captions: [
-        { title: 'Entrance light fitting', body: 'Replacing a ceiling light in a car park — strip out, rewire, close up clean.' },
-        { title: 'Drainage and paving', body: 'Opening the manhole, clearing the blockage and relaying the stones.' },
-        { title: 'Work at height', body: 'Repair and fixing on a building facade — ladder, kit and a steady head.' },
+        { title: 'Car park light fitting', body: 'Replacing a ceiling light — strip out, rewire, close up clean.' },
+        { title: 'Mounting on an outside wall', body: 'Drilling, anchoring and levelling — on the anchor the wall actually needs.' },
+        { title: 'Working in the garden', body: 'Prep, cover and lay out — before starting, and after finishing.' },
       ],
     },
     reviews: {

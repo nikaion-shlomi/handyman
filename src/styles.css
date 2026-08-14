@@ -407,7 +407,7 @@ button {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: 50% 34%;
+  object-position: 50% 28%;
   border: 2px solid var(--ink);
   filter: saturate(1.06) contrast(1.02);
 }
@@ -981,7 +981,7 @@ button {
   flex: none;
   border-radius: 50%;
   object-fit: cover;
-  object-position: 56% 20%;
+  object-position: center;
   border: 2px solid var(--ink);
 }
 
