@@ -4,7 +4,7 @@ export const CONTACT = {
   whatsapp: '972503808067',
   email: 'shlomi@example.com',
   instagram: '',
-  google: '',
+  google: 'https://maps.app.goo.gl/v2a6s3LHNez7qHm79',
   photo: '/work/portrait.jpg',
   avatar: '/work/avatar.jpg',
 };
