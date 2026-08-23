@@ -1,75 +1,29 @@
-import { useState } from 'react';
 import { CONTACT } from '../content';
 import { useLang } from '../lang';
-import { StarIcon, WhatsAppIcon } from '../icons';
+import { StarIcon } from '../icons';
 import { Reveal } from './Reveal';
 
-function ReviewForm() {
+function GoogleCta() {
   const { copy } = useLang();
-  const [name, setName] = useState('');
-  const [text, setText] = useState('');
-  const ready = name.trim() !== '' && text.trim() !== '';
-
-  const send = (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!ready) return;
-    const message = `${copy.reviews.formTitle}\n${copy.reviews.nameLabel}: ${name.trim()}\n\n${text.trim()}`;
-    window.open(
-      `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(message)}`,
-      '_blank',
-      'noopener,noreferrer',
-    );
-  };
+  if (!CONTACT.google) return null;
 
   return (
-    <form className="reviewform" onSubmit={send}>
+    <div className="reviewcta">
       <h3>{copy.reviews.formTitle}</h3>
-      <p className="reviewform__lede">{copy.reviews.formLede}</p>
+      <p className="reviewcta__lede">{copy.reviews.formLede}</p>
 
-      <label className="reviewform__field">
-        <span>{copy.reviews.nameLabel}</span>
-        <input
-          type="text"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          placeholder={copy.reviews.namePlaceholder}
-          maxLength={60}
-        />
-      </label>
+      <a
+        className="btn btn--primary"
+        href={CONTACT.google}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <StarIcon />
+        {copy.reviews.googleCta}
+      </a>
 
-      <label className="reviewform__field">
-        <span>{copy.reviews.textLabel}</span>
-        <textarea
-          value={text}
-          onChange={(event) => setText(event.target.value)}
-          placeholder={copy.reviews.textPlaceholder}
-          rows={4}
-          maxLength={600}
-        />
-      </label>
-
-      <button className="btn btn--wa" type="submit" disabled={!ready}>
-        <WhatsAppIcon />
-        {copy.reviews.submit}
-      </button>
-
-      <p className="reviewform__note">{copy.reviews.formNote}</p>
-
-      {CONTACT.google ? (
-        <div className="reviewform__google">
-          <a
-            className="btn btn--ghost"
-            href={CONTACT.google}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <StarIcon />
-            {copy.reviews.googleCta}
-          </a>
-          <p className="reviewform__note">{copy.reviews.googleNote}</p>
-        </div>
-      ) : null}
-    </form>
+      <p className="reviewcta__note">{copy.reviews.googleNote}</p>
+    </div>
   );
 }
 
@@ -113,7 +67,7 @@ export function Reviews() {
         )}
 
         <Reveal delay={90}>
-          <ReviewForm />
+          <GoogleCta />
         </Reveal>
       </div>
     </section>

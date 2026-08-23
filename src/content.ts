@@ -63,12 +63,6 @@ export type Copy = {
     empty: string;
     formTitle: string;
     formLede: string;
-    nameLabel: string;
-    namePlaceholder: string;
-    textLabel: string;
-    textPlaceholder: string;
-    submit: string;
-    formNote: string;
     googleCta: string;
     googleNote: string;
     items: { quote: string; name: string; job: string; area: string; stars: number }[];
@@ -183,12 +177,6 @@ export const CONTENT: Record<Lang, Copy> = {
       empty: 'עדיין אין חוות דעת. היו הראשונים לכתוב!',
       formTitle: 'חוות דעת מלקוחות',
       formLede: 'נשמח לשמוע מה חשבתם על השירות',
-      nameLabel: 'שם',
-      namePlaceholder: 'השם שלך',
-      textLabel: 'חוות דעת',
-      textPlaceholder: 'ספרו לנו איך היה השירות...',
-      submit: 'שליחה',
-      formNote: 'הכפתור פותח וואטסאפ עם ההודעה מוכנה — רק ללחוץ שלח.',
       googleCta: 'כתבו לי ביקורת בגוגל',
       googleNote: 'הביקורת מתפרסמת בגוגל ובמפות, ונשארת שם לכולם לראות.',
       items: [],
@@ -307,12 +295,6 @@ export const CONTENT: Record<Lang, Copy> = {
       empty: 'No reviews yet. Be the first to write one!',
       formTitle: 'Client reviews',
       formLede: 'We would love to hear what you thought of the service',
-      nameLabel: 'Name',
-      namePlaceholder: 'Your name',
-      textLabel: 'Your review',
-      textPlaceholder: 'Tell us how the service was...',
-      submit: 'Send',
-      formNote: 'The button opens WhatsApp with your message ready — just press send.',
       googleCta: 'Leave a review on Google',
       googleNote: 'Your review is published on Google and Maps, where everyone can see it.',
       items: [],
