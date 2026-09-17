@@ -65,7 +65,8 @@ export type Copy = {
     formLede: string;
     googleCta: string;
     googleNote: string;
-    items: { quote: string; name: string; job: string; area: string; stars: number }[];
+    googleSource: string;
+    googleCountLabel: string;
   };
   videos: {
     eyebrow: string;
@@ -179,7 +180,8 @@ export const CONTENT: Record<Lang, Copy> = {
       formLede: 'נשמח לשמוע מה חשבתם על השירות',
       googleCta: 'כתבו לי ביקורת בגוגל',
       googleNote: 'הביקורת מתפרסמת בגוגל ובמפות, ונשארת שם לכולם לראות.',
-      items: [],
+      googleSource: 'ביקורות מ-Google',
+      googleCountLabel: 'ביקורות בגוגל',
     },
     videos: {
       eyebrow: 'תיעוד עבודה',
@@ -297,7 +299,8 @@ export const CONTENT: Record<Lang, Copy> = {
       formLede: 'We would love to hear what you thought of the service',
       googleCta: 'Leave a review on Google',
       googleNote: 'Your review is published on Google and Maps, where everyone can see it.',
-      items: [],
+      googleSource: 'Reviews from Google',
+      googleCountLabel: 'Google reviews',
     },
     videos: {
       eyebrow: 'Work log',

@@ -838,6 +838,50 @@ button {
   color: var(--ink-faint);
 }
 
+.reviews__summary {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-top: clamp(28px, 3.5vw, 40px);
+  text-decoration: none;
+}
+
+.reviews__score {
+  font-family: var(--display);
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.reviews__count {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--rule);
+}
+
+.reviews__summary:hover .reviews__count {
+  color: var(--ink);
+  border-color: var(--accent);
+}
+
+.reviews__source {
+  margin-top: 22px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+a.review__name {
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+
+a.review__name:hover {
+  border-color: var(--accent);
+}
+
 .reviews__empty {
   margin-top: clamp(32px, 4vw, 44px);
   padding: 22px 24px;
