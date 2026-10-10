@@ -24,8 +24,8 @@ export const VIDEOS = [
   'tile-grouting',
   'welding',
   'services-reel',
-  'bollard-fitted2 ',
-  'services-reel2',
+  'clogged-drain',
+  'solar-panels',
 ];
 
 export type Lang = 'he' | 'en';
