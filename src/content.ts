@@ -24,8 +24,7 @@ export const VIDEOS = [
   'tile-grouting',
   'welding',
   'services-reel',
-  'ניקוי קולטים במערכת סולארית',
-  'סתימה ונזילה ממרזב ',
+  'clogged drain ',
 ];
 
 export type Lang = 'he' | 'en';
