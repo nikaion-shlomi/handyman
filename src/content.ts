@@ -120,7 +120,7 @@ export const CONTENT: Record<Lang, Copy> = {
       ctaSecondary: 'חייגו אליי',
       stats: [
         { value: '30', label: 'שנות ותק' },
-        { value: '+400', label: 'קריאות בשנה' },
+        { value: '+4000', label: 'קריאות בשנה' },
         { value: '24 ש׳', label: 'זמן הגעה' },
       ],
     },
