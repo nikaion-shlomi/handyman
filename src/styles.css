@@ -1483,3 +1483,8 @@ a.review__name:hover {
 .topbar__link:hover {
   color: var(--accent) !important;
 }
+
+/* 📌 החזרת ההדגשה החזקה והעוצמתית לכל קישורי הניווט בתפריט */
+.topbar__link {
+  font-weight: 700 !important; /* הדגשה מקסימלית ועבה לכל מילות התפריט */
+}
