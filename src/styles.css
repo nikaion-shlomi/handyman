@@ -1455,3 +1455,31 @@ a.review__name:hover {
   color: var(--ink-soft) !important;  /* צבע ברור */
   letter-spacing: -0.01em !important;
 }
+
+/* 📌 אפקט הוואו הסופי והדגשת אגם אחזקות */
+.topbar {
+  border-bottom: 2px solid var(--rule-soft) !important; /* קו תחתון עדין שממסגר את כל הפס */
+}
+
+/* הדגשה ושדרוג של "אגם אחזקות" */
+.topbar__trade {
+  font-size: 0.95rem !important;       /* הגדלה משמעותית של המקצוע */
+  font-weight: 700 !important;         /* הפיכת הכתב לעבה וברור */
+  color: var(--accent) !important;     /* שינוי הצבע למוקה-זהב היוקרתי כדי שיקפוץ לעין */
+  letter-spacing: 0.12em !important;   /* ריווח אלגנטי בין האותיות */
+}
+
+/* שדרוג גופן הניווט לאפקט פרימיום הייטקי */
+.topbar__link {
+  font-family: var(--display) !important; /* שינוי הגופן לגופן התצוגה המעוצב של האתר */
+  font-size: 1.25rem !important;       /* הגדלת המילים */
+  font-weight: 400 !important;         
+  color: var(--ink) !important;        /* צבע כחול-דיו עמוק וחזק */
+  letter-spacing: 0.02em !important;
+  transition: color 0.25s var(--ease) !important;
+}
+
+/* אפקט צבע זהב-מוקה עדין כשעומדים על הקישורים */
+.topbar__link:hover {
+  color: var(--accent) !important;
+}
