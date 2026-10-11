@@ -1399,3 +1399,10 @@ a.review__name:hover {
   fill: var(--ground) !important;
   color: var(--ground) !important;
 }
+
+/* צביעת האייקון (הכוכב) בתוך כפתור גוגל בלבן-שמנת כדי שיבלוט בצורה מושלמת */
+.reviewcta .btn svg, 
+.reviewcta .btn--primary svg {
+  fill: var(--ground) !important;
+  color: var(--ground) !important;
+}
