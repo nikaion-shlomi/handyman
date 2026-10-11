@@ -1,25 +1,24 @@
 :root {
-  /* פלטת צבעים יוקרתית בהשראת האתר של דיאנה */
   --ink: #0c3358;
-  --ink-soft: #2d4a63;
-  --ink-faint: #627b93;
-  --ground: #f8fafc;        /* רקע אפור-לבן יוקרתי ונקי במקום הכחלחל */
-  --ground-deep: #f1f5f9;   /* רקע פנימי עמוק ומאופק */
-  --paper: #ffffff;         /* הנייר הלבן של הכרטיסיות */
-  --accent: #ad8b3a;        /* זהב-זית אלגנטי המעניק מראה פרימיום */
-  --accent-deep: #8c6d28;
-  --accent-wash: #fefaf0;
-  --rule: #cbd5e1;
-  --rule-soft: #e2e8f0;
-  --accent-bright: #c4a253;
+  --ink-soft: #3d6180;
+  --ink-faint: #6a89a4;
+  --ground: #eef5fb;
+  --ground-deep: #dfebf6;
+  --paper: #ffffff;
+  --accent: #17a34a;
+  --accent-deep: #0e6b33;
+  --accent-wash: #e6f6ec;
+  --rule: #b6cadd;
+  --rule-soft: #dae7f2;
+  --accent-bright: #56cc87;
   --wa: #25d366;
   --wa-deep: #128c7e;
 
-  --on-ink: #f8fafc;
-  --on-ink-soft: #cbd5e1;
-  --on-ink-faint: #94a3b8;
-  --ink-line: #1e3a5f;
-  --ink-raise: #0f2542;
+  --on-ink: #f1f7fc;
+  --on-ink-soft: #a8c4dc;
+  --on-ink-faint: #93b3ce;
+  --ink-line: #1f4f7d;
+  --ink-raise: #113f68;
 
   --rail: 64px;
   --shell: 1140px;
@@ -293,4 +292,4 @@ button {
   align-items: center;
   gap: 6px;
   padding-inline-start: 8px;
-  transform:
+}
