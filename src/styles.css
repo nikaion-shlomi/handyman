@@ -70,8 +70,16 @@ a {
   color: inherit;
 }
 
-img, svg {
+/* 📌 תיקון קריטי: מונע מתמונות ואייקונים לגדול לענק */
+img {
   display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 📌 הגבלת גודל גלובלית לכל אייקוני ה-SVG באתר */
+svg {
+  display: inline-block;
   max-width: 100%;
   height: auto;
 }
@@ -99,14 +107,19 @@ main {
   width: 100%;
 }
 
-/* תיקון פריסה גלובלי לניידים - מונע קריסה וחיתוך של קומפוננטות */
 main > section, main > div {
   width: 100%;
   padding-block: clamp(40px, 8vw, 96px);
   overflow: hidden;
 }
 
-/* ---------- top bar רספונסיבי ---------- */
+/* 📌 הגבלת גודל אייקונים ספציפית ברשתות ובשירותים */
+main svg, .topbar svg, .footer svg {
+  width: clamp(16px, 5vw, 32px);
+  height: auto;
+}
+
+/* ---------- top bar ---------- */
 .topbar {
   position: sticky;
   top: 0;
@@ -173,7 +186,7 @@ main > section, main > div {
   font-weight: 600;
 }
 
-/* ---------- footer רספונסיבי ---------- */
+/* ---------- footer ---------- */
 .footer {
   background: var(--ink);
   color: var(--on-ink);
@@ -191,7 +204,22 @@ main > section, main > div {
   text-align: center;
 }
 
-/* התאמות ספציפיות למסכים קטנים (סמארטפונים) */
+/* 📌 התאמת גודל קבועה לאייקון הוואטסאפ הצף */
+.page > a[href*="wa.me"], 
+.page > button[aria-label*="whatsapp"],
+[class*="WhatsApp"], [class*="whatsapp"] {
+  max-width: 70px !important;
+  max-height: 70px !important;
+}
+
+.page > a[href*="wa.me"] svg,
+.page > button[aria-label*="whatsapp"] svg,
+[class*="WhatsApp"] svg, [class*="whatsapp"] svg {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* התאמות למסכים קטנים (סמארטפונים) */
 @media (max-width: 768px) {
   .topbar__inner {
     flex-direction: column;
@@ -206,6 +234,6 @@ main > section, main > div {
   }
 
   .rail {
-    display: none !important; /* העלמת סרגל המדידה בנייד כדי שלא יחתוך את התוכן */
+    display: none !important;
   }
 }
