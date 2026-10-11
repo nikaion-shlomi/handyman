@@ -180,7 +180,7 @@ export const CONTENT: Record<Lang, Copy> = {
       empty: 'מוזמנים לגלות בחוות דעת בגוגל.',
       formTitle: 'היו חלק מההצלחה! ',
       formLede: 'אשמח לשמוע את חוות דעתך עלי בגוגל',
-      googleCta: 'כתבו לי ביקורת בגוגל',
+      googleCta: 'לחץ עלי להוספת חוות דעת או להתרשמות מהשרות שלי בגוגל',
       googleNote: 'הביקורת מתפרסמת בגוגל במפות וגלויה בשקיפות לכלל הגולשים.',
       googleSource: 'ביקורות מ-Google',
       googleCountLabel: 'ביקורות בגוגל',
