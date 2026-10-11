@@ -87,7 +87,7 @@ function GoogleCta() {
 export function Reviews() {
   const { copy } = useLang();
   const google = useGoogleReviews();
-  const reviews = google?.reviews ?? [];
+  const reviews = google?.reviews || [];
 
   return (
     <section className="reviews" id="reviews" style={{ background: 'var(--ground)' }}>
