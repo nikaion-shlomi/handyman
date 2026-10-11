@@ -1352,3 +1352,43 @@ a.review__name:hover {
     transform: none;
   }
 }
+
+/* ==========================================================================
+   📌 שדרוג יוקרתי ואלגנטי לאזור כפתור גוגל (מוקה-שמנת)
+   ========================================================================== */
+
+/* 1. הפיכת התיבה המקיפה לבהירה, נקייה ומשתלבת בעמוד */
+.reviewcta {
+  background: var(--ground-deep) !important;
+  border-radius: 16px !important;
+  padding: 32px !important;
+  border: 1px solid var(--rule-soft) !important;
+  box-shadow: 0 4px 20px -10px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* 2. עיצוב כפתור גוגל מחדש - ממוקה-זהב וטקסט שמנת-קרם */
+.reviewcta .btn, 
+.reviewcta .btn--primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  background-color: var(--accent) !important;    /* מוקה-זהב אלגנטי */
+  color: var(--ground) !important;              /* טקסט בצבע שמנת-קרם */
+  padding: 14px 28px !important;
+  border-radius: 999px !important;               /* פינות עגולות לחלוטין למראה מודרני */
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(150, 120, 68, 0.25) !important; /* צל עדין בגוון מוקה */
+  font-size: 1rem !important;
+  cursor: pointer !important;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease) !important;
+}
+
+/* אפקט ריחוף עדין לכפתור */
+.reviewcta .btn:hover, 
+.reviewcta .btn--primary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(150, 120, 68, 0.35) !important;
+}
