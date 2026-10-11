@@ -46,7 +46,6 @@ const AccessibilityModal: React.FC<AccessibilityModalProps> = ({ isOpen, onClose
           style={{
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'between',
             padding: '20px',
             borderBottom: '1px solid #e5e7eb',
             backgroundColor: '#f9fafb',
@@ -119,7 +118,7 @@ const AccessibilityModal: React.FC<AccessibilityModalProps> = ({ isOpen, onClose
             </ul>
           </div>
 
-          <p style={{ fontSize: '0.75rem', color: '#9ca3af', textAlign: 'left', marginTop: '16px', marginBotom: 0 }}>
+          <p style={{ fontSize: '0.75rem', color: '#9ca3af', textAlign: 'left', marginTop: '16px', marginBottom: 0 }}>
             הצהרת הנגישות עודכנה בחודש אוקטובר 2026.
           </p>
         </div>
