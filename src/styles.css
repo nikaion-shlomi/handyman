@@ -22,17 +22,13 @@
   --ink-raise: #0f2542;
 
   --rail: 64px;
-  --shell: 1200px;         /* הרחבה קלה של המרחב למראה מרווח */
+  --shell: 1140px;
 
   --display: 'Suez One', Georgia, serif;
   --body: 'Assistant', system-ui, -apple-system, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
-  
-  /* אפקט הצל הרך שמקפיץ את הכרטיסיות באוויר */
-  --shadow: 0 10px 30px -10px rgba(12, 51, 88, 0.06), 0 1px 3px rgba(12, 51, 88, 0.02);
-  --shadow-hover: 0 20px 40px -15px rgba(12, 51, 88, 0.12), 0 1px 5px rgba(12, 51, 88, 0.04);
 }
 
 *,
@@ -43,7 +39,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 110px;
+  scroll-padding-top: 96px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -53,7 +49,7 @@ body {
   color: var(--ink);
   font-family: var(--body);
   font-size: 1.0625rem;
-  line-height: 1.8;       /* מרווח שורה קצת יותר פתוח למראה נקי */
+  line-height: 1.7;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -65,14 +61,8 @@ h3 {
   margin: 0;
   font-family: var(--display);
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.06;
   letter-spacing: -0.01em;
-}
-
-/* כותרות סקשנים - מרווחות ויוקרתיות */
-h2 {
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  margin-bottom: 1.5rem;
 }
 
 p,
@@ -99,47 +89,14 @@ button {
 :focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 4px;
-}
-
-/* יצירת מרווח נשימה משמעותי בין החלקים השונים באתר */
-main > section {
-  padding-block: clamp(60px, 10vw, 120px);
-  border-bottom: 1px solid var(--rule-soft);
-}
-
-/* עיצוב אוטומטי לכרטיסיות השירותים או המלצות הלקוחות שלך */
-main section ul, 
-main section .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
-  list-style: none;
-  padding: 0;
-  margin-top: 40px;
-}
-
-main section ul > li,
-main section .card {
-  background: var(--paper);
-  border-radius: 16px;     /* פינות עגולות ורכות */
-  padding: 40px 32px;
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(226, 232, 240, 0.5);
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-}
-
-main section ul > li:hover,
-main section .card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
+  border-radius: 2px;
 }
 
 .shell {
   width: 100%;
   max-width: var(--shell);
   margin-inline: auto;
-  padding-inline: clamp(24px, 6vw, 64px);
+  padding-inline: clamp(20px, 5vw, 56px);
 }
 
 .page {
@@ -149,19 +106,18 @@ main section .card:hover {
 .eyebrow {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--mono);
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 16px;
+  color: var(--accent-deep);
 }
 
 .eyebrow::before {
   content: '';
-  width: 32px;
+  width: 26px;
   height: 2px;
   background: var(--accent);
   flex: none;
@@ -187,17 +143,16 @@ main section .card:hover {
   position: sticky;
   top: 0;
   z-index: 60;
-  background: rgba(248, 250, 252, 0.85); /* מותאם לזכוכית מטושטשת בהירה */
-  backdrop-filter: blur(16px);
+  background: color-mix(in srgb, var(--ground) 86%, transparent);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--rule-soft);
-  transition: background 0.3s;
 }
 
 .topbar__inner {
   display: flex;
   align-items: center;
   gap: 20px;
-  min-height: 80px; /* תפריט עליון טיפה יותר נושם וגבוה */
+  min-height: 66px;
 }
 
 .topbar__mark {
@@ -210,13 +165,13 @@ main section .card:hover {
 
 .topbar__name {
   font-family: var(--display);
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   letter-spacing: -0.01em;
 }
 
 .topbar__trade {
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-faint);
@@ -224,17 +179,17 @@ main section .card:hover {
 
 .topbar__nav {
   display: flex;
-  gap: 32px;
+  gap: 26px;
   margin-inline-start: auto;
 }
 
 .topbar__link {
   position: relative;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
   color: var(--ink-soft);
-  padding-block: 6px;
+  padding-block: 4px;
   transition: color 0.2s var(--ease);
 }
 
@@ -266,10 +221,10 @@ main section .card:hover {
   background: transparent;
   border: 1.5px solid var(--ink);
   border-radius: 999px;
-  padding: 6px 16px;
+  padding: 6px 14px;
   cursor: pointer;
   font-family: var(--mono);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   transition: background 0.22s var(--ease), color 0.22s var(--ease);
@@ -289,7 +244,7 @@ main section .card:hover {
   height: 14px;
 }
 
-/* ---------- measuring rail ---------- */
+/* ---------- measuring rail (signature) ---------- */
 
 .rail {
   position: fixed;
@@ -330,3 +285,12 @@ main section .card:hover {
   position: absolute;
   inset: 0;
 }
+
+.rail__mark {
+  position: absolute;
+  inset-inline: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-inline-start: 8px;
+  transform:
