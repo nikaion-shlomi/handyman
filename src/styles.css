@@ -1544,3 +1544,60 @@ a.review__name:hover {
 .topbar__link {
   font-weight: 700 !important; /* הדגשה מקסימלית ועבה לכל מילות התפריט */
 }
+/* ==========================================================================
+   🚀 אפקט ה"וואו" המלא לכרטיסיות השירותים - צפות, לבנות וזהובות
+   ========================================================================== */
+
+/* 1. הפיכת הרקע של הכרטיסיות ללבן-שלג בוהק ונקי (במקום האפור המשעמם) */
+.services__grid > *, 
+[class*="services"] article, 
+[class*="services"] li {
+  background-color: #ffffff !important;      /* לבן נקי ובוהק */
+  border-radius: 16px !important;            /* פינות מעוגלות רכות */
+  padding: 45px 32px !important;             /* הגדלת הריווח הפנימי */
+  border: 1px solid #e2e8f0 !important;      /* מסגרת בהירה ועדינה מאוד */
+  
+  /* 📌 הוספת צל פרימיום עמוק שמקפיץ את הכרטיסיות באוויר מעל הרקע */
+  box-shadow: 0 20px 40px -15px rgba(12, 51, 88, 0.08), 0 1px 3px rgba(0,0,0,0.02) !important;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1), box-shadow 0.3s ease !important;
+}
+
+/* אפקט ריחוף דרמטי ויפה כשנוגעים בכרטיסייה */
+.services__grid > *:hover, 
+[class*="services"] article:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 30px 60px -20px rgba(150, 120, 68, 0.2) !important;
+  border-color: var(--accent) !important;   /* שינוי המסגרת לזהב בריחוף */
+}
+
+/* 2. שדרוג האייקונים - הפיכתם לצבע מוקה-זהב יוקרתי (במקום שחור משעמם) */
+.services__grid svg, 
+[class*="services"] svg,
+.services__grid img:not([class*="thumb"]) {
+  width: 48px !important;                    /* הגדלת האייקון שיהיה נוכח */
+  height: 48px !important;
+  color: var(--accent) !important;           /* צביעה בזהב-מוקה אלגנטי */
+  fill: var(--accent) !important;
+  margin-bottom: 24px !important;            /* מרווח בין האייקון לכותרת */
+}
+
+/* 3. הפיכת המספרים הקטנים למספרי ענק מרשימים בזהב-מוקה עדין */
+.services__grid [class*="number"], 
+.services__grid span[class*="index"],
+.services__grid article > span:first-child {
+  font-family: var(--display) !important;   /* גופן Suez One היוקרתי */
+  font-size: 3rem !important;                /* מספרי ענק */
+  color: var(--accent) !important;          /* צבע מוקה-זהב */
+  opacity: 0.15 !important;                 /* שקיפות אלגנטית שנראית כמו סימן מים */
+  position: absolute !important;
+  top: 20px !important;
+  left: 24px !important;                    /* מיקום בפינה השמאלית העליונה */
+}
+
+/* 4. שדרוג הכותרות הפנימיות (אינסטלציה, חשמל וכו') */
+.services__grid h3 {
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  color: var(--ink) !important;             /* כחול-דיו עמוק וחזק */
+  margin-bottom: 14px !important;
+}
