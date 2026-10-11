@@ -50,36 +50,21 @@ function GoogleCta() {
   if (!CONTACT.google) return null;
 
   return (
-    <div className="reviewcta" style={{ background: 'var(--ground-deep)', borderRadius: '16px', padding: '32px', border: '1px solid var(--rule-soft)' }}>
-      <h3 style={{ color: 'var(--ink)', marginBottom: '8px' }}>{copy.reviews.formTitle}</h3>
-      <p className="reviewcta__lede" style={{ color: 'var(--ink-soft)', marginBottom: '24px' }}>{copy.reviews.formLede}</p>
+    <div className="reviewcta">
+      <h3>{copy.reviews.formTitle}</h3>
+      <p className="reviewcta__lede">{copy.reviews.formLede}</p>
 
       <a
+        className="btn btn--primary"
         href={CONTACT.google}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '10px',
-          backgroundColor: 'var(--accent)',    /* צבע מוקה-זהב אלגנטי */
-          color: 'var(--ground)',              /* טקסט בצבע שמנת-קרם קריא */
-          padding: '14px 28px',
-          borderRadius: '999px',               /* פינות עגולות לחלוטין למראה מודרני */
-          fontWeight: '600',
-          textDecoration: 'none',
-          boxShadow: '0 4px 14px rgba(150, 120, 68, 0.25)', /* צל עדין בגוון מוקה */
-          transition: 'all 0.2s ease',
-          fontSize: '1rem',
-          cursor: 'pointer'
-        }}
       >
         <StarIcon />
-        להוספת חוות דעת והתרשמות מהשירות בגוגל
+        {copy.reviews.googleCta}
       </a>
 
-      <p className="reviewcta__note" style={{ color: 'var(--ink-faint)', marginTop: '16px', fontSize: '0.85rem' }}>{copy.reviews.googleNote}</p>
+      <p className="reviewcta__note">{copy.reviews.googleNote}</p>
     </div>
   );
 }
@@ -87,15 +72,15 @@ function GoogleCta() {
 export function Reviews() {
   const { copy } = useLang();
   const google = useGoogleReviews();
-  const reviews = google?.reviews || [];
+  const reviews = google?.reviews ?? [];
 
   return (
-    <section className="reviews" id="reviews" style={{ background: 'var(--ground)' }}>
+    <section className="reviews" id="reviews">
       <div className="shell">
         <Reveal>
           <div className="sectionhead">
-            <p className="eyebrow" style={{ color: 'var(--accent)' }}>{copy.reviews.eyebrow}</p>
-            <h2 style={{ color: 'var(--ink)' }}>{copy.reviews.title}</h2>
+            <p className="eyebrow">{copy.reviews.eyebrow}</p>
+            <h2>{copy.reviews.title}</h2>
           </div>
         </Reveal>
 
@@ -107,11 +92,10 @@ export function Reviews() {
                 href={google.uri || CONTACT.google}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ border: '1px solid var(--rule-soft)', background: 'var(--paper)', borderRadius: '12px', padding: '16px' }}
               >
-                <span className="reviews__score" style={{ color: 'var(--ink)' }}>{google.rating.toFixed(1)}</span>
+                <span className="reviews__score">{google.rating.toFixed(1)}</span>
                 <Stars count={Math.round(google.rating)} />
-                <span className="reviews__count" style={{ color: 'var(--ink-soft)' }}>
+                <span className="reviews__count">
                   {google.count} {copy.reviews.googleCountLabel}
                 </span>
               </a>
@@ -124,10 +108,9 @@ export function Reviews() {
                   className="review"
                   key={`${review.author}-${index}`}
                   delay={index * 70}
-                  style={{ background: 'var(--paper)', borderRadius: '16px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.02)', border: '1px solid var(--rule-soft)' }}
                 >
                   <Stars count={review.rating} />
-                  <blockquote className="review__quote" style={{ color: 'var(--ink-soft)' }}>{review.text}</blockquote>
+                  <blockquote className="review__quote">{review.text}</blockquote>
                   <footer className="review__by">
                     {review.authorUri ? (
                       <a
@@ -135,24 +118,23 @@ export function Reviews() {
                         href={review.authorUri}
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: 'var(--ink)' }}
                       >
                         {review.author}
                       </a>
                     ) : (
-                      <span className="review__name" style={{ color: 'var(--ink)' }}>{review.author}</span>
+                      <span className="review__name">{review.author}</span>
                     )}
-                    <span className="review__meta" style={{ color: 'var(--ink-faint)' }}>{review.when}</span>
+                    <span className="review__meta">{review.when}</span>
                   </footer>
                 </Reveal>
               ))}
             </div>
 
-            <p className="reviews__source" style={{ color: 'var(--ink-faint)' }}>{copy.reviews.googleSource}</p>
+            <p className="reviews__source">{copy.reviews.googleSource}</p>
           </>
         ) : (
           <Reveal>
-            <p className="reviews__empty" style={{ color: 'var(--ink-soft)' }}>{copy.reviews.empty}</p>
+            <p className="reviews__empty">{copy.reviews.empty}</p>
           </Reveal>
         )}
 
