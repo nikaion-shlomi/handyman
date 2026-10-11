@@ -1911,3 +1911,126 @@ a.review__name:hover {
     margin-bottom: 12px !important;
   }
 }
+/* ==========================================================================
+   🚀 מהפך אסימטרי פרימיום סופי (מבנה חצאים זורם וחסין התנגשויות)
+   ========================================================================== */
+
+/* 1. הפיכת רשת הקוביות לשורות רחבות */
+.services__grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 64px !important;
+  width: 100% !important;
+}
+
+/* 2. עיצוב כל שורה ככרטיסייה לבנה, מרווחת וצפה המבוססת על שני חצאים */
+.services__grid .jobcard {
+  background-color: #ffffff !important;      /* לבן-שלג בוהק ונקי */
+  border-radius: 24px !important;            /* פינות עגולות רכות */
+  padding: 40px !important;                  /* ריווח פנימי עשיר */
+  border: 1px solid #f1f5f9 !important;      /* מסגרת עדינה */
+  position: relative !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: row !important;            /* העמדת הטקסט והתמונה זה לצד זה */
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 48px !important;                      /* מרווח ביטחון קבוע בין הטקסט לתמונה */
+  overflow: hidden !important;
+  box-shadow: 0 20px 40px -15px rgba(7, 30, 54, 0.05) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* 📌 קסם האסימטריה: הפיכת צדדים מושלמת וחסינת באגים בכל שורה שנייה! */
+.services__grid .jobcard:nth-child(even) {
+  flex-direction: row-reverse !important;    /* הופך את המיקום של הטקסט והתמונה בזיгזג */
+}
+
+/* אפקט ריחוף יוקרתי */
+.services__grid .jobcard:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 30px 60px -20px rgba(150, 120, 68, 0.15) !important;
+  border-color: var(--accent) !important;
+}
+
+/* 3. הגדרת חצי המלל - תופס 50% מהכרטיסייה ותמיד נשאר חופשי ונקי */
+.services__grid .jobcard h3,
+.services__grid .jobcard p {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  text-align: right !important;
+}
+
+.services__grid .jobcard h3 {
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  color: var(--ink) !important;
+  margin-bottom: 12px !important;
+}
+
+.services__grid .jobcard p {
+  color: var(--ink-soft) !important;
+  font-size: 1.1rem !important;
+  line-height: 1.7 !important;
+}
+
+/* 4. הגדרת חצי התמונה - הפיכת האלמנט המקורי לתמונת אווירה יוקרתית */
+.services__grid .jobcard .jobcard__top {
+  flex: 1 !important;                        /* לוקח בדיוק חצי מהרוחב של השורה */
+  min-width: 45% !important;                 /* מקבע את רוחב התמונה ל-45% */
+  height: 300px !important;                  /* גובה מרשים ואחיד לכל התמונות */
+  background-size: cover !important;
+  background-position: center !important;
+  border-radius: 16px !important;            /* פינות מעוגלות פנימיות לתמונה */
+  border: 1px solid #e2e8f0 !important;
+  position: relative !important;
+  display: block !important;
+}
+
+/* 📌 שיוך אוטומטי של תמונות השטח האמיתיות שלך לחצי של התמונה */
+.services__grid .jobcard:nth-child(1) .jobcard__top { background-image: url('/plumbing.jpg') !important; }
+.services__grid .jobcard:nth-child(2) .jobcard__top { background-image: url('/electric.jpg') !important; }
+.services__grid .jobcard:nth-child(3) .jobcard__top { background-image: url('/paint.jpg') !important; }
+.services__grid .jobcard:nth-child(4) .jobcard__top { background-image: url('/renovation.jpg') !important; }
+
+/* 5. הפיכת מספר האינדקס למספר ענק בזהב-מוקה שצף מעל התמונה באופן נקי */
+.services__grid .jobcard__num {
+  font-family: var(--display) !important;
+  font-size: 3.5rem !important;
+  color: #ffffff !important;                 /* מספר לבן בוהק מעל התמונה */
+  opacity: 0.8 !important;
+  position: absolute !important;
+  top: 16px !important;
+  z-index: 20 !important;
+  line-height: 1 !important;
+}
+
+/* מיקום המספר לפי כיוון הזיגזג של השורה */
+.services__grid .jobcard:nth-child(odd) .jobcard__num { left: 24px !important; right: auto !important; }
+.services__grid .jobcard:nth-child(even) .jobcard__num { right: 24px !important; left: auto !important; }
+
+/* העלמת האייקון הישן הקטן שלא יפריע לעין */
+.services__grid .jobcard__top svg {
+  display: none !important;
+}
+
+/* 📱 התאמה רספונסיבית מוחלטת לניידים - מונע שבירות וחיתוכי מסך */
+@media (max-width: 850px) {
+  .services__grid .jobcard,
+  .services__grid .jobcard:nth-child(even) {
+    flex-direction: column-reverse !important; /* בנייד התמונה עוברת אוטומטית מעל הטקסט */
+    gap: 24px !important;
+    padding: 24px !important;
+  }
+  
+  .services__grid .jobcard .jobcard__top {
+    width: 100% !important;                  /* תמונה ברוחב מלא בנייד */
+    min-width: 100% !important;
+    height: 200px !important;                /* גובה מותאם למסך של טלפון */
+  }
+  
+  .services__grid .jobcard__num {
+    font-size: 2.5rem !important;
+  }
+}
