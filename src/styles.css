@@ -1601,3 +1601,121 @@ a.review__name:hover {
   color: var(--ink) !important;             /* כחול-דיו עמוק וחזק */
   margin-bottom: 14px !important;
 }
+
+/* ==========================================================================
+   🚀 מהפך אסימטרי (זיגזג) לכרטיסיות השירותים - דרך CSS בלבד!
+   ========================================================================== */
+
+/* 1. פירוק רשת הקוביות המשעממת והפיכתה לשורות רחבות ונושמות */
+.services__grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 40px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* 2. עיצוב כל שורה ככרטיסיית פרימיום לבנה, מרווחת וצפה */
+.services__grid .jobcard {
+  display: flex !important;
+  flex-direction: row !important; /* העמדת הלוגו והטקסט זה לצד זה */
+  align-items: center !important;
+  justify-content: space-between !important;
+  background-color: #ffffff !important;      /* לבן-שלג בוהק ונקי */
+  border-radius: 24px !important;            /* פינות עגולות רכות כמו שלה */
+  padding: 48px !important;                  /* מרווח פנימי עשיר */
+  border: 1px solid #f1f5f9 !important;      /* מסגרת בהירה ועדינה */
+  position: relative !important;
+  width: 100% !important;
+  text-align: right !important;
+  
+  /* צל פרימיום עמוק שמקפיץ את הכרטיסיות באוויר מעל הרקע */
+  box-shadow: 0 20px 40px -15px rgba(7, 30, 54, 0.05) !important;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1), box-shadow 0.3s ease !important;
+}
+
+/* 📌 קסם האסימטריה: הפיכת הצדדים אוטומטית בכל שורה שנייה (זיגזג)! */
+.services__grid .jobcard:nth-child(even) {
+  flex-direction: row-reverse !important; /* מהפך מלא של הטקסט והאייקון לסירוגין */
+}
+
+/* אפקט ריחוף יוקרתי כשנוגעים בכרטיסייה */
+.services__grid .jobcard:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 30px 60px -20px rgba(150, 120, 68, 0.15) !important;
+  border-color: var(--accent) !important;
+}
+
+/* 3. שינוי המיקום של גוש האייקון המקורי והפיכתו לאלמנט עיצובי עשיר */
+.services__grid .jobcard__top {
+  flex: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: var(--ground-deep) !important; /* ריבוע רקע חמים לאייקון */
+  width: 90px !important;
+  height: 90px !important;
+  border-radius: 20px !important;
+  color: var(--accent) !important;                  /* צביעת האייקון בזהב-מוקה */
+  border: 1px solid var(--rule-soft) !important;
+}
+
+/* הגדלת האייקון המקורי בתוך הריבוע לחוויה ויזואלית חזקה */
+.services__grid .jobcard__top svg {
+  width: 42px !important;
+  height: 42px !important;
+  fill: var(--accent) !important;
+}
+
+/* 4. הפיכת המספר הקטן המקורי (01, 02) למספר ענק בזהב-מוקה בפינה */
+.services__grid .jobcard__num {
+  font-family: var(--display) !important;   /* גופן Suez One היוקרתי */
+  font-size: 3.5rem !important;              /* הגדלה למספר ענק */
+  color: var(--accent) !important;          /* צבע מוקה-זהב */
+  opacity: 0.15 !important;                 /* שקיפות אלגנטית שנראית כמו סימן מים */
+  position: absolute !important;
+  top: 16px !important;
+  right: auto !important;
+  left: 32px !important;                    /* נעילה בפינה השמאלית העליונה של הכרטיסייה */
+}
+
+/* היפוך מיקום המספר בשורות ההפוכות כדי לשמור על איזון אסימטרי */
+.services__grid .jobcard:nth-child(even) .jobcard__num {
+  left: auto !important;
+  right: 32px !important;                   /* זז לפינה הימנית בשורה ההפוכה */
+}
+
+/* 5. שדרוג הכתב והמילים בפנים */
+.services__grid .jobcard h3 {
+  font-size: 1.7rem !important;
+  font-weight: 700 !important;
+  color: var(--ink) !important;             /* כחול-דיו עמוק וחזק */
+  margin-block: 12px 8px !important;
+}
+
+.services__grid .jobcard p {
+  color: var(--ink-soft) !important;        /* טקסט הסבר רך וקריא */
+  font-size: 1.05rem !important;
+  line-height: 1.7 !important;
+  max-width: 550px !important;              /* הגבלת רוחב למראה מהודק ונקי */
+}
+
+/* 📱 התאמה מושלמת ומלאה לטלפונים ניידים (מניעת שבירות) */
+@media (max-width: 768px) {
+  .services__grid .jobcard,
+  .services__grid .jobcard:nth-child(even) {
+    flex-direction: column-reverse !important; /* בנייד הכל מסתדר פקד אחד מעל השני בצורה נקייה */
+    align-items: flex-start !important;
+    padding: 32px 24px !important;
+  }
+  
+  .services__grid .jobcard__top {
+    margin-bottom: 20px !important;
+  }
+  
+  .services__grid .jobcard__num,
+  .services__grid .jobcard:nth-child(even) .jobcard__num {
+    position: static !important; /* ביטול המיקום הצף בנייד שלא יעלה על הטקסט */
+    margin-bottom: 12px !important;
+  }
+}
