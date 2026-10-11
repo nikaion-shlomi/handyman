@@ -1406,3 +1406,19 @@ a.review__name:hover {
   fill: var(--ground) !important;
   color: var(--ground) !important;
 }
+
+/* 📌 הגדלת נפח, גובה וריווח של התפריט העליון למראה יוקרתי ומרווח */
+.topbar__inner {
+  min-height: 84px !important;    /* הגדלת הגובה המינימלי של הפס מ-66px ל-84px */
+  padding-block: 12px !important;  /* הוספת ריווח פנימי מלמעלה ולמטה שהמילים ינשמו */
+}
+
+/* הגדלת גופן שם העסק בתפריט */
+.topbar__name {
+  font-size: 1.35rem !important;   /* הגדלת אותיות הלוגו "שלומי הגמי" */
+}
+
+/* הגדלת גופן קישורי הניווט (ראשי, עבודות, לקוחות וכו') */
+.topbar__link {
+  font-size: 1.05rem !important;   /* הגדלת אותיות הניווט שיהיו קריאות ובולטות */
+}
