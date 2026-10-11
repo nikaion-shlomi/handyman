@@ -9,7 +9,7 @@ import { Reviews } from './components/Reviews';
 import { Videos } from './components/Videos';
 import { Contact } from './components/Contact';
 import { WhatsAppOrb } from './components/WhatsAppOrb';
-import AccessibilityModal from './AccessibilityModal';
+import AccessibilityModal from './Accessibilitymodel';
 
 export default function App() {
   const { copy } = useLang();
@@ -37,7 +37,7 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <div className="shell footer__inner" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', items: 'center' }}>
+        <div className="shell footer__inner" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
           <div>
             <span>
               {copy.hero.name} · {copy.hero.trade}
