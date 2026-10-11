@@ -9,15 +9,65 @@ const AccessibilityModal: React.FC<AccessibilityModalProps> = ({ isOpen, onClose
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 backdrop-blur-sm" dir="rtl">
-      <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[85vh] flex flex-col border border-gray-100">
+    <div 
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        backdropFilter: 'blur(4px)',
+        zIndex: 99999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '16px'
+      }} 
+      dir="rtl"
+    >
+      <div 
+        style={{
+          backgroundColor: '#ffffff',
+          borderRadius: '12px',
+          boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+          maxWidth: '600px',
+          width: '100%',
+          maxHeight: '85vh',
+          display: 'flex',
+          flexDirection: 'column',
+          border: '1px solid #f3f4f6',
+          overflow: 'hidden'
+        }}
+      >
         
         {/* כותרת החלון */}
-        <div className="flex items-center justify-between p-5 border-b border-gray-200 bg-gray-50 rounded-t-xl">
-          <h2 className="text-xl font-bold text-[#0C3358]">הצהרת נגישות — שלומי הגמי · אגם אחזקות</h2>
+        <div 
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'between',
+            padding: '20px',
+            borderBottom: '1px solid #e5e7eb',
+            backgroundColor: '#f9fafb',
+            justifyContent: 'space-between'
+          }}
+        >
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#0C3358', margin: 0, fontFamily: 'sans-serif' }}>
+            הצהרת נגישות — שלומי הגמי · אגם אחזקות
+          </h2>
           <button 
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 text-2xl font-bold p-2 rounded-lg hover:bg-gray-200 transition-colors"
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#9ca3af',
+              fontSize: '1.5rem',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              padding: '4px 8px',
+              borderRadius: '6px'
+            }}
             aria-label="סגור חלון"
           >
             ✕
@@ -25,47 +75,78 @@ const AccessibilityModal: React.FC<AccessibilityModalProps> = ({ isOpen, onClose
         </div>
 
         {/* תוכן ההצהרה */}
-        <div className="p-6 overflow-y-auto text-gray-700 space-y-4 text-right leading-relaxed">
-          <p className="font-semibold text-gray-800">
+        <div 
+          style={{
+            padding: '24px',
+            overflowY: 'auto',
+            color: '#374151',
+            textAlign: 'right',
+            lineHeight: '1.6',
+            fontFamily: 'sans-serif'
+          }}
+        >
+          <p style={{ fontWeight: '600', color: '#1f2937', marginBottom: '16px' }}>
             באגם אחזקות אנו רואים בחשיבות עליונה את מתן השירות השוויוני לכלל הלקוחות והגולשים, ובכלל זה לאנשים עם מוגבלויות. אנו משקיעים מאמצים ומשאבים רבים על מנת להנגיש את אתר האינטרנט שלנו, במטרה לאפשר חוויית גלישה נוחה, עצמאית וטבעית לכל אדם.
           </p>
 
-          <h3 className="text-lg font-bold text-[#0C3358] pt-2 border-t border-gray-100">התאמות הנגישות באתר</h3>
+          <h3 style={{ fontSize: '1.125rem', fontWeight: 'bold', color: '#0C3358', marginTop: '16px', paddingTop: '8px', borderTop: '1px solid #f3f4f6' }}>
+            התאמות הנגישות באתר
+          </h3>
           <p>
             אתר זה עומד בדרישות תקנות שוויון זכויות לאנשים עם מוגבלויות (התאמות נגישות לשירות), התשס"ג-2013, ומותאם להמלצות התקן הישראלי (ת"י 5568) לנגישות תכנים באינטרנט ברמת AA.
           </p>
           
-          <ul className="list-disc list-inside space-y-1.5 pr-2">
-            <li><span className="font-medium text-gray-900">תוסף נגישות:</span> באתר מוטמע רכיב הנגישות של חברת UserWay המאפשר שינוי גדלי גופן, התאמת ניגודיות, הדגשת קישורים ועוד.</li>
-            <li><span className="font-medium text-gray-900">ניווט מקלדת:</span> תמיכה מלאה בניווט באמצעות המקלדת (מקש Tab) ללא שימוש בעכבר.</li>
-            <li><span className="font-medium text-gray-900">קוראי מסך:</span> התאמה לקוראי מסך עבור אנשים עם לקויות ראייה.</li>
-            <li><span className="font-medium text-gray-900">תמונות ומדיה:</span> הוספת תיאור אלטרנטיבי (Alt tags) לתמונות באתר להבטחת קריאות מלאה.</li>
+          <ul style={{ listStyleType: 'disc', paddingRight: '20px', marginTop: '8px', marginBottom: '16px' }}>
+            <li style={{ marginBottom: '6px' }}><span style={{ fontWeight: '500', color: '#111827' }}>תוסף נגישות:</span> באתר מוטמע רכיב הנגישות של חברת UserWay המאפשר שינוי גדלי גופן, התאמת ניגודיות, הדגשת קישורים ועוד.</li>
+            <li style={{ marginBottom: '6px' }}><span style={{ fontWeight: '500', color: '#111827' }}>ניווט מקלדת:</span> תמיכה מלאה בניווט באמצעות המקלדת (מקש Tab) ללא שימוש בעכבר.</li>
+            <li style={{ marginBottom: '6px' }}><span style={{ fontWeight: '500', color: '#111827' }}>קוראי מסך:</span> התאמה לקוראי מסך עבור אנשים עם לקויות ראייה.</li>
+            <li style={{ marginBottom: '6px' }}><span style={{ fontWeight: '500', color: '#111827' }}>תמונות ומדיה:</span> הוספת תיאור אלטרנטיבי (Alt tags) לתמונות באתר להבטחת קריאות מלאה.</li>
           </ul>
 
-          <h3 className="text-lg font-bold text-[#0C3358] pt-2 border-t border-gray-100">פרטי רכז הנגישות ופניות בנושא נגישות</h3>
+          <h3 style={{ fontSize: '1.125rem', fontWeight: 'bold', color: '#0C3358', marginTop: '16px', paddingTop: '8px', borderTop: '1px solid #f3f4f6' }}>
+            פרטי רכז הנגישות ופניות בנושא נגישות
+          </h3>
           <p>
             למרות מאמצינו להנגיש את כלל הרכיבים, ייתכן שיתגלו חלקים ספציפיים שטרם הונגשו כראוי. אם נתקלתם בבעיה, בתקלה או בשאלה בנושא הנגישות, נשמח אם תעדכנו אותנו כדי שנוכל לתקן זאת בהקדם ובצורה הטובה ביותר.
           </p>
           
-          <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 inline-block w-full">
-            <p className="font-medium text-gray-900">פרטי התקשרות עם שלומי (רכז הנגישות):</p>
-            <ul className="mt-2 space-y-1 text-sm">
-              <li>• <span className="font-semibold">שם:</span> שלומי הגמי</li>
-              <li>• <span className="font-semibold">טלפון/וואטסאפ:</span> לחיוג ופנייה ישירה דרך כפתורי יצירת הקשר באתר</li>
-              <li>• <span className="font-semibold">אזורי שירות פיזיים:</span> באר יעקב, רמלה, חולון, בת ים, נס ציונה וראשון לציון</li>
+          <div style={{ backgroundColor: '#f9fafb', padding: '16px', borderRadius: '8px', border: '1px solid #e5e7eb', marginTop: '16px' }}>
+            <p style={{ fontWeight: '500', color: '#111827', margin: '0 0 8px 0' }}>פרטי התקשרות עם שלומי (רכז הנגישות):</p>
+            <ul style={{ listStyleType: 'none', padding: 0, margin: 0, fontSize: '0.875rem' }}>
+              <li style={{ marginBottom: '4px' }}>• <strong>שם:</strong> שלומי הגמי</li>
+              <li style={{ marginBottom: '4px' }}>• <strong>טלפון/וואטסאפ:</strong> לחיוג ופנייה ישירה דרך כפתורי יצירת הקשר באתר</li>
+              <li>• <strong>אזורי שירות פיזיים:</strong> באר יעקב, רמלה, חולון, בת ים, נס ציונה וראשון לציון</li>
             </ul>
           </div>
 
-          <p className="text-xs text-gray-400 text-left pt-4">
+          <p style={{ fontSize: '0.75rem', color: '#9ca3af', textAlign: 'left', marginTop: '16px', marginBotom: 0 }}>
             הצהרת הנגישות עודכנה בחודש אוקטובר 2026.
           </p>
         </div>
 
         {/* כפתור סגירה תחתון */}
-        <div className="p-4 border-t border-gray-200 bg-gray-50 rounded-b-xl flex justify-end">
+        <div 
+          style={{
+            padding: '16px',
+            borderTop: '1px solid #e5e7eb',
+            backgroundColor: '#f9fafb',
+            display: 'flex',
+            justifyContent: 'flex-end'
+          }}
+        >
           <button 
             onClick={onClose}
-            className="px-5 py-2 bg-[#0C3358] text-white font-medium rounded-lg hover:bg-opacity-90 transition-all text-sm shadow-sm"
+            style={{
+              padding: '8px 20px',
+              backgroundColor: '#0C3358',
+              color: '#ffffff',
+              fontWeight: '500',
+              borderRadius: '8px',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '0.875rem',
+              boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+            }}
           >
             הבנתי, תודה
           </button>
