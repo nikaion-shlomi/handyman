@@ -1848,3 +1848,66 @@ a.review__name:hover {
     border-radius: 24px 24px 0 0 !important; /* עיגול הפינות העליונות בלבד בנייד */
   }
 }
+/* ==========================================================================
+   📌 תיקון דיוק: הזזת המלל למקום פנוי וניקוי התנגשויות בכרטיסיות
+   ========================================================================== */
+
+/* מכריח את כל גוף הכרטיסייה להשתמש ברוחב פנימי מוגדר שלא יתנגש בתמונה */
+.services__grid .jobcard {
+  display: block !important; /* העברה למבנה בלוק יציב */
+  height: auto !important;
+}
+
+/* 1. תיקון מיקום לכותרות (אינסטלציה, חשמל וכו') בשורות השונות */
+.services__grid .jobcard h3 {
+  position: relative !important;
+  z-index: 10 !important;
+  margin: 0 !important;
+  margin-bottom: 12px !important;
+  width: 55% !important; /* מגביל את רוחב הכותרת שלא תיגע בתמונה */
+}
+
+/* בשורות האי-זוגיות (תמונה בשמאל) - המלל נשאר בימין נקי */
+.services__grid .jobcard:nth-child(odd) h3,
+.services__grid .jobcard:nth-child(odd) p {
+  margin-inline-start: 0 !important;
+  margin-inline-end: auto !important;
+}
+
+/* בשורות הזוגיות (תמונה בימין) - מזיזים את המלל שמאלה כדי שלא ייחסם על ידי התמונה */
+.services__grid .jobcard:nth-child(even) h3,
+.services__grid .jobcard:nth-child(even) p {
+  margin-inline-start: auto !important;
+  margin-inline-end: 0 !important;
+  width: 55% !important; /* משאיר את הכתב רק ב-55% השמאליים הפנויים */
+  text-align: right !important;
+}
+
+/* 2. תיקון מיקום ורוחב לטקסט התיאור של השירות */
+.services__grid .jobcard p {
+  position: relative !important;
+  z-index: 10 !important;
+  width: 55% !important; /* שומר על הכתב פנוי מהתמונה */
+}
+
+/* 3. העלמה מוחלטת של הריבוע הישן, האייקון והמספר המקורי שהתבלגנו */
+.services__grid .jobcard__top,
+.services__grid .jobcard [class*="top"],
+.services__grid .jobcard svg,
+.services__grid .jobcard__top svg {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* 📱 התאמה לניידים - מחזיר את המלל לרוחב מלא כשהתמונה עולה למעלה */
+@media (max-width: 900px) {
+  .services__grid .jobcard h3,
+  .services__grid .jobcard p,
+  .services__grid .jobcard:nth-child(even) h3,
+  .services__grid .jobcard:nth-child(even) p {
+    width: 100% !important; /* בנייד הטקסט חוזר לרוחב מלא תחת התמונה */
+    margin: 0 !important;
+    margin-bottom: 12px !important;
+  }
+}
