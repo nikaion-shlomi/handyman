@@ -1392,3 +1392,10 @@ a.review__name:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 6px 20px rgba(150, 120, 68, 0.35) !important;
 }
+
+/* צביעת האייקון (הכוכב) בתוך כפתור גוגל בלבן-שמנת כדי שיבלוט בצורה מושלמת */
+.reviewcta .btn svg, 
+.reviewcta .btn--primary svg {
+  fill: var(--ground) !important;
+  color: var(--ground) !important;
+}
