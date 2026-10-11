@@ -1422,3 +1422,36 @@ a.review__name:hover {
 .topbar__link {
   font-size: 1.05rem !important;   /* הגדלת אותיות הניווט שיהיו קריאות ובולטות */
 }
+
+/* 📌 מהפך נוכחות מלא לתפריט העליון */
+.topbar {
+  background: rgba(252, 249, 245, 0.95) !important; /* צבע רקע קפה-שמנת חמים כמו הרקע החדש */
+  box-shadow: 0 10px 30px -10px rgba(7, 30, 54, 0.08) !important; /* אפקט צל צף יוקרתי שמקפיץ את התפריט */
+}
+
+.topbar__inner {
+  max-width: 100% !important;        /* מתיחת התפריט לרוחב מלא של המסך למראה יוקרתי */
+  padding-inline: clamp(24px, 5vw, 64px) !important; /* הוספת מרווחים אלגנטיים בצדדים */
+  gap: 40px !important;               /* הגדלת המרווח בין הלוגו למילים */
+}
+
+/* הדגשת השם שלומי הגמי */
+.topbar__name {
+  font-size: 1.5rem !important;       /* הגדלה משמעותית נוספת של שם העסק */
+  font-weight: 700 !important;        /* הפיכת השם לעבה ובולט */
+  color: var(--ink) !important;       /* צבע כחול-דיו עמוק וחזק */
+}
+
+/* הדגשת המקצוע (הנדימן / אגם אחזקות) */
+.topbar__trade {
+  font-size: 0.8rem !important;       /* הגדלת תת-הכותרת */
+  letter-spacing: 0.2em !important;   /* מתיחת הרווח בין האותיות באנגלית/מספרים למראה הייטקי */
+}
+
+/* עיבוי והגדלת קישורי הניווט */
+.topbar__link {
+  font-size: 1.15rem !important;      /* הגדלת אותיות הקישורים */
+  font-weight: 700 !important;        /* עיבוי משמעותי של הכתב למראה נוכח ומקצועי */
+  color: var(--ink-soft) !important;  /* צבע ברור */
+  letter-spacing: -0.01em !important;
+}
