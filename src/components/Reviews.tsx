@@ -63,13 +63,13 @@ function GoogleCta() {
           alignItems: 'center',
           justifyContent: 'center',
           gap: '10px',
-          backgroundColor: 'var(--accent)',
-          color: 'var(--ground)',
+          backgroundColor: 'var(--accent)',    /* צבע מוקה-זהב אלגנטי */
+          color: 'var(--ground)',              /* טקסט בצבע שמנת-קרם קריא */
           padding: '14px 28px',
-          borderRadius: '999px',
+          borderRadius: '999px',               /* פינות עגולות לחלוטין למראה מודרני */
           fontWeight: '600',
           textDecoration: 'none',
-          boxShadow: '0 4px 14px rgba(150, 120, 68, 0.25)',
+          boxShadow: '0 4px 14px rgba(150, 120, 68, 0.25)', /* צל עדין בגוון מוקה */
           transition: 'all 0.2s ease',
           fontSize: '1rem',
           cursor: 'pointer'
@@ -87,7 +87,7 @@ function GoogleCta() {
 export function Reviews() {
   const { copy } = useLang();
   const google = useGoogleReviews();
-  const reviews: GoogleReview[] = google?.reviews || [];
+  const reviews = google?.reviews ?? [];
 
   return (
     <section className="reviews" id="reviews" style={{ background: 'var(--ground)' }}>
