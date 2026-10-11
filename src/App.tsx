@@ -9,7 +9,7 @@ import { Reviews } from './components/Reviews';
 import { Videos } from './components/Videos';
 import { Contact } from './components/Contact';
 import { WhatsAppOrb } from './components/WhatsAppOrb';
-import AccessibilityModal from './Accessibilitymodel';
+import AccessibilityModal from './AccessibilityModal';
 
 export default function App() {
   const { copy } = useLang();
