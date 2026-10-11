@@ -43,13 +43,14 @@ export function Videos() {
   const { copy } = useLang();
 
   return (
-    <section className="videos" id="videos">
+    /* שונה ל-videos-alt כדי להסיר את הרקע הכחול ולהחיל גוון קרם חלק */
+    <section className="videos-alt" id="videos" style={{ background: 'var(--ground)', color: 'var(--ink)' }}>
       <div className="shell">
         <Reveal>
           <div className="sectionhead">
-            <p className="eyebrow">{copy.videos.eyebrow}</p>
-            <h2>{copy.videos.title}</h2>
-            <p>{copy.videos.lede}</p>
+            <p className="eyebrow" style={{ color: 'var(--accent)' }}>{copy.videos.eyebrow}</p>
+            <h2 style={{ color: 'var(--ink)' }}>{copy.videos.title}</h2>
+            <p style={{ color: 'var(--ink-soft)' }}>{copy.videos.lede}</p>
           </div>
         </Reveal>
 
