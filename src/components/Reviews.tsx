@@ -1,145 +1,112 @@
-import { useEffect, useState } from 'react';
-import { CONTACT } from '../content';
 import { useLang } from '../lang';
-import { StarIcon } from '../icons';
+import { InfoIcon } from '../icons';
 import { Reveal } from './Reveal';
 
-type GoogleReview = {
-  rating: number;
-  text: string;
-  author: string;
-  authorUri: string;
-  when: string;
-};
-
-type GoogleReviews = {
-  rating: number | null;
-  count: number;
-  uri: string;
-  reviews: GoogleReview[];
-};
-
-function useGoogleReviews() {
-  const { lang } = useLang();
-  const [data, setData] = useState<GoogleReviews | null>(null);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    fetch(`/api/reviews?lang=${lang}`, { signal: controller.signal })
-      .then((response) => (response.ok ? response.json() : null))
-      .then((body: GoogleReviews | null) => setData(body?.reviews ? body : null))
-      .catch(() => setData(null));
-    return () => controller.abort();
-  }, [lang]);
-
-  return data;
-}
-
-function Stars({ count }: { count: number }) {
-  return (
-    <div className="review__stars" role="img" aria-label={`${count}/5`}>
-      {Array.from({ length: count }, (_, star) => (
-        <StarIcon key={star} />
-      ))}
-    </div>
-  );
-}
-
-function GoogleCta() {
+export function Services() {
   const { copy } = useLang();
-  if (!CONTACT.google) return null;
+
+  // 📌 מערך מעודכן המקשר תמונה ייחודית לכל אחד מ-6 השירותים שלך בשטח
+  const images = [
+    '/plumbing.jpg',    /* 01. אינסטלציה ומערכות מים */
+    '/electric.jpg',    /* 02. ארונות ומערכות חשמל */
+    '/paint.jpg',       /* 03. תיקוני צבע, טיח ושפכטל */
+    '/renovation.jpg',  /* 04. שיפוצים כלליים ועבודות גמר */
+    '/welding.jpg',     /* 05. מסגרות, ריתוך ותשתיות שטח */
+    '/sealing.jpg'      /* 06. איטום, בידוד ונזילות */
+  ];
 
   return (
-    <div className="reviewcta">
-      <h3>{copy.reviews.formTitle}</h3>
-      <p className="reviewcta__lede">{copy.reviews.formLede}</p>
-
-      <a
-        className="btn btn--primary"
-        href={CONTACT.google}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <StarIcon />
-        {copy.reviews.googleCta}
-      </a>
-
-      <p className="reviewcta__note">{copy.reviews.googleNote}</p>
-    </div>
-  );
-}
-
-export function Reviews() {
-  const { copy } = useLang();
-  const google = useGoogleReviews();
-  const reviews = google?.reviews ?? [];
-
-  return (
-    <section className="reviews" id="reviews">
+    <section className="services" id="services" style={{ background: 'var(--ground)', paddingBlock: '80px' }}>
       <div className="shell">
         <Reveal>
-          <div className="sectionhead">
-            <p className="eyebrow">{copy.reviews.eyebrow}</p>
-            <h2>{copy.reviews.title}</h2>
+          <div className="sectionhead" style={{ marginBottom: '60px', textAlign: 'center' }}>
+            <p className="eyebrow" style={{ color: 'var(--accent)', justifyContent: 'center' }}>{copy.services.eyebrow}</p>
+            <h2 style={{ color: 'var(--ink)', fontSize: '2.5rem', marginBottom: '16px' }}>{copy.services.title}</h2>
+            <p style={{ color: 'var(--ink-soft)', fontSize: '1.15rem' }}>{copy.services.lede}</p>
           </div>
         </Reveal>
 
-        {google && reviews.length > 0 ? (
-          <>
-            {google.rating !== null ? (
-              <a
-                className="reviews__summary"
-                href={google.uri || CONTACT.google}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="reviews__score">{google.rating.toFixed(1)}</span>
-                <Stars count={Math.round(google.rating)} />
-                <span className="reviews__count">
-                  {google.count} {copy.reviews.googleCountLabel}
-                </span>
-              </a>
-            ) : null}
+        {/* מיכל השורות האסימטריות */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '56px', width: '100%' }}>
+          {copy.services.items.map((item, index) => {
+            const isEven = index % 2 === 0;
+            // משיכת התמונה המתאימה לפי המיקום המדויק, או שימוש בתמונת ברירת מחדל אם חסר
+            const imageUrl = images[index] || '/renovation.jpg';
 
-            <div className="reviews__grid">
-              {reviews.map((review, index) => (
-                <Reveal
-                  as="article"
-                  className="review"
-                  key={`${review.author}-${index}`}
-                  delay={index * 70}
+            return (
+              <Reveal key={item.title} delay={index * 60}>
+                <article 
+                  style={{
+                    background: '#ffffff',
+                    borderRadius: '24px',
+                    padding: '40px',
+                    border: '1px solid #f1f5f9',
+                    boxShadow: '0 20px 40px -15px rgba(7, 30, 54, 0.05)',
+                    display: 'flex',
+                    flexDirection: isEven ? 'row' : 'row-reverse', // קסם הזיגזג
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '48px',
+                    width: '100%',
+                    position: 'relative'
+                  }}
+                  className="services-row-card"
                 >
-                  <Stars count={review.rating} />
-                  <blockquote className="review__quote">{review.text}</blockquote>
-                  <footer className="review__by">
-                    {review.authorUri ? (
-                      <a
-                        className="review__name"
-                        href={review.authorUri}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {review.author}
-                      </a>
-                    ) : (
-                      <span className="review__name">{review.author}</span>
-                    )}
-                    <span className="review__meta">{review.when}</span>
-                  </footer>
-                </Reveal>
-              ))}
-            </div>
+                  
+                  {/* חצי 1: גוש המלל */}
+                  <div style={{ flex: '1', minWidth: '280px', textAlign: 'right' }}>
+                    <h3 style={{ fontSize: '1.8rem', fontWeight: '700', color: 'var(--ink)', margin: '0 0 12px 0' }}>
+                      {item.title}
+                    </h3>
+                    <p style={{ color: 'var(--ink-soft)', fontSize: '1.1rem', lineHeight: '1.7', margin: 0 }}>
+                      {item.body}
+                    </p>
+                  </div>
 
-            <p className="reviews__source">{copy.reviews.googleSource}</p>
-          </>
-        ) : (
-          <Reveal>
-            <p className="reviews__empty">{copy.reviews.empty}</p>
-          </Reveal>
-        )}
+                  {/* חצי 2: גוש תמונת השטח האמיתית שלך */}
+                  <div 
+                    style={{ 
+                      flex: 'none', 
+                      width: '45%', 
+                      height: '320px', 
+                      backgroundImage: `url(${imageUrl})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      borderRadius: '16px',
+                      border: '1px solid #e2e8f0',
+                      position: 'relative'
+                    }}
+                  >
+                    {/* 📌 תיקון: מספר רץ אמיר ונקי מ-01 עד 06 אוטומטית */}
+                    <span 
+                      style={{
+                        fontFamily: 'var(--display)',
+                        fontSize: '3.5rem',
+                        color: '#ffffff',
+                        opacity: 0.8,
+                        position: 'absolute',
+                        top: '16px',
+                        left: isEven ? '24px' : 'auto',
+                        right: isEven ? 'auto' : '24px',
+                        lineHeight: '1',
+                        zIndex: 10
+                      }}
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                  </div>
 
-        <Reveal delay={90}>
-          <GoogleCta />
+                </article>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        <Reveal>
+          <p style={{ marginTop: '48px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--ink-faint)', justifyContent: 'center' }}>
+            <InfoIcon />
+            <span>{copy.services.note}</span>
+          </p>
         </Reveal>
       </div>
     </section>
