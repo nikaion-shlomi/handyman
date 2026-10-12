@@ -5,7 +5,6 @@ import { RulerRail } from './components/RulerRail';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
 import { Gallery } from './components/Gallery';
-import  Reviews  from './components/Reviews';
 import { Videos } from './components/Videos';
 import { Contact } from './components/Contact';
 import { WhatsAppOrb } from './components/WhatsAppOrb';
@@ -32,7 +31,6 @@ export default function App() {
         <Services />
         <Gallery />
         <Reviews />
-        <Videos />
         <Contact />
       </main>
 
