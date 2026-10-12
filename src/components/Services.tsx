@@ -5,54 +5,53 @@ import { Reveal } from './Reveal';
 export function Services() {
   const { copy } = useLang();
 
-  // מערך נתיבי התמונות שכבר העלית לאתר, לפי סדר השירותים שלך
+  // נתיבי התמונות המדויקים מתוך תיקיית public שלך
   const serviceImages = [
-    '/plumbing.jpg',    // תמונה עבור אינסטלציה
-    '/electric.jpg',    // תמונה עבור חשמל
-    '/paint.jpg',       // תמונה עבור איטום ורטיבות
-    '/steel.jpg',       // תמונה עבור ריתוך ומסגרות (תוכל לשנות את השם אם הוא אחר)
-    '/parking.jpg',     // תמונה עבור שטחים משותפים
-    '/home.jpg'         // תמונה עבור עבודות בבית
+    '/plumbing.jpg',    // 01. אינסטלציה ומערכות מים
+    '/electric.jpg',    // 02. חשמל ותאורה
+    '/sealing.jpg',     // 03. איטום ורטיבות
+    '/welding.jpg',     // 04. ריתוך ומסגרות
+    '/renovation.jpg',  // 05. שטחים משותפים
+    '/paint.jpg'        // 06. עבודות בבית
   ];
 
   return (
-    <section className="services" id="services">
+    <section className="premium-services-section" id="services">
       <div className="shell">
         <Reveal>
-          <div className="sectionhead">
+          <div className="services-main-head">
             <p className="eyebrow">{copy.services.eyebrow}</p>
             <h2>{copy.services.title}</h2>
-            <p>{copy.services.lede}</p>
+            <p className="services-main-lede">{copy.services.lede}</p>
           </div>
         </Reveal>
 
-        <div className="services__grid">
+        {/* מיכל הבלוקים ברוחב מלא */}
+        <div className="premium-blocks-container">
           {copy.services.items.map((item, index) => {
-            // שליפת התמונה המתאימה לפי המיקום של השירות במערך
             const imageUrl = serviceImages[index] || '/plumbing.jpg';
 
             return (
               <Reveal key={item.title} delay={index * 50}>
-                <article>
-                  <span>{String(index + 1).padStart(2, '0')}</span>
+                <article className="premium-block-card">
                   
-                  {/* מיכל התמונה החדש במקום האייקון הישן */}
+                  {/* חלק 1: התמונה האנכית הגדולה */}
                   <div 
-                    className="service-image-holder" 
-                    style={{ 
-                      width: '100%', 
-                      height: '140px', 
-                      backgroundImage: `url(${imageUrl})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      borderRadius: '12px',
-                      marginBottom: '20px',
-                      border: '1px solid var(--rule-soft)'
-                    }}
+                    className="premium-block-image"
+                    style={{ backgroundImage: `url(${imageUrl})` }}
                   />
 
-                  <h3>{item.title}</h3>
-                  <p>{item.body}</p>
+                  {/* חלק 2: המלל והמספר מתחתיה */}
+                  <div className="premium-block-content">
+                    <div className="premium-block-meta">
+                      <span className="premium-block-number">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <h3>{item.title}</h3>
+                    </div>
+                    <p>{item.body}</p>
+                  </div>
+
                 </article>
               </Reveal>
             );
@@ -60,7 +59,7 @@ export function Services() {
         </div>
 
         <Reveal>
-          <p className="services__note">
+          <p className="services-bottom-note">
             <InfoIcon />
             <span>{copy.services.note}</span>
           </p>
