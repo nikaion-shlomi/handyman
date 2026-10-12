@@ -371,3 +371,107 @@ html, body, #root, .app-container, .page, main {
     opacity: 0.6;
   }
 }
+/* ==========================================================================
+   📌 עיצוב כרטיסיות פרימיום זיג-זג מבודד (ללא השפעה על פרופורציות האתר)
+   ========================================================================== */
+
+.premium-services-section {
+  background: var(--ground);
+  padding-block: 80px;
+  width: 100%;
+}
+
+.premium-services-container {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  width: 100%;
+}
+
+/* מבנה הכרטיסייה במחשב */
+.premium-service-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 20px 40px -15px rgba(7, 30, 54, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  width: 100%;
+}
+
+/* לוגיקת הזיג-זג האסימטרי במחשב */
+.layout-normal { flex-direction: row; }
+.layout-reverse { flex-direction: row-reverse; }
+
+.premium-card-text {
+  flex: 1;
+  min-width: 280px;
+  text-align: right;
+  position: relative;
+}
+
+.premium-card-text h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 12px 0;
+}
+
+.premium-card-text p {
+  color: var(--ink-soft);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* המספר הסידורי העדין מעל הטקסט */
+.premium-card-number {
+  display: block;
+  font-family: var(--mono);
+  font-size: 1.2rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 8px;
+  opacity: 0.5;
+}
+
+/* קונטיינר התמונה הצידית במחשב */
+.premium-card-image {
+  flex: none;
+  width: 45%;
+  height: 320px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+/* 📱 קיפול בטוח לניידים - הופך לטור אנכי יציב מבלי לשנות את רוחב העמוד */
+@media (max-width: 850px) {
+  .premium-service-card {
+    flex-direction: column-reverse !important; /* התמונה תעלה בצורה מסודרת מעל המלל */
+    gap: 24px !important;
+    padding: 24px !important;
+    border-radius: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .premium-card-image {
+    width: 100% !important;
+    height: 220px !important; /* גובה מותאם למסכי טלפונים */
+    border-radius: 12px !important;
+  }
+
+  .premium-card-text {
+    width: 100% !important;
+  }
+
+  .premium-card-text h3 {
+    font-size: 1.4rem !important;
+    margin-bottom: 8px !important;
+  }
+}
