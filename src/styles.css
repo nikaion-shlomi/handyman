@@ -1603,10 +1603,319 @@ a.review__name:hover {
 }
 
 /* ==========================================================================
-   🚀 מהפך אסימטרי פרימיום סופי (מבנה חצאים זורם מבוסס CSS)
+   🚀 מהפך אסימטרי (זיגזג) לכרטיסיות השירותים - דרך CSS בלבד!
    ========================================================================== */
 
-/* 1. פירוק רשת הקוביות והפיכתה לשורות רחבות */
+/* 1. פירוק רשת הקוביות המשעממת והפיכתה לשורות רחבות ונושמות */
+.services__grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 40px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* 2. עיצוב כל שורה ככרטיסיית פרימיום לבנה, מרווחת וצפה */
+.services__grid .jobcard {
+  display: flex !important;
+  flex-direction: row !important; /* העמדת הלוגו והטקסט זה לצד זה */
+  align-items: center !important;
+  justify-content: space-between !important;
+  background-color: #ffffff !important;      /* לבן-שלג בוהק ונקי */
+  border-radius: 24px !important;            /* פינות עגולות רכות כמו שלה */
+  padding: 48px !important;                  /* מרווח פנימי עשיר */
+  border: 1px solid #f1f5f9 !important;      /* מסגרת בהירה ועדינה */
+  position: relative !important;
+  width: 100% !important;
+  text-align: right !important;
+  
+  /* צל פרימיום עמוק שמקפיץ את הכרטיסיות באוויר מעל הרקע */
+  box-shadow: 0 20px 40px -15px rgba(7, 30, 54, 0.05) !important;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1), box-shadow 0.3s ease !important;
+}
+
+/* 📌 קסם האסימטריה: הפיכת הצדדים אוטומטית בכל שורה שנייה (זיגזג)! */
+.services__grid .jobcard:nth-child(even) {
+  flex-direction: row-reverse !important; /* מהפך מלא של הטקסט והאייקון לסירוגין */
+}
+
+/* אפקט ריחוף יוקרתי כשנוגעים בכרטיסייה */
+.services__grid .jobcard:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 30px 60px -20px rgba(150, 120, 68, 0.15) !important;
+  border-color: var(--accent) !important;
+}
+
+/* 3. שינוי המיקום של גוש האייקון המקורי והפיכתו לאלמנט עיצובי עשיר */
+.services__grid .jobcard__top {
+  flex: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: var(--ground-deep) !important; /* ריבוע רקע חמים לאייקון */
+  width: 90px !important;
+  height: 90px !important;
+  border-radius: 20px !important;
+  color: var(--accent) !important;                  /* צביעת האייקון בזהב-מוקה */
+  border: 1px solid var(--rule-soft) !important;
+}
+
+/* הגדלת האייקון המקורי בתוך הריבוע לחוויה ויזואלית חזקה */
+.services__grid .jobcard__top svg {
+  width: 42px !important;
+  height: 42px !important;
+  fill: var(--accent) !important;
+}
+
+/* 4. הפיכת המספר הקטן המקורי (01, 02) למספר ענק בזהב-מוקה בפינה */
+.services__grid .jobcard__num {
+  font-family: var(--display) !important;   /* גופן Suez One היוקרתי */
+  font-size: 3.5rem !important;              /* הגדלה למספר ענק */
+  color: var(--accent) !important;          /* צבע מוקה-זהב */
+  opacity: 0.15 !important;                 /* שקיפות אלגנטית שנראית כמו סימן מים */
+  position: absolute !important;
+  top: 16px !important;
+  right: auto !important;
+  left: 32px !important;                    /* נעילה בפינה השמאלית העליונה של הכרטיסייה */
+}
+
+/* היפוך מיקום המספר בשורות ההפוכות כדי לשמור על איזון אסימטרי */
+.services__grid .jobcard:nth-child(even) .jobcard__num {
+  left: auto !important;
+  right: 32px !important;                   /* זז לפינה הימנית בשורה ההפוכה */
+}
+
+/* 5. שדרוג הכתב והמילים בפנים */
+.services__grid .jobcard h3 {
+  font-size: 1.7rem !important;
+  font-weight: 700 !important;
+  color: var(--ink) !important;             /* כחול-דיו עמוק וחזק */
+  margin-block: 12px 8px !important;
+}
+
+.services__grid .jobcard p {
+  color: var(--ink-soft) !important;        /* טקסט הסבר רך וקריא */
+  font-size: 1.05rem !important;
+  line-height: 1.7 !important;
+  max-width: 550px !important;              /* הגבלת רוחב למראה מהודק ונקי */
+}
+
+/* 📱 התאמה מושלמת ומלאה לטלפונים ניידים (מניעת שבירות) */
+@media (max-width: 768px) {
+  .services__grid .jobcard,
+  .services__grid .jobcard:nth-child(even) {
+    flex-direction: column-reverse !important; /* בנייד הכל מסתדר פקד אחד מעל השני בצורה נקייה */
+    align-items: flex-start !important;
+    padding: 32px 24px !important;
+  }
+  
+  .services__grid .jobcard__top {
+    margin-bottom: 20px !important;
+  }
+  
+  .services__grid .jobcard__num,
+  .services__grid .jobcard:nth-child(even) .jobcard__num {
+    position: static !important; /* ביטול המיקום הצף בנייד שלא יעלה על הטקסט */
+    margin-bottom: 12px !important;
+  }
+}
+
+/* ==========================================================================
+   🚀 מהפך אסימטרי פרימיום (זיגזג ותמונות שטח) לשירותים
+   ========================================================================== */
+
+/* 1. פירוק רשת הקוביות והפיכתה לשורות רחבות ונושמות */
+.services__grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 56px !important;
+  width: 100% !important;
+}
+
+/* 2. עיצוב כל שורה ככרטיסיית פרימיום מרווחת, עם מקום לתמונה בצד */
+.services__grid .jobcard {
+  background-color: #ffffff !important;      /* לבן-שלג בוהק ונקי */
+  border-radius: 24px !important;            /* פינות עגולות רכות */
+  padding: 60px 45px !important;             /* ריווח פנימי עשיר */
+  border: 1px solid #f1f5f9 !important;      /* מסגרת עדינה */
+  position: relative !important;
+  width: 100% !important;
+  min-height: 280px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  
+  /* יצירת שטח קבוע של 40% בצד אחד עבור התמונה, והטקסט ב-60% הנותרים */
+  padding-inline-start: 45% !important;     /* משאיר מקום לתמונה בצד שמאל */
+  padding-inline-end: 45px !important;
+  text-align: right !important;
+  
+  box-shadow: 0 20px 40px -15px rgba(7, 30, 54, 0.05) !important;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s ease !important;
+}
+
+/* 📌 קסם האסימטריה (זיגזג): בכל שורה שנייה נהפוך את כיוון השטח הריק */
+.services__grid .jobcard:nth-child(even) {
+  padding-inline-start: 45px !important;
+  padding-inline-end: 45% !important;       /* משאיר מקום לתמונה בצד ימין */
+}
+
+/* 3. שתילת תמונות השטח האמיתיות שלך לתוך החלק הריק של הכרטיסיות */
+.services__grid .jobcard::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 40% !important;                     /* התמונה תתפוס 40% מרוחב השורה */
+  background-size: cover !important;
+  background-position: center !important;
+  transition: transform 0.4s var(--ease) !important;
+}
+
+/* מיקום התמונה בצד שמאל בשורות האי-זוגיות */
+.services__grid .jobcard:nth-child(odd)::after {
+  left: 0 !important;
+  border-radius: 24px 0 0 24px !important;   /* עיגול פינות חיצוניות בלבד */
+}
+
+/* מיקום התמונה בצד ימין בשורות הזוגיות (ההפוכות) */
+.services__grid .jobcard:nth-child(even)::after {
+  right: 0 !important;
+  border-radius: 0 24px 24px 0 !important;   /* עיגול פינות חיצוניות בלבד */
+}
+
+/* 📌 שיוך התמונות שהעלית לפי סדר השירותים באתר שלך */
+.services__grid .jobcard:nth-child(1)::after { background-image: url('/plumbing.jpg') !important; }
+.services__grid .jobcard:nth-child(2)::after { background-image: url('/electric.jpg') !important; }
+.services__grid .jobcard:nth-child(3)::after { background-image: url('/paint.jpg') !important; }
+.services__grid .jobcard:nth-child(4)::after { background-image: url('/renovation.jpg') !important; }
+
+/* אפקט ריחוף יוקרתי - הכרטיסייה צפה והתמונה עושה זום-אין קטן ועדין */
+.services__grid .jobcard:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 30px 60px -20px rgba(150, 120, 68, 0.15) !important;
+  border-color: var(--accent) !important;
+}
+
+/* 4. שדרוג מספרי הענק בזהב-מוקה שצפים מעל התמונה למראה עשיר */
+.services__grid .jobcard__num {
+  font-family: var(--display) !important;
+  font-size: 4rem !important;
+  color: #ffffff !important;                 /* המספר בצבע לבן בוהק מעל התמונה */
+  opacity: 0.8 !important;
+  position: absolute !important;
+  top: 20px !important;
+  z-index: 5 !important;
+}
+
+.services__grid .jobcard:nth-child(odd) .jobcard__num { left: 32px !important; }
+.services__grid .jobcard:nth-child(even) .jobcard__num { right: 32px !important; }
+
+/* הסתרת האייקון הישן הקטן כדי שלא יבלגן את העיצוב המודרני החדש */
+.services__grid .jobcard__top svg, 
+.services__grid .jobcard__top i {
+  display: none !important;
+}
+
+/* 5. שדרוג הטקסטים שיהיו ברורים ונוכחים */
+.services__grid .jobcard h3 {
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  color: var(--ink) !important;
+  margin-bottom: 12px !important;
+}
+
+.services__grid .jobcard p {
+  color: var(--ink-soft) !important;
+  font-size: 1.08rem !important;
+  line-height: 1.7 !important;
+}
+
+/* 📱 התאמה רספונסיבית מלאה לטלפונים ניידים (מניעת שבירות) */
+@media (max-width: 900px) {
+  .services__grid .jobcard,
+  .services__grid .jobcard:nth-child(even) {
+    padding: 32px 24px !important;
+    padding-top: 250px !important;           /* פינוי מקום לתמונה שתעבור לחלק העליון בנייד */
+    min-height: auto !important;
+  }
+  
+  .services__grid .jobcard::after,
+  .services__grid .jobcard:nth-child(even)::after {
+    width: 100% !important;                  /* בנייד התמונה נמתחת על כל רוחב התיבה */
+    height: 220px !important;                /* גובה קבוע לתמונה בראש הכרטיסייה */
+    bottom: auto !important;
+    border-radius: 24px 24px 0 0 !important; /* עיגול הפינות העליונות בלבד בנייד */
+  }
+}
+/* ==========================================================================
+   📌 תיקון דיוק: הזזת המלל למקום פנוי וניקוי התנגשויות בכרטיסיות
+   ========================================================================== */
+
+/* מכריח את כל גוף הכרטיסייה להשתמש ברוחב פנימי מוגדר שלא יתנגש בתמונה */
+.services__grid .jobcard {
+  display: block !important; /* העברה למבנה בלוק יציב */
+  height: auto !important;
+}
+
+/* 1. תיקון מיקום לכותרות (אינסטלציה, חשמל וכו') בשורות השונות */
+.services__grid .jobcard h3 {
+  position: relative !important;
+  z-index: 10 !important;
+  margin: 0 !important;
+  margin-bottom: 12px !important;
+  width: 55% !important; /* מגביל את רוחב הכותרת שלא תיגע בתמונה */
+}
+
+/* בשורות האי-זוגיות (תמונה בשמאל) - המלל נשאר בימין נקי */
+.services__grid .jobcard:nth-child(odd) h3,
+.services__grid .jobcard:nth-child(odd) p {
+  margin-inline-start: 0 !important;
+  margin-inline-end: auto !important;
+}
+
+/* בשורות הזוגיות (תמונה בימין) - מזיזים את המלל שמאלה כדי שלא ייחסם על ידי התמונה */
+.services__grid .jobcard:nth-child(even) h3,
+.services__grid .jobcard:nth-child(even) p {
+  margin-inline-start: auto !important;
+  margin-inline-end: 0 !important;
+  width: 55% !important; /* משאיר את הכתב רק ב-55% השמאליים הפנויים */
+  text-align: right !important;
+}
+
+/* 2. תיקון מיקום ורוחב לטקסט התיאור של השירות */
+.services__grid .jobcard p {
+  position: relative !important;
+  z-index: 10 !important;
+  width: 55% !important; /* שומר על הכתב פנוי מהתמונה */
+}
+
+/* 3. העלמה מוחלטת של הריבוע הישן, האייקון והמספר המקורי שהתבלגנו */
+.services__grid .jobcard__top,
+.services__grid .jobcard [class*="top"],
+.services__grid .jobcard svg,
+.services__grid .jobcard__top svg {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* 📱 התאמה לניידים - מחזיר את המלל לרוחב מלא כשהתמונה עולה למעלה */
+@media (max-width: 900px) {
+  .services__grid .jobcard h3,
+  .services__grid .jobcard p,
+  .services__grid .jobcard:nth-child(even) h3,
+  .services__grid .jobcard:nth-child(even) p {
+    width: 100% !important; /* בנייד הטקסט חוזר לרוחב מלא תחת התמונה */
+    margin: 0 !important;
+    margin-bottom: 12px !important;
+  }
+}
+/* ==========================================================================
+   🚀 מהפך אסימטרי פרימיום סופי (מבנה חצאים זורם וחסין התנגשויות)
+   ========================================================================== */
+
+/* 1. הפיכת רשת הקוביות לשורות רחבות */
 .services__grid {
   display: flex !important;
   flex-direction: column !important;
@@ -1614,11 +1923,11 @@ a.review__name:hover {
   width: 100% !important;
 }
 
-/* 2. עיצוב כל שורה ככרטיסייה לבנה, מרווחת המבוססת על שני חצאים (טקסט ותמונה) */
+/* 2. עיצוב כל שורה ככרטיסייה לבנה, מרווחת וצפה המבוססת על שני חצאים */
 .services__grid .jobcard {
   background-color: #ffffff !important;      /* לבן-שלג בוהק ונקי */
   border-radius: 24px !important;            /* פינות עגולות רכות */
-  padding: 48px !important;                  /* ריווח פנימי עשיר */
+  padding: 40px !important;                  /* ריווח פנימי עשיר */
   border: 1px solid #f1f5f9 !important;      /* מסגרת עדינה */
   position: relative !important;
   width: 100% !important;
@@ -1626,15 +1935,15 @@ a.review__name:hover {
   flex-direction: row !important;            /* העמדת הטקסט והתמונה זה לצד זה */
   align-items: center !important;
   justify-content: space-between !important;
-  gap: 56px !important;                      /* מרווח ביטחון קבוע למניעת התנגשויות */
+  gap: 48px !important;                      /* מרווח ביטחון קבוע בין הטקסט לתמונה */
   overflow: hidden !important;
   box-shadow: 0 20px 40px -15px rgba(7, 30, 54, 0.05) !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-/* 📌 קסם הזיגזג: הפיכת צדדים מושלמת בכל שורה שנייה */
+/* 📌 קסם האסימטריה: הפיכת צדדים מושלמת וחסינת באגים בכל שורה שנייה! */
 .services__grid .jobcard:nth-child(even) {
-  flex-direction: row-reverse !important;    /* הופך את המיקום של הטקסט והתמונה לסירוגין */
+  flex-direction: row-reverse !important;    /* הופך את המיקום של הטקסט והתמונה בזיгזג */
 }
 
 /* אפקט ריחוף יוקרתי */
@@ -1644,11 +1953,11 @@ a.review__name:hover {
   border-color: var(--accent) !important;
 }
 
-/* 3. הגדרת חצי המלל - תמיד נשאר פנוי, נקי ולא יכול להיחסם */
+/* 3. הגדרת חצי המלל - תופס 50% מהכרטיסייה ותמיד נשאר חופשי ונקי */
 .services__grid .jobcard h3,
 .services__grid .jobcard p {
-  width: 50% !important;                     /* מגביל את המלל לחצי המדויק של הכרטיסייה */
-  max-width: 50% !important;
+  width: 100% !important;
+  max-width: 100% !important;
   margin: 0 !important;
   text-align: right !important;
 }
@@ -1666,29 +1975,26 @@ a.review__name:hover {
   line-height: 1.7 !important;
 }
 
-/* 4. הגדרת חצי התמונה - הפיכת אלמנט ה-Top המקורי לתמונת אווירה יוקרתית רחבה */
+/* 4. הגדרת חצי התמונה - הפיכת האלמנט המקורי לתמונת אווירה יוקרתית */
 .services__grid .jobcard .jobcard__top {
-  flex: none !important;
-  width: 45% !important;                     /* מקבע את רוחב התמונה ל-45% */
-  height: 320px !important;                  /* גובה אחיד ומרשים */
+  flex: 1 !important;                        /* לוקח בדיוק חצי מהרוחב של השורה */
+  min-width: 45% !important;                 /* מקבע את רוחב התמונה ל-45% */
+  height: 300px !important;                  /* גובה מרשים ואחיד לכל התמונות */
   background-size: cover !important;
   background-position: center !important;
-  border-radius: 16px !important;            /* פינות מעוגלות פנימיות */
+  border-radius: 16px !important;            /* פינות מעוגלות פנימיות לתמונה */
   border: 1px solid #e2e8f0 !important;
   position: relative !important;
   display: block !important;
-  order: 2 !important;                       /* מבטיח סדר אלמנטים יציב */
 }
 
-/* 📌 שיוך אוטומטי של 6 תמונות השטח השונות שלך - ללא שום שכפול של המשאבה! */
+/* 📌 שיוך אוטומטי של תמונות השטח האמיתיות שלך לחצי של התמונה */
 .services__grid .jobcard:nth-child(1) .jobcard__top { background-image: url('/plumbing.jpg') !important; }
 .services__grid .jobcard:nth-child(2) .jobcard__top { background-image: url('/electric.jpg') !important; }
 .services__grid .jobcard:nth-child(3) .jobcard__top { background-image: url('/paint.jpg') !important; }
 .services__grid .jobcard:nth-child(4) .jobcard__top { background-image: url('/renovation.jpg') !important; }
-.services__grid .jobcard:nth-child(5) .jobcard__top { background-image: url('/welding.jpg') !important; }
-.services__grid .jobcard:nth-child(6) .jobcard__top { background-image: url('/sealing.jpg') !important; }
 
-/* 5. הפיכת מספר האינדקס למספר ענק בזהב-מוקה שצף מעל התמונה בצורה נקייה */
+/* 5. הפיכת מספר האינדקס למספר ענק בזהב-מוקה שצף מעל התמונה באופן נקי */
 .services__grid .jobcard__num {
   font-family: var(--display) !important;
   font-size: 3.5rem !important;
@@ -1698,14 +2004,13 @@ a.review__name:hover {
   top: 16px !important;
   z-index: 20 !important;
   line-height: 1 !important;
-  display: block !important;
 }
 
 /* מיקום המספר לפי כיוון הזיגזג של השורה */
 .services__grid .jobcard:nth-child(odd) .jobcard__num { left: 24px !important; right: auto !important; }
 .services__grid .jobcard:nth-child(even) .jobcard__num { right: 24px !important; left: auto !important; }
 
-/* העלמת האייקון הישן הקטן שלא יפריע לעין בתוך קוביות התמונה */
+/* העלמת האייקון הישן הקטן שלא יפריע לעין */
 .services__grid .jobcard__top svg {
   display: none !important;
 }
@@ -1717,20 +2022,12 @@ a.review__name:hover {
     flex-direction: column-reverse !important; /* בנייד התמונה עוברת אוטומטית מעל הטקסט */
     gap: 24px !important;
     padding: 24px !important;
-    align-items: flex-start !important;
-  }
-  
-  .services__grid .jobcard h3,
-  .services__grid .jobcard p,
-  .services__grid .jobcard:nth-child(even) h3,
-  .services__grid .jobcard:nth-child(even) p {
-    width: 100% !important;                  /* בנייד המלל חוזר לרוחב מלא */
-    max-width: 100% !important;
   }
   
   .services__grid .jobcard .jobcard__top {
     width: 100% !important;                  /* תמונה ברוחב מלא בנייד */
-    height: 220px !important;
+    min-width: 100% !important;
+    height: 200px !important;                /* גובה מותאם למסך של טלפון */
   }
   
   .services__grid .jobcard__num {
