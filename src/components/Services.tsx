@@ -1,11 +1,11 @@
 import { useLang } from '../lang';
-import { InfoIcon, ToolGlyph } from '../icons';
+import { InfoIcon } from '../icons';
 import { Reveal } from './Reveal';
 
 export function Services() {
   const { copy } = useLang();
 
-  // מערך מעודכן המקשר תמונה ייחודית לכל אחד מ-6 השירותים שלך בשטח
+  // מערך 6 התמונות האמיתיות שלך מהשטח לפי סדר השירותים
   const images = [
     '/plumbing.jpg',    /* 01. אינסטלציה ומערכות מים */
     '/electric.jpg',    /* 02. ארונות ומערכות חשמל */
@@ -15,27 +15,25 @@ export function Services() {
     '/sealing.jpg'      /* 06. איטום, בידוד ונזילות */
   ];
 
-  const items = copy.services?.items || [];
-
   return (
     <section className="services" id="services" style={{ background: 'var(--ground)', paddingBlock: '80px' }}>
       <div className="shell">
         <Reveal>
           <div className="sectionhead" style={{ marginBottom: '60px', textAlign: 'center' }}>
-            <p className="eyebrow" style={{ color: 'var(--accent)', justifyContent: 'center' }}>{copy.services?.eyebrow}</p>
-            <h2 style={{ color: 'var(--ink)', fontSize: '2.5rem', marginBottom: '16px' }}>{copy.services?.title}</h2>
-            <p style={{ color: 'var(--ink-soft)', fontSize: '1.15rem' }}>{copy.services?.lede}</p>
+            <p className="eyebrow" style={{ color: 'var(--accent)', justifyContent: 'center' }}>{copy.services.eyebrow}</p>
+            <h2 style={{ color: 'var(--ink)', fontSize: '2.5rem', marginBottom: '16px' }}>{copy.services.title}</h2>
+            <p style={{ color: 'var(--ink-soft)', fontSize: '1.15rem' }}>{copy.services.lede}</p>
           </div>
         </Reveal>
 
-        {/* מיכל השורות האסימטריות */}
+        {/* מיכל השורות האסימטריות המנוהל ב-Flexbox נקייה */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '56px', width: '100%' }}>
-          {items.map((item: any, index: number) => {
+          {copy.services.items.map((item, index) => {
             const isEven = index % 2 === 0;
             const imageUrl = images[index] || '/renovation.jpg';
 
             return (
-              <Reveal key={item.title || index} delay={index * 60}>
+              <Reveal key={item.title} delay={index * 60}>
                 <article 
                   style={{
                     background: '#ffffff',
@@ -54,11 +52,8 @@ export function Services() {
                   className="services-row-card"
                 >
                   
-                  {/* חצי 1: גוש המלל */}
+                  {/* חצי 1: גוש המלל והסברים */}
                   <div style={{ flex: '1', minWidth: '280px', textAlign: 'right' }}>
-                    <div style={{ display: 'none' }}>
-                      <ToolGlyph name={item.icon} />
-                    </div>
                     <h3 style={{ fontSize: '1.8rem', fontWeight: '700', color: 'var(--ink)', margin: '0 0 12px 0' }}>
                       {item.title}
                     </h3>
@@ -67,13 +62,13 @@ export function Services() {
                     </p>
                   </div>
 
-                  {/* חצי 2: גוש תמונת השטח */}
+                  {/* חצי 2: גוש התמונה המקצועית שלך מהשטח */}
                   <div 
                     style={{ 
                       flex: 'none', 
                       width: '45%', 
                       height: '320px', 
-                      backgroundImage: `url(${imageUrl})`,
+                      backgroundImage: 'url(' + imageUrl + ')',
                       backgroundSize: 'cover',
                       backgroundPosition: 'center',
                       borderRadius: '16px',
@@ -81,6 +76,7 @@ export function Services() {
                       position: 'relative'
                     }}
                   >
+                    {/* מספר רץ מ-01 עד 06 שצף מעל התמונה */}
                     <span 
                       style={{
                         fontFamily: 'var(--display)',
@@ -108,7 +104,7 @@ export function Services() {
         <Reveal>
           <p style={{ marginTop: '48px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--ink-faint)', justifyContent: 'center' }}>
             <InfoIcon />
-            <span>{copy.services?.note}</span>
+            <span>{copy.services.note}</span>
           </p>
         </Reveal>
       </div>
