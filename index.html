@@ -42,3 +42,29 @@
     <script src="https://cdn.userway.org/widget.js" data-account="uW8p3kLX2a" data-position="3" data-mobile-position="3" defer></script>
   </body>
 </html>
+
+
+/* ==========================================================================
+   📌 נעילת פרופורציות ומניעת תנודות במסכים ניידים
+   ========================================================================== */
+@media (max-width: 980px) {
+  html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important; /* חוסם סופית תנודות וגלילה מיותרת ימינה/שמאלה */
+  }
+  
+  .page {
+    padding-inline-end: 0 !important; /* מבטל את המרווח של הסרגל הצידי לחלוטין בנייד */
+  }
+
+  .shell {
+    padding-inline: 16px !important; /* שומר על מרווח קטן ויפה מהקצוות בנייד */
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar__inner {
+    gap: 12px !important; /* מצמצם את הרווח בתפריט כדי שלא ימתח את המסך */
+    justify-content: space-between !important;
+  }
+}
