@@ -1,11 +1,11 @@
 import { useLang } from '../lang';
-import { InfoIcon } from '../icons';
+import { InfoIcon, ToolGlyph } from '../icons';
 import { Reveal } from './Reveal';
 
 export function Services() {
   const { copy } = useLang();
 
-  // 📌 מערך מעודכן המקשר תמונה ייחודית לכל אחד מ-6 השירותים שלך בשטח
+  // מערך מעודכן המקשר תמונה ייחודית לכל אחד מ-6 השירותים שלך בשטח
   const images = [
     '/plumbing.jpg',    /* 01. אינסטלציה ומערכות מים */
     '/electric.jpg',    /* 02. ארונות ומערכות חשמל */
@@ -15,25 +15,27 @@ export function Services() {
     '/sealing.jpg'      /* 06. איטום, בידוד ונזילות */
   ];
 
+  const items = copy.services?.items || [];
+
   return (
     <section className="services" id="services" style={{ background: 'var(--ground)', paddingBlock: '80px' }}>
       <div className="shell">
         <Reveal>
           <div className="sectionhead" style={{ marginBottom: '60px', textAlign: 'center' }}>
-            <p className="eyebrow" style={{ color: 'var(--accent)', justifyContent: 'center' }}>{copy.services.eyebrow}</p>
-            <h2 style={{ color: 'var(--ink)', fontSize: '2.5rem', marginBottom: '16px' }}>{copy.services.title}</h2>
-            <p style={{ color: 'var(--ink-soft)', fontSize: '1.15rem' }}>{copy.services.lede}</p>
+            <p className="eyebrow" style={{ color: 'var(--accent)', justifyContent: 'center' }}>{copy.services?.eyebrow}</p>
+            <h2 style={{ color: 'var(--ink)', fontSize: '2.5rem', marginBottom: '16px' }}>{copy.services?.title}</h2>
+            <p style={{ color: 'var(--ink-soft)', fontSize: '1.15rem' }}>{copy.services?.lede}</p>
           </div>
         </Reveal>
 
         {/* מיכל השורות האסימטריות */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '56px', width: '100%' }}>
-          {copy.services.items.map((item, index) => {
+          {items.map((item: any, index: number) => {
             const isEven = index % 2 === 0;
             const imageUrl = images[index] || '/renovation.jpg';
 
             return (
-              <Reveal key={item.title} delay={index * 60}>
+              <Reveal key={item.title || index} delay={index * 60}>
                 <article 
                   style={{
                     background: '#ffffff',
@@ -54,6 +56,9 @@ export function Services() {
                   
                   {/* חצי 1: גוש המלל */}
                   <div style={{ flex: '1', minWidth: '280px', textAlign: 'right' }}>
+                    <div style={{ display: 'none' }}>
+                      <ToolGlyph name={item.icon} />
+                    </div>
                     <h3 style={{ fontSize: '1.8rem', fontWeight: '700', color: 'var(--ink)', margin: '0 0 12px 0' }}>
                       {item.title}
                     </h3>
@@ -104,7 +109,7 @@ export function Services() {
         <Reveal>
           <p style={{ marginTop: '48px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--ink-faint)', justifyContent: 'center' }}>
             <InfoIcon />
-            <span>{copy.services.note}</span>
+            <span>{copy.services?.note}</span>
           </p>
         </Reveal>
       </div>
