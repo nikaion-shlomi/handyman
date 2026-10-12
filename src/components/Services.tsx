@@ -5,51 +5,54 @@ import { Reveal } from './Reveal';
 export function Services() {
   const { copy } = useLang();
 
-  // מערך נתיבי התמונות של השירותים
-  const images = [
-    '/plumbing.jpg',
-    '/electric.jpg',
-    '/paint.jpg',
-    '/renovation.jpg'
+  // מערך נתיבי התמונות שכבר העלית לאתר, לפי סדר השירותים שלך
+  const serviceImages = [
+    '/plumbing.jpg',    // תמונה עבור אינסטלציה
+    '/electric.jpg',    // תמונה עבור חשמל
+    '/paint.jpg',       // תמונה עבור איטום ורטיבות
+    '/steel.jpg',       // תמונה עבור ריתוך ומסגרות (תוכל לשנות את השם אם הוא אחר)
+    '/parking.jpg',     // תמונה עבור שטחים משותפים
+    '/home.jpg'         // תמונה עבור עבודות בבית
   ];
 
   return (
-    <section className="premium-services-section" id="services">
+    <section className="services" id="services">
       <div className="shell">
         <Reveal>
-          <div className="sectionhead" style={{ marginBottom: '60px', textAlign: 'center' }}>
-            <p className="eyebrow" style={{ color: 'var(--accent)', justifyContent: 'center' }}>{copy.services.eyebrow}</p>
-            <h2 style={{ color: 'var(--ink)', fontSize: '2.5rem', marginBottom: '16px' }}>{copy.services.title}</h2>
-            <p style={{ color: 'var(--ink-soft)', fontSize: '1.15rem' }}>{copy.services.lede}</p>
+          <div className="sectionhead">
+            <p className="eyebrow">{copy.services.eyebrow}</p>
+            <h2>{copy.services.title}</h2>
+            <p>{copy.services.lede}</p>
           </div>
         </Reveal>
 
-        {/* מיכל הכרטיסיות */}
-        <div className="premium-services-container">
+        <div className="services__grid">
           {copy.services.items.map((item, index) => {
-            const isEven = index % 2 === 0;
-            const imageUrl = images[index] || '/plumbing.jpg';
+            // שליפת התמונה המתאימה לפי המיקום של השירות במערך
+            const imageUrl = serviceImages[index] || '/plumbing.jpg';
 
             return (
-              <Reveal key={item.title} delay={index * 60}>
-                <article className={`premium-service-card ${isEven ? 'layout-normal' : 'layout-reverse'}`}>
+              <Reveal key={item.title} delay={index * 50}>
+                <article>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
                   
-                  {/* חצי 1: גוש המלל */}
-                  <div className="premium-card-text">
-                    <span className="premium-card-number">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <h3>{item.title}</h3>
-                    <p>{item.body}</p>
-                  </div>
-
-                  {/* חצי 2: גוש התמונה */}
+                  {/* מיכל התמונה החדש במקום האייקון הישן */}
                   <div 
-                    className="premium-card-image"
-                    style={{ backgroundImage: `url(${imageUrl})` }}
-                  >
-                  </div>
+                    className="service-image-holder" 
+                    style={{ 
+                      width: '100%', 
+                      height: '140px', 
+                      backgroundImage: `url(${imageUrl})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      borderRadius: '12px',
+                      marginBottom: '20px',
+                      border: '1px solid var(--rule-soft)'
+                    }}
+                  />
 
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
                 </article>
               </Reveal>
             );
@@ -57,7 +60,7 @@ export function Services() {
         </div>
 
         <Reveal>
-          <p style={{ marginTop: '48px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--ink-faint)', justifyContent: 'center' }}>
+          <p className="services__note">
             <InfoIcon />
             <span>{copy.services.note}</span>
           </p>
