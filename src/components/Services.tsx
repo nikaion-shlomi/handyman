@@ -5,7 +5,7 @@ import { Reveal } from './Reveal';
 export function Services() {
   const { copy } = useLang();
 
-  // מערך 6 התמונות האמיתיות שלך מהשטח לפי סדר השירותים
+  // 6 התמונות האמיתיות שלך מהשטח לפי סדר השירותים המדויק
   const images = [
     '/plumbing.jpg',    /* 01. אינסטלציה ומערכות מים */
     '/electric.jpg',    /* 02. ארונות ומערכות חשמל */
@@ -17,24 +17,24 @@ export function Services() {
 
   return (
     <section className="services" id="services" style={{ background: 'var(--ground)', paddingBlock: '80px' }}>
-      <div className="shell">
+      <div className="shell services__inner">
         <Reveal>
           <div className="sectionhead" style={{ marginBottom: '60px', textAlign: 'center' }}>
             <p className="eyebrow" style={{ color: 'var(--accent)', justifyContent: 'center' }}>{copy.services.eyebrow}</p>
-            <h2 style={{ color: 'var(--ink)', fontSize: '2.5rem', marginBottom: '16px' }}>{copy.services.title}</h2>
-            <p style={{ color: 'var(--ink-soft)', fontSize: '1.15rem' }}>{copy.services.lede}</p>
+            <h2>{copy.services.title}</h2>
+            <p>{copy.services.lede}</p>
           </div>
         </Reveal>
 
-        {/* מיכל השורות האסימטריות המנוהל ב-Flexbox נקייה */}
+        {/* פריסה אסימטרית רחבה וחסינת באגים */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '56px', width: '100%' }}>
           {copy.services.items.map((item, index) => {
             const isEven = index % 2 === 0;
             const imageUrl = images[index] || '/renovation.jpg';
 
             return (
-              <Reveal key={item.title} delay={index * 60}>
-                <article 
+              <Reveal as="article" className="jobcard" key={item.title} delay={index * 60}>
+                <div 
                   style={{
                     background: '#ffffff',
                     borderRadius: '24px',
@@ -42,18 +42,19 @@ export function Services() {
                     border: '1px solid #f1f5f9',
                     boxShadow: '0 20px 40px -15px rgba(7, 30, 54, 0.05)',
                     display: 'flex',
-                    flexDirection: isEven ? 'row' : 'row-reverse',
+                    flexDirection: isEven ? 'row' : 'row-reverse', // אפקט הזיגזג שמתהפך אוטומטית בכל שורה שנייה
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     gap: '48px',
                     width: '100%',
-                    position: 'relative'
+                    position: 'relative',
+                    textAlign: 'right'
                   }}
-                  className="services-row-card"
+                  className="services-row-container"
                 >
                   
-                  {/* חצי 1: גוש המלל והסברים */}
-                  <div style={{ flex: '1', minWidth: '280px', textAlign: 'right' }}>
+                  {/* חצי 1: גוש המלל והסברים (מנוטרל מהגדרות קשיחות כדי למנוע חיתוך) */}
+                  <div style={{ flex: '1', minWidth: '280px' }}>
                     <div style={{ display: 'none' }}>
                       <ToolGlyph name={item.icon} />
                     </div>
@@ -65,7 +66,7 @@ export function Services() {
                     </p>
                   </div>
 
-                  {/* חצי 2: גוש התמונה המקצועית שלך מהשטח */}
+                  {/* חצי 2: גוש תמונת השטח האמיתית שלך */}
                   <div 
                     style={{ 
                       flex: 'none', 
@@ -93,19 +94,20 @@ export function Services() {
                         lineHeight: '1',
                         zIndex: 10
                       }}
+                      className="jobcard__num"
                     >
                       {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
 
-                </article>
+                </div>
               </Reveal>
             );
           })}
         </div>
 
         <Reveal>
-          <p style={{ marginTop: '48px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--ink-faint)', justifyContent: 'center' }}>
+          <p className="services__note" style={{ marginTop: '48px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--ink-faint)', justifyContent: 'center' }}>
             <InfoIcon />
             <span>{copy.services.note}</span>
           </p>
