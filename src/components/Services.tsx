@@ -1,5 +1,5 @@
 import { useLang } from '../lang';
-import { InfoIcon } from '../icons';
+import { InfoIcon, ToolGlyph } from '../icons';
 import { Reveal } from './Reveal';
 
 export function Services() {
@@ -54,6 +54,9 @@ export function Services() {
                   
                   {/* חצי 1: גוש המלל והסברים */}
                   <div style={{ flex: '1', minWidth: '280px', textAlign: 'right' }}>
+                    <div style={{ display: 'none' }}>
+                      <ToolGlyph name={item.icon} />
+                    </div>
                     <h3 style={{ fontSize: '1.8rem', fontWeight: '700', color: 'var(--ink)', margin: '0 0 12px 0' }}>
                       {item.title}
                     </h3>
@@ -68,7 +71,7 @@ export function Services() {
                       flex: 'none', 
                       width: '45%', 
                       height: '320px', 
-                      backgroundImage: 'url(' + imageUrl + ')',
+                      backgroundImage: `url(${imageUrl})`,
                       backgroundSize: 'cover',
                       backgroundPosition: 'center',
                       borderRadius: '16px',
