@@ -5,7 +5,7 @@ import { Reveal } from './Reveal';
 export function Services() {
   const { copy } = useLang();
 
-  // מערך נתיבי התמונות של השירותים שלך
+  // מערך התמונות של שלומי בהתאמה לשירותים
   const images = [
     '/plumbing.jpg',
     '/electric.jpg',
@@ -14,44 +14,40 @@ export function Services() {
   ];
 
   return (
-    <section className="services-section" id="services">
+    <section className="premium-services-section" id="services">
       <div className="shell">
         <Reveal>
-          <div className="services-head">
-            <p className="eyebrow">{copy.services.eyebrow}</p>
-            <h2>{copy.services.title}</h2>
-            <p className="services-lede">{copy.services.lede}</p>
+          <div className="sectionhead" style={{ marginBottom: '60px', textAlign: 'center' }}>
+            <p className="eyebrow" style={{ color: 'var(--accent)', justifyContent: 'center' }}>{copy.services.eyebrow}</p>
+            <h2 style={{ color: 'var(--ink)', fontSize: '2.5rem', marginBottom: '16px' }}>{copy.services.title}</h2>
+            <p style={{ color: 'var(--ink-soft)', fontSize: '1.15rem' }}>{copy.services.lede}</p>
           </div>
         </Reveal>
 
-        {/* מיכל השורות האסימטריות */}
-        <div className="services-rows-container">
+        {/* מיכל השורות האסימטריות המנוהל על ידי CSS גמיש בלבד */}
+        <div className="premium-services-container">
           {copy.services.items.map((item, index) => {
             const isEven = index % 2 === 0;
             const imageUrl = images[index] || '/plumbing.jpg';
 
             return (
               <Reveal key={item.title} delay={index * 60}>
-                <article className={`services-row-card ${isEven ? 'row-normal' : 'row-reverse'}`}>
+                <article className={`premium-service-card ${isEven ? 'layout-normal' : 'layout-reverse'}`}>
                   
                   {/* חצי 1: גוש המלל */}
-                  <div className="services-card-content">
-                    <span className="services-card-number-mobile">
+                  <div className="premium-card-text">
+                    <span className="premium-card-number">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <h3>{item.title}</h3>
                     <p>{item.body}</p>
                   </div>
 
-                  {/* חצי 2: גוש תמונת השטח */}
+                  {/* חצי 2: גוש התמונה */}
                   <div 
-                    className="services-card-image"
+                    className="premium-card-image"
                     style={{ backgroundImage: `url(${imageUrl})` }}
                   >
-                    {/* מספר ענק צף מעל התמונה במחשב */}
-                    <span className="services-card-number-desktop">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
                   </div>
 
                 </article>
@@ -61,7 +57,7 @@ export function Services() {
         </div>
 
         <Reveal>
-          <p className="services-note">
+          <p style={{ marginTop: '48px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--ink-faint)', justifyContent: 'center' }}>
             <InfoIcon />
             <span>{copy.services.note}</span>
           </p>
