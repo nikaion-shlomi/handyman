@@ -2,21 +2,6 @@ import { useLang } from '../lang';
 import { InfoIcon } from '../icons';
 import { Reveal } from './Reveal';
 
-type GoogleReview = {
-  rating: number;
-  text: string;
-  author: string;
-  authorUri: string;
-  when: string;
-};
-
-type GoogleReviews = {
-  rating: number | null;
-  count: number;
-  uri: string;
-  reviews: GoogleReview[];
-};
-
 export function Services() {
   const { copy } = useLang();
 
