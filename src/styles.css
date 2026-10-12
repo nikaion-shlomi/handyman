@@ -1352,3 +1352,61 @@ a.review__name:hover {
     transform: none;
   }
 }
+/* ==========================================================================
+   📌 מכת מחץ סופית: החזרת התפריט העליון בנייד ונעילת רוחב מסך
+   ========================================================================== */
+
+/* 1. נעילה מוחלטת של גוף האתר מקצה לקצה בלי שטח לבן */
+html, body, #root, .page {
+  max-width: 100vw !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+  position: relative !important;
+  padding-inline-end: 0 !important;
+}
+
+@media (max-width: 980px) {
+  /* 2. שינוי מבנה ה-Topbar לטור כדי שיהיה מקום להכל */
+  .topbar__inner {
+    display: flex !important;
+    flex-direction: column !important; /* הלוגו יהיה מעל הקישורים */
+    align-items: center !important;
+    gap: 14px !important;
+    padding-block: 14px !important;
+    padding-inline: 16px !important;
+    width: 100% !important;
+  }
+
+  /* 3. החזרת התפריט לחיים וסידור הקישורים בשורה יפה וממורכזת */
+  .topbar__nav {
+    display: flex !important; /* מבטל את ה-display: none שהעלים אותם! */
+    gap: 14px !important;     /* רווח קומפקטי ומדויק בין המילים */
+    margin-inline-start: 0 !important;
+    width: 100% !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important; /* אם אין מקום, המילים ירדו שורה בצורה אסתטית */
+  }
+
+  .topbar__link {
+    font-size: 0.95rem !important; /* גודל פונט מעולה וקריא לטלפון */
+    font-weight: 700 !important;
+  }
+
+  /* 4. העברת כפתור השפה (EN) לפינה קבועה שלא יפריע לעברית */
+  .langtoggle {
+    position: absolute !important;
+    top: 14px !important;
+    left: 16px !important;
+    margin-inline-start: 0 !important;
+    padding: 4px 10px !important;
+    font-size: 0.65rem !important;
+  }
+
+  /* 5. התאמת הכותרת הראשית (Hero Name) */
+  .hero__name, h1, [class*="hero__name"] {
+    font-size: 2.6rem !important;
+    text-align: center !important;
+    line-height: 1.1 !important;
+    white-space: normal !important;
+  }
+}
