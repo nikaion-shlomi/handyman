@@ -202,3 +202,172 @@ html, body, #root, .app-container, .page, main {
     opacity: 0.2 !important; /* הופך אותו לעדין ברקע שלא יתקע בטקסט */
   }
 }
+/* ==========================================================================
+   💎 עיצוב פרימיום חדש לשירותים (מראה נקי, זיג-זג ורספונסיביות לנייד)
+   ========================================================================== */
+
+.services-section {
+  background: var(--ground);
+  padding-block: 100px;
+  width: 100%;
+}
+
+.services-head {
+  margin-bottom: 64px;
+  text-align: center;
+}
+
+.services-head .eyebrow {
+  color: var(--accent);
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.services-head h2 {
+  color: var(--ink);
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.services-lede {
+  color: var(--ink-soft);
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.services-rows-container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+}
+
+/* כרטיסיית השירות הראשית במחשב */
+.services-row-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 48px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 15px 35px -15px rgba(7, 30, 54, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 64px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services-row-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -20px rgba(7, 30, 54, 0.08);
+}
+
+/* שליטה בזיג-זג לפי זוגי/אי-זוגי */
+.row-normal { flex-direction: row; }
+.row-reverse { flex-direction: row-reverse; }
+
+/* גוש המלל */
+.services-card-content {
+  flex: 1;
+  text-align: right;
+}
+
+.services-card-content h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 16px 0;
+}
+
+.services-card-content p {
+  color: var(--ink-soft);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* גוש התמונה */
+.services-card-image {
+  flex: none;
+  width: 45%;
+  height: 340px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  position: relative;
+}
+
+/* עיצוב המספרים */
+.services-card-number-desktop {
+  font-family: var(--display);
+  font-size: 4rem;
+  color: var(--accent);
+  opacity: 0.15;
+  position: absolute;
+  top: 16px;
+  line-height: 1;
+}
+.row-normal .services-card-number-desktop { left: 24px; }
+.row-reverse .services-card-number-desktop { right: 24px; }
+
+.services-card-number-mobile { display: none; }
+
+.services-note {
+  margin-top: 56px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-faint);
+  justify-content: center;
+}
+
+/* 📱 התאמה מושלמת למסכים ניידים (בדיוק כמו בעיצוב שרצית) */
+@media (max-width: 900px) {
+  .services-section {
+    padding-block: 60px;
+  }
+
+  .services-head h2 {
+    font-size: 2.2rem;
+  }
+
+  /* ביטול הזיג-זג ומעבר לטור אנכי שיושב בול על המסך */
+  .services-row-card {
+    flex-direction: column-reverse !important; /* תמונה תמיד מעל הטקסט או להפך */
+    gap: 24px;
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .services-card-image {
+    width: 100%;
+    height: 240px;
+    border-radius: 14px;
+  }
+
+  .services-card-content {
+    width: 100%;
+    position: relative;
+    padding-top: 12px;
+  }
+
+  .services-card-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+
+  /* העברת המספר למעלה בצד בצורה עדינה בנייד */
+  .services-card-number-desktop { display: none; }
+  .services-card-number-mobile {
+    display: block;
+    font-family: var(--mono);
+    font-size: 1.1rem;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 8px;
+    opacity: 0.6;
+  }
+}
