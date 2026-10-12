@@ -2,15 +2,32 @@ import { useLang } from '../lang';
 import { InfoIcon } from '../icons';
 import { Reveal } from './Reveal';
 
+type GoogleReview = {
+  rating: number;
+  text: string;
+  author: string;
+  authorUri: string;
+  when: string;
+};
+
+type GoogleReviews = {
+  rating: number | null;
+  count: number;
+  uri: string;
+  reviews: GoogleReview[];
+};
+
 export function Services() {
   const { copy } = useLang();
 
-  // מערך נתיבי התמונות שהעלית, לפי סדר השירותים שלך
+  // 📌 מערך מעודכן המקשר תמונה ייחודית לכל אחד מ-6 השירותים שלך בשטח
   const images = [
-    '/plumbing.jpg',
-    '/electric.jpg',
-    '/paint.jpg',
-    '/renovation.jpg'
+    '/plumbing.jpg',    /* 01. אינסטלציה ומערכות מים */
+    '/electric.jpg',    /* 02. ארונות ומערכות חשמל */
+    '/paint.jpg',       /* 03. תיקוני צבע, טיח ושפכטל */
+    '/renovation.jpg',  /* 04. שיפוצים כלליים ועבודות גמר */
+    '/welding.jpg',     /* 05. מסגרות, ריתוך ותשתיות שטח */
+    '/sealing.jpg'      /* 06. איטום, בידוד ונזילות */
   ];
 
   return (
@@ -28,7 +45,7 @@ export function Services() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '56px', width: '100%' }}>
           {copy.services.items.map((item, index) => {
             const isEven = index % 2 === 0;
-            const imageUrl = images[index] || '/plumbing.jpg';
+            const imageUrl = images[index] || '/renovation.jpg';
 
             return (
               <Reveal key={item.title} delay={index * 60}>
@@ -40,7 +57,7 @@ export function Services() {
                     border: '1px solid #f1f5f9',
                     boxShadow: '0 20px 40px -15px rgba(7, 30, 54, 0.05)',
                     display: 'flex',
-                    flexDirection: isEven ? 'row' : 'row-reverse', // קסם הזיגזג שמתהפך אוטומטית!
+                    flexDirection: isEven ? 'row' : 'row-reverse',
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     gap: '48px',
@@ -50,7 +67,7 @@ export function Services() {
                   className="services-row-card"
                 >
                   
-                  {/* חצי 1: גוש המלל (תופס בדיוק 50% מהרוחב) */}
+                  {/* חצי 1: גוש המלל */}
                   <div style={{ flex: '1', minWidth: '280px', textAlign: 'right' }}>
                     <h3 style={{ fontSize: '1.8rem', fontWeight: '700', color: 'var(--ink)', margin: '0 0 12px 0' }}>
                       {item.title}
@@ -60,7 +77,7 @@ export function Services() {
                     </p>
                   </div>
 
-                  {/* חצי 2: גוש תמונת השטח האמיתית שלך (תופס בדיוק 45% מהרוחב) */}
+                  {/* חצי 2: גוש תמונת השטח */}
                   <div 
                     style={{ 
                       flex: 'none', 
@@ -74,7 +91,7 @@ export function Services() {
                       position: 'relative'
                     }}
                   >
-                    {/* מספר ענק צף מעל התמונה באותה פינה של הזיגזג */}
+                    {/* מספר רץ אמיתי ונקי מ-01 עד 06 אוטומטית */}
                     <span 
                       style={{
                         fontFamily: 'var(--display)',
