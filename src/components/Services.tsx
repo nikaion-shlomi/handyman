@@ -5,7 +5,7 @@ import { Reveal } from './Reveal';
 export function Services() {
   const { copy } = useLang();
 
-  // מערך התמונות של שלומי בהתאמה לשירותים
+  // מערך נתיבי התמונות של השירותים
   const images = [
     '/plumbing.jpg',
     '/electric.jpg',
@@ -24,7 +24,7 @@ export function Services() {
           </div>
         </Reveal>
 
-        {/* מיכל השורות האסימטריות המנוהל על ידי CSS גמיש בלבד */}
+        {/* מיכל הכרטיסיות */}
         <div className="premium-services-container">
           {copy.services.items.map((item, index) => {
             const isEven = index % 2 === 0;
