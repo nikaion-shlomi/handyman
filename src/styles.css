@@ -1544,3 +1544,27 @@ a.review__name:hover {
 .topbar__link {
   font-weight: 700 !important; /* הדגשה מקסימלית ועבה לכל מילות התפריט */
 }
+
+/* 📱 תיקון ונעילת תפריט צף נקי לטלפונים ניידים */
+@media (max-width: 768px) {
+  /* נעילת הבר העליון של הנייד שיצוף קבוע בגלילה */
+  .topbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+    background: rgba(252, 249, 245, 0.98) !important; /* רקע שמנת אטום שלא יראו טקסט מאחוריו */
+    box-shadow: 0 4px 20px rgba(7, 30, 54, 0.06) !important;
+  }
+
+  /* העלמת שכפול הלוגו והחלק המיותר של המחשב שנדחף בנייד */
+  .topbar__inner {
+    min-height: 60px !important;
+    padding-block: 8px !important;
+    padding-inline: 16px !important;
+  }
+
+  /* סידור כפתור התפריט בנייד שיישאר נגיש ובמקום */
+  .topbar__brand {
+    transform: scale(0.9); /* התאמה עדינה של הגודל למסך הנייד */
+  }
+}
