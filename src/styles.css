@@ -135,3 +135,70 @@ button { font: inherit; color: inherit; background: none; border: none; padding:
 .btn--wa:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
 
 /* ---------- services ---------- */
+/* ==========================================================================
+   📌 נעילת רוחב מסך מוחלטת ויישור פריסת השירותים והתפריט בנייד
+   ========================================================================== */
+
+/* 1. מניעת כל סוג של תזוזה או גלילה ימינה/שמאלה בנייד */
+html, body, #root, .app-container, .page, main {
+  max-width: 100vw !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+  position: relative !important;
+  padding-inline-end: 0 !important;
+}
+
+@media (max-width: 980px) {
+  /* 2. סידור סרגל הניווט העליון בשתי שורות כדי שהקישורים יחזרו */
+  .topbar__inner {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+    min-height: auto !important;
+    padding-inline: 16px !important;
+    padding-block: 12px !important;
+  }
+
+  .topbar__nav {
+    display: flex !important; /* מחזיר את הקישורים שנעלמו בנייד! */
+    margin-inline-start: 0 !important;
+    gap: 14px !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+  }
+
+  .topbar__link {
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+  }
+
+  .langtoggle {
+    display: none !important; /* מעלים את כפתור ה-EN בנייד כדי לפנות מקום */
+  }
+
+  /* 3. תיקון פריסת השירותים והכרטיסיות בנייד */
+  .services__grid, [class*="services__grid"] {
+    grid-template-columns: 1fr !important; /* כרטיסייה אחת בכל שורה */
+    gap: 24px !important;
+    width: 100% !important;
+  }
+
+  /* תיקון מיקום המספרים (01, 02) והתמונות שלא יברחו מהקצה השמאלי */
+  [class*="services"] article, .services__grid > * {
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 24px 16px !important;
+    width: 100% !important;
+  }
+
+  /* הצמדת המספר "01" למקום הגיוני בתוך הכרטיסייה בנייד */
+  [class*="services"] [class*="number"], 
+  .services__grid span:first-child {
+    position: absolute !important;
+    top: 12px !important;
+    left: 12px !important;
+    font-size: 1.5rem !important;
+    opacity: 0.2 !important; /* הופך אותו לעדין ברקע שלא יתקע בטקסט */
+  }
+}
