@@ -1,45 +1,6 @@
 /* File generated for handyman project - styles.css */
 :root {
   --ink: #071e36;
-  --ink-soft: #233950;
-  --ink-faint: #566c83;
-  --ground: #fcf9f5;
-  --ground-deep: #f5eee6;
-  --paper: #ffffff;
-  --accent: #967844;
-  --accent-deep: #755c32;
-  --accent-wash: #fbf9f6;
-  --rule: #decbc4;
-  --rule-soft: #f2e9e4;
-  --accent-bright: #b3945d;
-  --wa: #25d366;
-  --wa-deep: #128c7e;
-  --on-ink: #f1f7fc;
-  --on-ink-soft: #a8c4dc;
-  --on-ink-faint: #93b3ce;
-  --ink-line: #1f4f7d;
-  --ink-raise: #113f68;
-  --rail: 64px;
-  --shell: 1140px;
-  --display: 'Suez One', Georgia, serif;
-  --body: 'Assistant', system-ui, -apple-system, sans-serif;
-  --mono: 'IBM Plex Mono', ui-monospace, monospace;
-  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
-}
-
-*, *::before, *::after { box-sizing: border-box; }
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 96px;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-  background: var(--ground);
-  color: var(--ink);
-  font-family: var(--body);
   font-size: 1.0625rem;
   line-height: 1.7;
   font-weight: 400;
