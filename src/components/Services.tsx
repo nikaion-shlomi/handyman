@@ -1,40 +1,38 @@
 import { useLang } from '../lang';
-import { InfoIcon, ToolGlyph } from '../icons';
+import { InfoIcon } from '../icons';
 import { Reveal } from './Reveal';
 
 export function Services() {
   const { copy } = useLang();
 
-  // 6 התמונות האמיתיות שלך מהשטח לפי סדר השירותים המדויק
+  // מערך נתיבי התמונות שהעלית, לפי סדר השירותים שלך
   const images = [
-    '/plumbing.jpg',    /* 01. אינסטלציה ומערכות מים */
-    '/electric.jpg',    /* 02. ארונות ומערכות חשמל */
-    '/paint.jpg',       /* 03. תיקוני צבע, טיח ושפכטל */
-    '/renovation.jpg',  /* 04. שיפוצים כלליים ועבודות גמר */
-    '/welding.jpg',     /* 05. מסגרות, ריתוך ותשתיות שטח */
-    '/sealing.jpg'      /* 06. איטום, בידוד ונזילות */
+    '/plumbing.jpg',
+    '/electric.jpg',
+    '/paint.jpg',
+    '/renovation.jpg'
   ];
 
   return (
     <section className="services" id="services" style={{ background: 'var(--ground)', paddingBlock: '80px' }}>
-      <div className="shell services__inner">
+      <div className="shell">
         <Reveal>
           <div className="sectionhead" style={{ marginBottom: '60px', textAlign: 'center' }}>
             <p className="eyebrow" style={{ color: 'var(--accent)', justifyContent: 'center' }}>{copy.services.eyebrow}</p>
-            <h2>{copy.services.title}</h2>
-            <p>{copy.services.lede}</p>
+            <h2 style={{ color: 'var(--ink)', fontSize: '2.5rem', marginBottom: '16px' }}>{copy.services.title}</h2>
+            <p style={{ color: 'var(--ink-soft)', fontSize: '1.15rem' }}>{copy.services.lede}</p>
           </div>
         </Reveal>
 
-        {/* פריסה אסימטרית רחבה וחסינת באגים */}
+        {/* מיכל השורות האסימטריות */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '56px', width: '100%' }}>
           {copy.services.items.map((item, index) => {
             const isEven = index % 2 === 0;
-            const imageUrl = images[index] || '/renovation.jpg';
+            const imageUrl = images[index] || '/plumbing.jpg';
 
             return (
-              <Reveal as="article" className="jobcard" key={item.title} delay={index * 60}>
-                <div 
+              <Reveal key={item.title} delay={index * 60}>
+                <article 
                   style={{
                     background: '#ffffff',
                     borderRadius: '24px',
@@ -42,22 +40,18 @@ export function Services() {
                     border: '1px solid #f1f5f9',
                     boxShadow: '0 20px 40px -15px rgba(7, 30, 54, 0.05)',
                     display: 'flex',
-                    flexDirection: isEven ? 'row' : 'row-reverse', // אפקט הזיגזג שמתהפך אוטומטית בכל שורה שנייה
+                    flexDirection: isEven ? 'row' : 'row-reverse', // קסם הזיגזג שמתהפך אוטומטית!
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     gap: '48px',
                     width: '100%',
-                    position: 'relative',
-                    textAlign: 'right'
+                    position: 'relative'
                   }}
-                  className="services-row-container"
+                  className="services-row-card"
                 >
                   
-                  {/* חצי 1: גוש המלל והסברים (מנוטרל מהגדרות קשיחות כדי למנוע חיתוך) */}
-                  <div style={{ flex: '1', minWidth: '280px' }}>
-                    <div style={{ display: 'none' }}>
-                      <ToolGlyph name={item.icon} />
-                    </div>
+                  {/* חצי 1: גוש המלל (תופס בדיוק 50% מהרוחב) */}
+                  <div style={{ flex: '1', minWidth: '280px', textAlign: 'right' }}>
                     <h3 style={{ fontSize: '1.8rem', fontWeight: '700', color: 'var(--ink)', margin: '0 0 12px 0' }}>
                       {item.title}
                     </h3>
@@ -66,7 +60,7 @@ export function Services() {
                     </p>
                   </div>
 
-                  {/* חצי 2: גוש תמונת השטח האמיתית שלך */}
+                  {/* חצי 2: גוש תמונת השטח האמיתית שלך (תופס בדיוק 45% מהרוחב) */}
                   <div 
                     style={{ 
                       flex: 'none', 
@@ -80,7 +74,7 @@ export function Services() {
                       position: 'relative'
                     }}
                   >
-                    {/* מספר רץ מ-01 עד 06 שצף מעל התמונה */}
+                    {/* מספר ענק צף מעל התמונה באותה פינה של הזיגזג */}
                     <span 
                       style={{
                         fontFamily: 'var(--display)',
@@ -94,20 +88,19 @@ export function Services() {
                         lineHeight: '1',
                         zIndex: 10
                       }}
-                      className="jobcard__num"
                     >
                       {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
 
-                </div>
+                </article>
               </Reveal>
             );
           })}
         </div>
 
         <Reveal>
-          <p className="services__note" style={{ marginTop: '48px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--ink-faint)', justifyContent: 'center' }}>
+          <p style={{ marginTop: '48px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--ink-faint)', justifyContent: 'center' }}>
             <InfoIcon />
             <span>{copy.services.note}</span>
           </p>
