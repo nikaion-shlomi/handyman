@@ -81,7 +81,6 @@ export function Services() {
                       position: 'relative'
                     }}
                   >
-                    /* מספר רץ אמיתי ונקי מ-01 עד 06 אוטומטית */
                     <span 
                       style={{
                         fontFamily: 'var(--display)',
