@@ -3,6 +3,8 @@ import { Hero } from './components/Hero';
 import { Services } from './components/Services';
 import { Videos } from './components/Videos';
 import { Contact } from './components/Contact';
+import { WhatsAppOrb } from './components/WhatsAppOrb';
+import { AccessibilityModel } from './components/AccessibilityModel';
 
 export default function App() {
   return (
@@ -17,6 +19,10 @@ export default function App() {
       <footer style={{ background: '#071e36', color: '#fff', padding: '20px', textAlign: 'center', fontSize: '0.8rem', fontFamily: 'Assistant, sans-serif' }}>
         © אגם אחזקות - כל הזכויות שמורות
       </footer>
+      
+      {/* החזרת האלמנטים הצפים והוואטסאפ למסך */}
+      <WhatsAppOrb />
+      <AccessibilityModel />
     </div>
   );
 }
