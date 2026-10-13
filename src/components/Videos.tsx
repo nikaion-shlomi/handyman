@@ -1,62 +1,35 @@
+import { CONTENT, Lang, VIDEOS } from '../content';
 import { useState } from 'react';
-import { VIDEOS } from '../content';
-import { useLang } from '../lang';
-import { PlayIcon } from '../icons';
-import { Reveal } from './Reveal';
-
-function Video({ name, index }: { name: string; index: number }) {
-  const { copy } = useLang();
-  const [playing, setPlaying] = useState(false);
-  const label = copy.videos.items[index] ?? '';
-
-  return (
-    <Reveal className="vid" delay={index * 70}>
-      {playing ? (
-        <video
-          className="vid__player"
-          src={`/videos/${name}.mp4`}
-          poster={`/videos/${name}.jpg`}
-          controls
-          autoPlay
-          playsInline
-        />
-      ) : (
-        <button
-          type="button"
-          className="vid__btn"
-          onClick={() => setPlaying(true)}
-          aria-label={`${copy.videos.playLabel}: ${label}`}
-        >
-          <img className="vid__thumb" src={`/videos/${name}.jpg`} alt="" loading="lazy" />
-          <span className="vid__play">
-            <PlayIcon />
-            {copy.videos.playLabel}
-          </span>
-          <span className="vid__label">{label}</span>
-        </button>
-      )}
-    </Reveal>
-  );
-}
 
 export function Videos() {
-  const { copy } = useLang();
+  const [lang] = useState<Lang>('he');
+  const copy = CONTENT[lang].videos;
 
   return (
-    /* שונה ל-videos-alt כדי להסיר את הרקע הכחול ולהחיל גוון קרם חלק */
-    <section className="videos-alt" id="videos" style={{ background: 'var(--ground)', color: 'var(--ink)' }}>
-      <div className="shell">
-        <Reveal>
-          <div className="sectionhead">
-            <p className="eyebrow" style={{ color: 'var(--accent)' }}>{copy.videos.eyebrow}</p>
-            <h2 style={{ color: 'var(--ink)' }}>{copy.videos.title}</h2>
-            <p style={{ color: 'var(--ink-soft)' }}>{copy.videos.lede}</p>
-          </div>
-        </Reveal>
+    <section id="videos" style={{ paddingBlock: '60px', background: 'var(--ground)' }}>
+      <div className="shell" style={{ textAlign: 'right' }}>
+        <div style={{ marginBottom: '40px' }}>
+          <span className="eyebrow">{copy.eyebrow}</span>
+          <h2 style={{ fontSize: '2rem', marginTop: '8px', color: 'var(--ink)' }}>{copy.title}</h2>
+          <p style={{ color: 'var(--ink-soft)', marginTop: '8px' }}>{copy.lede}</p>
+        </div>
 
-        <div className="videos__grid">
-          {VIDEOS.map((name, index) => (
-            <Video key={name} name={name} index={index} />
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '24px' }}>
+          {VIDEOS.map((id, index) => (
+            <div key={id} style={{ background: 'var(--paper)', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--rule-soft)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+              <div style={{ padding: '16px', borderBottom: '1px solid var(--rule-soft)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', direction: 'rtl' }}>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: '0.8rem', color: 'var(--accent)' }}>0{index + 1}</span>
+                <h3 style={{ fontSize: '1.05rem', margin: 0, color: 'var(--ink)', fontWeight: '600' }}>{copy.items[index]}</h3>
+              </div>
+              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', background: '#000', display: 'flex', alignItems: 'center', justifycontent: 'center' }}>
+                <div style={{ color: 'var(--paper)', opacity: 0.8, display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  <span style={{ fontSize: '0.85rem', fontFamily: 'var(--mono)' }}>{copy.playLabel}</span>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
