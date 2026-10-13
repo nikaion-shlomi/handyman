@@ -1,4 +1,4 @@
-import { CONTENT, Lang } from '../content';
+import { CONTENT, type Lang } from '../content';
 import { useState } from 'react';
 
 export function Reviews() {
