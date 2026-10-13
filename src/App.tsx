@@ -8,19 +8,19 @@ import { WhatsAppOrb } from './components/WhatsAppOrb';
 
 export default function App() {
   
-  // הזרקת קוד הנגישות של UserWay ישירות לזיכרון של הדף בצורה מאובטחת בלי לגעת ב-CSS
+  // הזרקת קוד הנגישות הרשמי של UserWay ברקע ללא כפל קוד
   useEffect(() => {
     const script = document.createElement('script');
     script.src = "https://userway.org";
     script.setAttribute('data-account', 'uW8p3kLX2a');
-    script.setAttribute('data-position', '1'); // מציב את האייקון למעלה כדי שלא יתנגש עם הוואטסאפ
+    script.setAttribute('data-position', '1'); // סמל הנגישון יופיע למעלה ולא יתנגש עם הוואטסאפ למטה
     script.async = true;
     document.body.appendChild(script);
 
     return () => {
       document.body.removeChild(script);
     };
-  }, []);
+  }, []); // סגירה יציבה של הזיכרון ב-React
 
   return (
     <div className="app-container" style={{ direction: 'rtl', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -35,7 +35,7 @@ export default function App() {
         © אגם אחזקות - כל הזכויות שמורות
       </footer>
       
-      {/* הוואטסאפ המקורי והעובד של האתר */}
+      {/* כפתור הוואטסאפ המקורי, העגול והעובד של האתר שלך */}
       <WhatsAppOrb />
     </div>
   );
