@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { CONTENT, Lang, waLink } from '../content';
-
+import { CONTENT, type Lang, waLink } from '../content';
 export function WhatsAppOrb() {
   const [lang] = useState<Lang>('he');
   const copy = CONTENT[lang].orb;
