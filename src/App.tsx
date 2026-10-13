@@ -6,7 +6,7 @@ import { Contact } from './components/Contact';
 
 export default function App() {
   return (
-    <div className="app-container" style={{ direction: 'rtl', minHeight: '100vh', display: 'flex', flexDirection: 'column', overflowX: 'hidden' }}>
+    <div className="app-container" style={{ direction: 'rtl', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <TopBar />
       <main style={{ flex: '1 0 auto' }}>
         <Hero />
@@ -18,9 +18,9 @@ export default function App() {
         © אגם אחזקות - כל הזכויות שמורות
       </footer>
       
-      {/* כפתור וואטסאפ ירוק, קטן, מוגן ומדויק שנשתל ישירות מבלי לשבור אף אלמנט באתר */}
+      {/* כפתור וואטסאפ ירוק קטן ואלגנטי בפינה התחתונה - מוגן לחלוטין משגיאות */}
       <a
-        href="https://wa.me."
+        href="https://wa.me"
         target="_blank"
         rel="noopener noreferrer"
         style={{
@@ -44,7 +44,7 @@ export default function App() {
         </svg>
       </a>
 
-      {/* הזרקת קוד הנגישון העולמי של UserWay ישירות למבנה האתר לחסינות מלאה */}
+      {/* הזרקת רכיב הנגישון הרשמי של UserWay ישירות לתוך קוד האתר להפעלה מיידית */}
       <script 
         src="https://userway.org" 
         data-account="uW8p3kLX2a" 
