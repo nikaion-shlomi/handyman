@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import type { ToolIcon } from './content';
+
 
 const stroke = {
   fill: 'none',
