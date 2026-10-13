@@ -1,4 +1,3 @@
-/* File generated for handyman project - styles.css */
 :root {
   --ink: #071e36;
   --ink-soft: #233950;
@@ -99,7 +98,6 @@ button { font: inherit; color: inherit; background: none; border: none; padding:
 .rail__mark[data-active='true'] span { color: var(--accent-deep); font-weight: 600; }
 .rail__mark[data-active='true']::after { background: var(--accent); }
 .rail__readout { position: absolute; inset-inline: 0; bottom: 14px; text-align: center; font-family: var(--mono); font-size: 0.62rem; font-weight: 600; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
-.railbar { display: none; }
 
 /* ---------- hero ---------- */
 .hero { position: relative; padding-block: clamp(56px, 10vw, 112px) clamp(48px, 8vw, 92px); overflow: hidden; }
@@ -134,13 +132,8 @@ button { font: inherit; color: inherit; background: none; border: none; padding:
 .btn--wa { background: var(--wa); border-color: var(--ink); color: var(--ink); box-shadow: 5px 5px 0 var(--ink); }
 .btn--wa:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
 
-/* ---------- services ---------- */
-/* ==========================================================================
-   📌 נעילת רוחב מסך מוחלטת ויישור פריסת השירותים והתפריט בנייד
-   ========================================================================== */
-
-/* 1. מניעת כל סוג של תזוזה או גלילה ימינה/שמאלה בנייד */
-html, body, #root, .app-container, .page, main {
+/* ---------- layout blocks & alignment ---------- */
+html, body, #root, .app-container, main {
   max-width: 100vw !important;
   width: 100% !important;
   overflow-x: hidden !important;
@@ -149,7 +142,6 @@ html, body, #root, .app-container, .page, main {
 }
 
 @media (max-width: 980px) {
-  /* 2. סידור סרגל הניווט העליון בשתי שורות כדי שהקישורים יחזרו */
   .topbar__inner {
     flex-direction: column !important;
     align-items: center !important;
@@ -158,224 +150,19 @@ html, body, #root, .app-container, .page, main {
     padding-inline: 16px !important;
     padding-block: 12px !important;
   }
-
   .topbar__nav {
-    display: flex !important; /* מחזיר את הקישורים שנעלמו בנייד! */
+    display: flex !important;
     margin-inline-start: 0 !important;
     gap: 14px !important;
     justify-content: center !important;
     flex-wrap: wrap !important;
     width: 100% !important;
   }
-
-  .topbar__link {
-    font-size: 0.95rem !important;
-    font-weight: 700 !important;
-  }
-
-  .langtoggle {
-    display: none !important; /* מעלים את כפתור ה-EN בנייד כדי לפנות מקום */
-  }
-
-  .services__grid, [class*="services__grid"] {
-    grid-template-columns: 1fr !important; /* כרטיסייה אחת בכל שורה */
-    gap: 24px !important;
-    width: 100% !important;
-  }
-
-  /* תיקון מיקום המספרים (01, 02) והתמונות שלא יברחו מהקצה השמאלי */
-  [class*="services"] article, .services__grid > * {
-    position: relative !important;
-    overflow: hidden !important;
-    padding: 24px 16px !important;
-    width: 100% !important;
-  }
-
-  /* הצמדת המספר "01" למקום הגיוני בתוך הכרטיסייה בנייד */
-  [class*="services"] [class*="number"], 
-  .services__grid span:first-child {
-    position: absolute !important;
-    top: 12px !important;
-    left: 12px !important;
-    font-size: 1.5rem !important;
-    opacity: 0.2 !important; /* הופך אותו לעדין ברקע שלא יתקע בטקסט */
-  }
+  .topbar__link { font-size: 0.95rem !important; font-weight: 700 !important; }
+  .langtoggle { display: none !important; }
 }
 
-/* ==========================================================================
-   💎 עיצוב פרימיום חדש לשירותים (מראה נקי, זיג-זג ורספונסיביות לנייד)
-   ========================================================================== */
-
-.services-section {
-  background: var(--ground);
-  padding-block: 100px;
-  width: 100%;
-}
-
-.services-head {
-  margin-bottom: 64px;
-  text-align: center;
-}
-
-.services-head .eyebrow {
-  color: var(--accent);
-  justify-content: center;
-  margin-bottom: 12px;
-}
-
-.services-head h2 {
-  color: var(--ink);
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.services-lede {
-  color: var(--ink-soft);
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.services-rows-container {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-  width: 100%;
-}
-
-/* כרטיסיית השירות הראשית במחשב */
-.services-row-card {
-  background: #ffffff;
-  border-radius: 24px;
-  padding: 48px;
-  border: 1px solid #f1f5f9;
-  box-shadow: 0 15px 35px -15px rgba(7, 30, 54, 0.04);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 64px;
-  width: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.services-row-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 25px 50px -20px rgba(7, 30, 54, 0.08);
-}
-
-/* שליטה בזיג-זג לפי זוגי/אי-זוגי */
-.row-normal { flex-direction: row; }
-.row-reverse { flex-direction: row-reverse; }
-
-/* גוש המלל */
-.services-card-content {
-  flex: 1;
-  text-align: right;
-}
-
-.services-card-content h3 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin: 0 0 16px 0;
-}
-
-.services-card-content p {
-  color: var(--ink-soft);
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin: 0;
-}
-
-/* גוש התמונה */
-.services-card-image {
-  flex: none;
-  width: 45%;
-  height: 340px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 18px;
-  border: 1px solid #e2e8f0;
-  position: relative;
-}
-
-/* עיצוב המספרים */
-.services-card-number-desktop {
-  font-family: var(--display);
-  font-size: 4rem;
-  color: var(--accent);
-  opacity: 0.15;
-  position: absolute;
-  top: 16px;
-  line-height: 1;
-}
-.row-normal .services-card-number-desktop { left: 24px; }
-.row-reverse .services-card-number-desktop { right: 24px; }
-
-.services-card-number-mobile { display: none; }
-
-.services-note {
-  margin-top: 56px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--ink-faint);
-  justify-content: center;
-}
-
-/* 📱 התאמה מושלמת למסכים ניידים (בדיוק כמו בעיצוב שרצית) */
-@media (max-width: 900px) {
-  .services-section {
-    padding-block: 60px;
-  }
-
-  .services-head h2 {
-    font-size: 2.2rem;
-  }
-
-  /* ביטול הזיג-זג ומעבר לטור אנכי שיושב בול על המסך */
-  .services-row-card {
-    flex-direction: column-reverse !important; /* תמונה תמיד מעל הטקסט או להפך */
-    gap: 24px;
-    padding: 24px;
-    border-radius: 20px;
-  }
-
-  .services-card-image {
-    width: 100%;
-    height: 240px;
-    border-radius: 14px;
-  }
-
-  .services-card-content {
-    width: 100%;
-    position: relative;
-    padding-top: 12px;
-  }
-
-  .services-card-content h3 {
-    font-size: 1.4rem;
-    margin-bottom: 8px;
-  }
-
-  /* העברת המספר למעלה בצד בצורה עדינה בנייד */
-  .services-card-number-desktop { display: none; }
-  .services-card-number-mobile {
-    display: block;
-    font-family: var(--mono);
-    font-size: 1.1rem;
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 8px;
-    opacity: 0.6;
-  }
-}
-
-/* ==========================================================================
-   📌 עיצוב כרטיסיות פרימיום זיג-זג מבודד (ללא השפעה על פרופורציות האתר)
-   ========================================================================== */
-
+/* ---------- premium zig-zag services ---------- */
 .premium-services-section {
   background: var(--ground);
   padding-block: 80px;
@@ -389,7 +176,6 @@ html, body, #root, .app-container, .page, main {
   width: 100%;
 }
 
-/* מבנה הכרטיסייה במחשב */
 .premium-service-card {
   background: #ffffff;
   border-radius: 24px;
@@ -403,274 +189,27 @@ html, body, #root, .app-container, .page, main {
   width: 100%;
 }
 
-/* לוגיקת הזיג-זג האסימטרי במחשב */
 .layout-normal { flex-direction: row; }
 .layout-reverse { flex-direction: row-reverse; }
 
-.premium-card-text {
-  flex: 1;
-  min-width: 280px;
-  text-align: right;
-  position: relative;
-}
+.premium-card-text { flex: 1; min-width: 280px; text-align: right; position: relative; }
+.premium-card-text h3 { font-size: 1.8rem; font-weight: 700; color: var(--ink); margin: 0 0 12px 0; }
+.premium-card-text p { color: var(--ink-soft); font-size: 1.1rem; line-height: 1.7; margin: 0; }
+.premium-card-number { display: block; font-family: var(--mono); font-size: 1.2rem; color: var(--accent); font-weight: 700; margin-bottom: 8px; opacity: 0.5; }
+.premium-card-image { flex: none; width: 45%; height: 320px; background-size: cover; background-position: center; border-radius: 16px; border: 1px solid #e2e8f0; }
 
-.premium-card-text h3 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin: 0 0 12px 0;
-}
-
-.premium-card-text p {
-  color: var(--ink-soft);
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin: 0;
-}
-
-/* המספר הסידורי העדין מעל הטקסט */
-.premium-card-number {
-  display: block;
-  font-family: var(--mono);
-  font-size: 1.2rem;
-  color: var(--accent);
-  font-weight: 700;
-  margin-bottom: 8px;
-  opacity: 0.5;
-}
-
-/* קונטיינר התמונה הצידית במחשב */
-.premium-card-image {
-  flex: none;
-  width: 45%;
-  height: 320px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-}
-
-/* 📱 קיפול בטוח לניידים - הופך לטור אנכי יציב מבלי לשנות את רוחב העמוד */
 @media (max-width: 850px) {
   .premium-service-card {
-    flex-direction: column-reverse !important; /* התמונה תעלה בצורה מסודרת מעל המלל */
+    flex-direction: column-reverse !important;
     gap: 24px !important;
     padding: 24px !important;
     border-radius: 20px !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
-
-  .premium-card-image {
-    width: 100% !important;
-    height: 220px !important; /* גובה מותאם למסכי טלפונים */
-    border-radius: 12px !important;
-  }
-
-  .premium-card-text {
-    width: 100% !important;
-  }
-
-  .premium-card-text h3 {
-    font-size: 1.4rem !important;
-    margin-bottom: 8px !important;
-  }
-}
-/* ==========================================================================
-   🎯 עיצוב בלוקים יוקרתי ברוחב מלא לשירותים (ללא פגיעה בפרופורציות האתר)
-   ========================================================================== */
-
-.premium-services-section {
-  background: var(--ground);
-  padding-block: 60px;
-  width: 100%;
-}
-
-.services-main-head {
-  text-align: center;
-  margin-bottom: 48px;
-}
-
-.services-main-head .eyebrow {
-  justify-content: center;
-  color: var(--accent);
-  margin-bottom: 12px;
-}
-
-.services-main-head h2 {
-  font-size: 2.2rem;
-  color: var(--ink);
-  margin-bottom: 14px;
-}
-
-.services-main-lede {
-  font-size: 1.1rem;
-  color: var(--ink-soft);
-}
-
-.premium-blocks-container {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  width: 100%;
-}
-
-/* מבנה הבלוק המלא */
-.premium-block-card {
-  background: #ffffff;
-  border-radius: 24px;
-  overflow: hidden;
-  border: 1px solid #f1f5f9;
-  box-shadow: 0 10px 30px -10px rgba(7, 30, 54, 0.05);
-  width: 100%;
-  display: flex;
-  flex-direction: column; /* תמונה ומלל זה תחת זה בצורה נקייה */
-}
-
-/* התמונה האנכית הגדולה */
-.premium-block-image {
-  width: 100%;
-  height: 280px; /* גובה התמונה בבלוק */
-  background-size: cover;
-  background-position: center;
-}
-
-/* אזור הטקסט מתחת לתמונה */
-.premium-block-content {
-  padding: 28px 24px;
-  text-align: right;
-}
-
-.premium-block-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.premium-block-number {
-  font-family: var(--mono);
-  font-size: 1.1rem;
-  color: var(--accent);
-  font-weight: 700;
-  opacity: 0.7;
-}
-
-.premium-block-content h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin: 0;
-}
-
-.premium-block-content p {
-  color: var(--ink-soft);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.services-bottom-note {
-  margin-top: 40px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--ink-faint);
-  justify-content: center;
-  font-size: 0.95rem;
-}
-/* ==========================================================================
-   🎯 עיצוב בלוקים יוקרתי ברוחב מלא לשירותים (ללא פגיעה בפרופורציות האתר)
-   ========================================================================== */
-
-.premium-services-section {
-  background: var(--ground);
-  padding-block: 60px;
-  width: 100%;
-}
-
-.services-main-head {
-  text-align: center;
-  margin-bottom: 48px;
-}
-
-.services-main-head .eyebrow {
-  justify-content: center;
-  color: var(--accent);
-  margin-bottom: 12px;
-}
-
-.services-main-head h2 {
-  font-size: 2.2rem;
-  color: var(--ink);
-  margin-bottom: 14px;
-}
-
-.services-main-lede {
-  font-size: 1.1rem;
-  color: var(--ink-soft);
-}
-
-.premium-blocks-container {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  width: 100%;
-}
-
-/* מבנה הבלוק המלא */
-.premium-block-card {
-  background: #ffffff;
-  border-radius: 24px;
-  overflow: hidden;
-  border: 1px solid #f1f5f9;
-  box-shadow: 0 10px 30px -10px rgba(7, 30, 54, 0.05);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-/* התמונה האנכית הגדולה */
-.premium-block-image {
-  width: 100%;
-  height: 280px;
-  background-size: cover;
-  background-position: center;
-}
-
-/* אזור הטקסט מתחת לתמונה */
-.premium-block-content {
-  padding: 28px 24px;
-  text-align: right;
-}
-
-.premium-block-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.premium-block-number {
-  font-family: var(--mono);
-  font-size: 1.1rem;
-  color: var(--accent);
-  font-weight: 700;
-  opacity: 0.7;
-}
-
-.premium-block-content h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin: 0;
-}
-
-.premium-block-content p {
-  color: var(--ink-soft);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  margin: 0;
+  .premium-card-image { width: 100% !important; height: 220px !important; border-radius: 12px !important; }
+  .premium-card-text { width: 100% !important; }
+  .premium-card-text h3 { font-size: 1.4rem !important; margin-bottom: 8px !important; }
 }
 
 .services-bottom-note {
