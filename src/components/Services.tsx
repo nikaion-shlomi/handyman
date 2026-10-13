@@ -5,13 +5,14 @@ export function Services() {
   const [lang] = useState<Lang>('he');
   const copy = CONTENT[lang].services;
 
+  // פנייה ישירה לשמות הקבצים המדויקים שרואים בצילום המסך שלך
   const serviceImages = [
-    '/work/plumbing.jpg',
-    '/work/electricity.jpg',
-    '/work/sealing.jpg',
-    '/work/welding.jpg',
-    '/work/communal.jpg',
-    '/work/home-repair.jpg'
+    '/plumbing.jpg',    // אינסטלציה ומערכות מים
+    '/electric.jpg',    // חשמל ותאורה (שונה מ-electricity ל-electric)
+    '/sealing.jpg',     // איטום ורטיבות
+    '/welding.jpg',     // ריתוך ומסגרות
+    '/renovation.jpg',  // שטחים משותפים (משתמש ב-renovation הקיים אצלך)
+    '/paint.jpg'        // עבודות בבית (משתמש ב-paint הקיים אצלך)
   ];
 
   return (
@@ -37,7 +38,7 @@ export function Services() {
                 </div>
                 <div 
                   className="premium-card-image" 
-                  style={{ backgroundImage: `url(${serviceImages[index] || '/work/default.jpg'})` }}
+                  style={{ backgroundImage: `url(${serviceImages[index]})` }}
                 />
               </article>
             );
