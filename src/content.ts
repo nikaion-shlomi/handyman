@@ -50,7 +50,7 @@ export type Copy = {
     eyebrow: string;
     title: string;
     lede: string;
-    items: { icon: ToolIcon; title: string; body: string }[];
+    items: { icon: string; title: string; body: string }[];
     note: string;
   };
   gallery: {
@@ -94,8 +94,6 @@ export type Copy = {
   rights: string;
 };
 
-export type ToolIcon = 'wrench' | 'drill' | 'brush' | 'plug' | 'frame' | 'door';
-
 export const CONTENT: Record<Lang, Copy> = {
   he: {
     dir: 'rtl',
@@ -131,36 +129,12 @@ export const CONTENT: Record<Lang, Copy> = {
       title: 'מה אפשר לסמן ✓',
       lede: 'אם זה דולף, סתום, חלוד או לא נסגר — זה ברשימה. לא בטוחים? שלחו תמונה בוואטסאפ ותקבלו תשובה.',
       items: [
-        {
-          icon: 'wrench',
-          title: 'אינסטלציה ומערכות מים',
-          body: 'פתיחת סתימות בביוב, שוחות, משאבות טבולות, שעוני מים, אל־חוזר ומשחררי אוויר.',
-        },
-        {
-          icon: 'plug',
-          title: 'חשמל ותאורה',
-          body: 'גופי תאורה בחניונים ובחדרי מדרגות, לוחות, חיישנים ופסי לד בשערים חשמליים.',
-        },
-        {
-          icon: 'brush',
-          title: 'איטום ורטיבות',
-          body: 'איטום גגות ומרפסות ביריעות, טיפול בסדקים, מרזבים ותיקוני טיח וצבע אחרי.',
-        },
-        {
-          icon: 'drill',
-          title: 'ריתוך ומסגרות',
-          body: 'ייצור והרכבה של עמודי חירום מתקפלים, מעקות, שערים וכל מה שצריך ריתוך במקום.',
-        },
-        {
-          icon: 'frame',
-          title: 'שטחים משותפים',
-          body: 'חניונים תת קרקעיים, ריצוף ואבנים משתלבות, ניקוי חזיתות והסרת גרפיטי.',
-        },
-        {
-          icon: 'door',
-          title: 'עבודות בבית',
-          body: 'תליות על הקיר, הרכבת רהיטים, דלתות שלא נסגרות, תריסים, מנעולים וקרמיקה שהתנתקה.',
-        },
+        { icon: 'wrench', title: 'אינסטלציה ומערכות מים', body: 'פתיחת סתימות בביוב, שוחות, משאבות טבולות, שעוני מים, אל־חוזר ומשחררי אוויר.' },
+        { icon: 'plug', title: 'חשמל ותאורה', body: 'גופי תאורה בחניונים ובחדרי מדרגות, לוחות, חיישנים ופסי לד בשערים חשמליים.' },
+        { icon: 'brush', title: 'איטום ורטיבות', body: 'איטום גגות ומרפסות ביריעות, טיפול בסדקים, מרזבים ותיקוני טיח וצבע אחרי.' },
+        { icon: 'drill', title: 'ריתוך ומסגרות', body: 'ייצור והרכבה של עמודי חירום מתקפלים, מעקות, שערים וכל מה שצריך ריתוך במקום.' },
+        { icon: 'frame', title: 'שטחים משותפים', body: 'חניונים תת קרקעיים, ריצוף ואבנים משתלבות, ניקוי חזיתות והסרת גרפיטי.' },
+        { icon: 'door', title: 'עבודות בבית', body: 'תליות על הקיר, הרכבת רהיטים, דלתות שלא נסגרות, תריסים, מנעולים וקרמיקה שהתנתקה.' },
       ],
       note: 'עבודות חשמל ואינסטלציה מורכבות מועברות לבעל מקצוע מוסמך — אומר את זה מראש, לא באמצע.',
     },
@@ -197,9 +171,9 @@ export const CONTENT: Record<Lang, Copy> = {
         'שיפוץ קומפלט לחדר ילדים: פירוק פרקט, החלפת תשתיות, ריצוף מחדש וצבע',
         'ריתוך במקום',
         'תיקון ותחזוקת מערכות חימום מים סולאריות',
-        'פתיחת סתימה במרז נוזל',
+        'פתיחת סתימה במרזב נוזל',
         'ניקוי קולטים לקליטת שמש טובה יותר',
-       ],
+      ],
     },
     contact: {
       eyebrow: 'נקודת מגע',
@@ -217,20 +191,13 @@ export const CONTENT: Record<Lang, Copy> = {
     waMessage: 'היי שלומי, הגעתי דרך האתר. רציתי לשאול לגבי ',
     rights: 'כל הזכויות שמורות',
   },
-
   en: {
     dir: 'ltr',
     meta: {
       title: 'Shlomi Hagami · Agam Maintenance',
       description: 'Building maintenance and repairs — waterproofing, plumbing, electrics and welding. Clean work, price agreed up front, on site within 24 hours.',
     },
-    nav: {
-      services: 'What I do',
-      gallery: 'Work',
-      reviews: 'Clients',
-      videos: 'Video',
-      contact: 'Get in touch',
-    },
+    nav: { services: 'Services', gallery: 'Gallery', reviews: 'Reviews', videos: 'Videos', contact: 'Contact' },
     skip: 'Skip to content',
     toggle: { label: 'עב', aria: 'Switch to Hebrew' },
     hero: {
@@ -252,36 +219,12 @@ export const CONTENT: Record<Lang, Copy> = {
       title: 'What you can tick off ✓',
       lede: 'If it leaks, blocks, rusts or will not shut, it is on the list. Not sure? Send a photo on WhatsApp and you will get an answer.',
       items: [
-        {
-          icon: 'wrench',
-          title: 'Plumbing and water systems',
-          body: 'Clearing blocked drains and manholes, submersible pumps, water meters, check valves and air release valves.',
-        },
-        {
-          icon: 'plug',
-          title: 'Electrics and lighting',
-          body: 'Light fittings in car parks and stairwells, panels, sensors and LED strips on electric gates.',
-        },
-        {
-          icon: 'brush',
-          title: 'Waterproofing and damp',
-          body: 'Membrane sealing on roofs and balconies, cracks, gutters, and making good the plaster and paint after.',
-        },
-        {
-          icon: 'drill',
-          title: 'Welding and metalwork',
-          body: 'Building and fitting folding security bollards, railings, gates and anything that needs welding on site.',
-        },
-        {
-          icon: 'frame',
-          title: 'Communal areas',
-          body: 'Underground car parks, paving and block stone, facade cleaning and graffiti removal.',
-        },
-        {
-          icon: 'door',
-          title: 'Jobs around the house',
-          body: 'Wall mounting, furniture assembly, doors that will not close, shutters, locks and loose tiling.',
-        },
+        { icon: 'wrench', title: 'Plumbing and water systems', body: 'Clearing blocked drains and manholes, submersible pumps, water meters, check valves and air release valves.' },
+        { icon: 'plug', title: 'Electrics and lighting', body: 'Light fittings in car parks and stairwells, panels, sensors and LED strips on electric gates.' },
+        { icon: 'brush', title: 'Waterproofing and damp', body: 'Membrane sealing on roofs and balconies, cracks, gutters, and making good the plaster and paint after.' },
+        { icon: 'drill', title: 'Welding and metalwork', body: 'Building and fitting folding security bollards, railings, gates and anything that needs welding on site.' },
+        { icon: 'frame', title: 'Communal areas', body: 'Underground car parks, paving and block stone, facade cleaning and graffiti removal.' },
+        { icon: 'door', title: 'Jobs around the house', body: 'Wall mounting, furniture assembly, doors that will not close, shutters, locks and loose tiling.' },
       ],
       note: 'Complex electrical and plumbing work goes to a licensed tradesperson — I tell you that up front, not halfway through.',
     },
@@ -318,6 +261,8 @@ export const CONTENT: Record<Lang, Copy> = {
         'Grouting and skirting',
         'Welding on site',
         'A run through the work',
+        'Opening complex sewage clog',
+        'Cleaning and maintaining solar panels',
       ],
     },
     contact: {
