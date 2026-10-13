@@ -4,7 +4,6 @@ import { Services } from './components/Services';
 import { Videos } from './components/Videos';
 import { Contact } from './components/Contact';
 import { WhatsAppOrb } from './components/WhatsAppOrb';
-import { AccessibilityModel } from './components/AccessibilityModel';
 
 export default function App() {
   return (
@@ -20,9 +19,8 @@ export default function App() {
         © אגם אחזקות - כל הזכויות שמורות
       </footer>
       
-      {/* החזרת האלמנטים הצפים והוואטסאפ למסך */}
+      {/* החזרת כפתור הוואטסאפ הצף למסך */}
       <WhatsAppOrb />
-      <AccessibilityModel />
     </div>
   );
 }
