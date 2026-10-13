@@ -19,8 +19,16 @@ export default function App() {
         © אגם אחזקות - כל הזכויות שמורות
       </footer>
       
-      {/* החזרת כפתור הוואטסאפ הצף למסך */}
+      {/* כפתור הוואטסאפ הצף במקומו הטבעי */}
       <WhatsAppOrb />
+
+      {/* הזרקת קוד הנגישות הרשמי והצהרת הנגישות האוטומטית של UserWay ישירות לתוך React */}
+      <script 
+        src="https://cdn.userway.org/widget.js" 
+        data-account="uW8p3kLX2a" 
+        data-position="1" 
+        defer 
+      />
     </div>
   );
 }
