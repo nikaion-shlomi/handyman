@@ -1,4 +1,4 @@
-import { CONTENT, Lang, VIDEOS } from '../content';
+import { CONTENT, type Lang, VIDEOS } from '../content';
 import { useState } from 'react';
 
 export function Videos() {
@@ -21,7 +21,7 @@ export function Videos() {
                 <span style={{ fontFamily: 'var(--mono)', fontSize: '0.8rem', color: 'var(--accent)' }}>0{index + 1}</span>
                 <h3 style={{ fontSize: '1.05rem', margin: 0, color: 'var(--ink)', fontWeight: '600' }}>{copy.items[index]}</h3>
               </div>
-              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', background: '#000', display: 'flex', alignItems: 'center', justifycontent: 'center' }}>
+              <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <div style={{ color: 'var(--paper)', opacity: 0.8, display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M8 5v14l11-7z"/>
