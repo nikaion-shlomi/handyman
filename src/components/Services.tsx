@@ -1,69 +1,57 @@
-import { useLang } from '../lang';
-import { InfoIcon } from '../icons';
-import { Reveal } from './Reveal';
+import { CONTENT, Lang } from '../content';
+import { useState } from 'react';
 
 export function Services() {
-  const { copy } = useLang();
+  const [lang] = useState<Lang>('he');
+  const copy = CONTENT[lang].services;
 
-  // נתיבי התמונות המדויקים מתוך תיקיית public שלך
   const serviceImages = [
-    '/plumbing.jpg',    // 01. אינסטלציה ומערכות מים
-    '/electric.jpg',    // 02. חשמל ותאורה
-    '/sealing.jpg',     // 03. איטום ורטיבות
-    '/welding.jpg',     // 04. ריתוך ומסגרות
-    '/renovation.jpg',  // 05. שטחים משותפים
-    '/paint.jpg'        // 06. עבודות בבית
+    '/work/plumbing.jpg',
+    '/work/electricity.jpg',
+    '/work/sealing.jpg',
+    '/work/welding.jpg',
+    '/work/communal.jpg',
+    '/work/home-repair.jpg'
   ];
 
   return (
-    <section className="premium-services-section" id="services">
+    <section id="services" className="premium-services-section">
       <div className="shell">
-        <Reveal>
-          <div className="services-main-head">
-            <p className="eyebrow">{copy.services.eyebrow}</p>
-            <h2>{copy.services.title}</h2>
-            <p className="services-main-lede">{copy.services.lede}</p>
-          </div>
-        </Reveal>
+        <div className="services-main-head">
+          <div className="eyebrow">{copy.eyebrow}</div>
+          <h2>{copy.title}</h2>
+          <p className="services-main-lede">{copy.lede}</p>
+        </div>
 
-        {/* מיכל הבלוקים ברוחב מלא */}
-        <div className="premium-blocks-container">
-          {copy.services.items.map((item, index) => {
-            const imageUrl = serviceImages[index] || '/plumbing.jpg';
+        <div className="premium-services-container">
+          {copy.items.map((item, index) => {
+            const layoutClass = index % 2 === 0 ? 'layout-normal' : 'layout-reverse';
+            const displayNumber = String(index + 1).padStart(2, '0');
 
             return (
-              <Reveal key={item.title} delay={index * 50}>
-                <article className="premium-block-card">
-                  
-                  {/* חלק 1: התמונה האנכית הגדולה */}
-                  <div 
-                    className="premium-block-image"
-                    style={{ backgroundImage: `url(${imageUrl})` }}
-                  />
-
-                  {/* חלק 2: המלל והמספר מתחתיה */}
-                  <div className="premium-block-content">
-                    <div className="premium-block-meta">
-                      <span className="premium-block-number">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <h3>{item.title}</h3>
-                    </div>
-                    <p>{item.body}</p>
-                  </div>
-
-                </article>
-              </Reveal>
+              <article key={index} className={`premium-service-card ${layoutClass}`}>
+                <div className="premium-card-text">
+                  <span className="premium-card-number">{displayNumber}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </div>
+                <div 
+                  className="premium-card-image" 
+                  style={{ backgroundImage: `url(${serviceImages[index] || '/work/default.jpg'})` }}
+                />
+              </article>
             );
           })}
         </div>
 
-        <Reveal>
-          <p className="services-bottom-note">
-            <InfoIcon />
-            <span>{copy.services.note}</span>
-          </p>
-        </Reveal>
+        <div className="services-bottom-note">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="16" x2="12" y2="12" />
+            <line x1="12" y1="8" x2="12.01" y2="8" />
+          </svg>
+          <span>{copy.note}</span>
+        </div>
       </div>
     </section>
   );
