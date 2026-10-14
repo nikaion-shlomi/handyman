@@ -1,12 +1,10 @@
 import { CONTENT, type Lang } from '../content';
 import { useState } from 'react';
-import { Reveal } from './Reveal';
 
 export function Gallery() {
   const [lang] = useState<Lang>('he');
   const copy = CONTENT[lang];
 
-  // רשימת 9 העבודות החדשות שלך עם שיוך מדויק לתמונות
   const galleryItems = [
     { id: '1', title: 'עבודות ריצוף וחיפוי חוץ', desc: 'תכנון תשתית וריצוף מתקדם לבמות ושטחים פתוחים.', src: '/work/plumbing.jpg' },
     { id: '2', title: 'פריסת אלמנט מדויק', desc: 'עבודה עם מערכות פילוס ופלס ליישור מושלם לפני קיבוע.', src: '/work/electricity.jpg' },
@@ -29,18 +27,15 @@ export function Gallery() {
           <p style={{ color: 'var(--ink-soft)', fontSize: '1.1rem' }}>{copy.gallery?.lede || 'הצצה לחלק מהפרויקטים והתיקונים שביצענו לאחרונה'}</p>
         </div>
 
-        {/* גריד עשיר ומפואר שמציג את כל 9 התמונות בצורה ישרה */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '32px', width: '100%' }}>
-          {galleryItems.map((item, index) => (
-            <Reveal key={item.id} delay={index * 40}>
-              <article style={{ background: 'var(--ground)', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--rule-soft)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-                <div style={{ width: '100%', height: '240px', backgroundImage: `url(${item.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
-                <div style={{ padding: '20px', textAlign: 'right' }}>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: 'var(--ink)', margin: '0 0 8px 0' }}>{item.title}</h3>
-                  <p style={{ color: 'var(--ink-soft)', fontSize: '0.95rem', lineHeight: '1.5', margin: 0 }}>{item.desc}</p>
-                </div>
-              </article>
-            </Reveal>
+          {galleryItems.map((item) => (
+            <article key={item.id} style={{ background: 'var(--ground)', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--rule-soft)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+              <div style={{ width: '100%', height: '240px', backgroundImage: `url(${item.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+              <div style={{ padding: '20px', textAlign: 'right' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: 'var(--ink)', margin: '0 0 8px 0' }}>{item.title}</h3>
+                <p style={{ color: 'var(--ink-soft)', fontSize: '0.95rem', lineHeight: '1.5', margin: 0 }}>{item.desc}</p>
+              </div>
+            </article>
           ))}
         </div>
 
