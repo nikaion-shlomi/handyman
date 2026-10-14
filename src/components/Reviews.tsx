@@ -18,7 +18,7 @@ export function Reviews() {
           <div style={{ borderTop: '1px solid var(--rule)', paddingTop: '20px' }}>
             <h4 style={{ margin: '0 0 8px 0', fontSize: '1.2rem', color: 'var(--ink)' }}>{copy.formTitle}</h4>
             <p style={{ margin: '0 0 20px 0', fontSize: '0.95rem', color: 'var(--ink-faint)' }}>{copy.formLede}</p>
-            <a href={CONTENT[lang].meta.title.includes('שלומי') ? 'https://goo.gl' : '#'} target="_blank" rel="noreferrer" className="btn btn--primary">
+            <a href="https://goo.gl" target="_blank" rel="noreferrer" className="btn btn--primary">
               {copy.googleCta}
             </a>
           </div>
