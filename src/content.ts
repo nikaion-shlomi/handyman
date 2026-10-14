@@ -3,8 +3,8 @@ export type Lang = 'he' | 'en';
 export function waLink(lang: Lang): string {
   const text = lang === 'he' 
     ? 'היי שלומי, הגעתי מהאתר. אשמח לקבל פרטים.' 
-    : 'Hi Shlomi, I reached out from your website. Id love to get more details.';
-  return `https://wa.me{encodeURIComponent(text)}`;
+    : 'Hi Shlomi, I reached out from your website. I\'d love to get more details.';
+  return 'https://wa.me' + encodeURIComponent(text);
 }
 
 export const VIDEOS = [
@@ -49,7 +49,7 @@ export const CONTENT = {
     services: {
       eyebrow: 'התמחויות',
       title: 'שירותי אחזקה מקיפים',
-      lede: 'כל תיקון מבוצע ברמת גימור עילאית, with אחריות מלאה וחומרים בעלי תו תקן בלבד.',
+      lede: 'כל תיקון מבוצע ברמת גימור עילאית, עם אחריות מלאה וחומרים בעלי תו תקן בלבד.',
       note: 'צריכים תיקון דחוף שלא מופיע ברשימה? דברו איתי ישירות בוואטסאפ.',
       items: [
         { title: 'אינסטלציה ומערכות מים', body: 'תיקון פיצוצי צנרת, החלפת קווים, פתיחת סתימות מורכבות, הגברת לחץ מים וטיפול במרזבים וביוב.' },
@@ -68,7 +68,7 @@ export const CONTENT = {
     videos: {
       eyebrow: 'תיעוד חי',
       title: 'לראות את העבודה בעיניים',
-      lede: 'I מאמין בשקיפות מלאה. הנה כמה סרטונים קצרים של התיקונים המורכבים שביצעתי לאחרונה בשטח.',
+      lede: 'אני מאמין בשקילות מלאה. הנה כמה סרטונים קצרים של התיקונים המורכבים שביצעתי לאחרונה בשטח.',
       playLabel: 'נגן וידאו',
       items: [
         'ייצור והקמת עמוד חירום בבניין',
