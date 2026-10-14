@@ -59,11 +59,26 @@ img, svg { display: block; max-width: 100%; }
   box-shadow: 0 10px 30px -10px rgba(7, 30, 54, 0.08) !important;
 }
 
-.topbar__inner { display: flex; align-items: center; gap: 40px !important; min-height: 84px !important; padding-block: 12px !important; max-width: 100% !important; padding-inline: clamp(24px, 5vw, 64px) !important; }
+.topbar__inner { display: flex; align-items: center; gap: 40px !important; min-height: 84px !important; padding-block: 12px !important; max-width: 100% !important; padding-inline: clamp(24px, 5vw, 64px) !important; position: relative !important; }
 .topbar__name { font-family: var(--display); font-size: 1.5rem !important; font-weight: 700 !important; color: var(--ink) !important; }
 .topbar__trade { font-family: var(--mono); font-size: 0.95rem !important; font-weight: 700 !important; color: var(--accent) !important; letter-spacing: 0.12em !important; text-transform: uppercase; }
 .topbar__nav { display: flex; gap: 26px; margin-inline-start: auto; }
 .topbar__link { position: relative; font-family: var(--display) !important; font-size: 1.25rem !important; font-weight: 700 !important; text-decoration: none; color: var(--ink) !important; padding-block: 4px; transition: color 0.25s var(--ease) !important; }
+
+.langtoggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
 
 /* ---------- hero & stats ---------- */
 .hero { position: relative; padding-block: clamp(40px, 8vw, 92px); overflow: hidden; }
@@ -117,11 +132,25 @@ img, svg { display: block; max-width: 100%; }
   .premium-card-image { width: 100% !important; height: 200px !important; border-radius: 12px !important; }
   .premium-card-text { width: 100% !important; }
   
-  .topbar__inner { flex-direction: column !important; gap: 4px !important; padding-block: 4px !important; min-height: auto !important; }
-  .topbar__nav { display: flex !important; margin-inline-start: 0 !important; gap: 8px !important; justify-content: center !important; flex-wrap: nowrap !important; width: 100% !important; overflow-x: auto !important; }
-  .topbar__link { font-size: 0.8rem !important; font-weight: 700 !important; white-space: nowrap !important; padding-inline: 2px !important; }
-  .topbar__name { font-size: 1.05rem !important; text-align: center !important; font-weight: 800 !important; }
-  .topbar__trade { font-size: 0.7rem !important; text-align: center !important; margin-top: -2px !important; }
+  /* ארגון מחדש של הסרגל העליון לנייד */
+  .topbar__inner { flex-direction: column !important; gap: 6px !important; padding-top: 14px !important; padding-bottom: 8px !important; min-height: auto !important; position: relative !important; align-items: center !important; }
+  
+  /* 🌐 נעילת כפתור השפה אנגלית/עברית בפינה השמאלית העליונה לצד הכותרת */
+  .langtoggle {
+    position: absolute !important;
+    top: 12px !important;
+    left: 16px !important;
+    padding: 4px 10px !important;
+    font-size: 0.65rem !important;
+    z-index: 99999 !important;
+  }
+  
+  /* יישור רשימת התפריט בשורה אחת דקה, רציפה וישרה */
+  .topbar__nav { display: flex !important; margin-inline-start: 0 !important; gap: 14px !important; justify-content: center !important; flex-wrap: nowrap !important; width: 100% !important; margin-top: 4px !important; }
+  .topbar__link { font-size: 0.88rem !important; font-weight: 700 !important; white-space: nowrap !important; padding-inline: 0 !important; }
+  
+  .topbar__name { font-size: 1.15rem !important; text-align: center !important; font-weight: 800 !important; margin-inline-start: 20px !important; }
+  .topbar__trade { font-size: 0.75rem !important; text-align: center !important; margin-top: -2px !important; }
   
   .hero__stats { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; justify-content: space-between !important; gap: 8px !important; }
   .hero__stat { flex: 1 !important; min-width: auto !important; }
