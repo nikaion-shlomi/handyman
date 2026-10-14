@@ -126,16 +126,19 @@ img, svg { display: block; max-width: 100%; }
 .premium-card-number { display: block; font-family: var(--mono); font-size: 1.1rem; color: var(--accent); font-weight: 700; margin-bottom: 6px; opacity: 0.5; }
 .premium-card-image { flex: none; width: 45%; height: 280px; background-size: cover; background-position: center; border-radius: 16px; border: 1px solid #e2e8f0; }
 
+/* ---------- כפתורים עיצוב כללי ---------- */
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border: 2px solid var(--ink); border-radius: 2px; font-weight: 700; font-size: 1rem; text-decoration: none; cursor: pointer; background: transparent; transition: background 0.18s var(--ease), color 0.18s var(--ease); }
+.btn--primary { background: var(--ink); color: var(--paper); box-shadow: 5px 5px 0 var(--accent); }
+.btn--wa { background: var(--wa); border-color: var(--ink); color: var(--ink); box-shadow: 5px 5px 0 var(--ink); }
+
 /* ---------- התאמה מדויקת ונעילת שורה אחת לתפריט העליון בניידים ---------- */
 @media (max-width: 850px) {
   .premium-service-card { flex-direction: column-reverse !important; gap: 20px !important; padding: 24px !important; border-radius: 20px !important; width: 100% !important; }
   .premium-card-image { width: 100% !important; height: 200px !important; border-radius: 12px !important; }
   .premium-card-text { width: 100% !important; }
   
-  /* ארגון מחדש של הסרגל העליון לנייד */
-  .topbar__inner { flex-direction: column !important; gap: 6px !important; padding-top: 14px !important; padding-bottom: 8px !important; min-height: auto !important; position: relative !important; align-items: center !important; }
+  .topbar__inner { flex-direction: column !important; gap: 4px !important; padding-top: 14px !important; padding-bottom: 8px !important; min-height: auto !important; position: relative !important; align-items: center !important; }
   
-  /* 🌐 נעילת כפתור השפה אנגלית/עברית בפינה השמאלית העליונה לצד הכותרת */
   .langtoggle {
     position: absolute !important;
     top: 12px !important;
@@ -145,7 +148,6 @@ img, svg { display: block; max-width: 100%; }
     z-index: 99999 !important;
   }
   
-  /* יישור רשימת התפריט בשורה אחת דקה, רציפה וישרה */
   .topbar__nav { display: flex !important; margin-inline-start: 0 !important; gap: 14px !important; justify-content: center !important; flex-wrap: nowrap !important; width: 100% !important; margin-top: 4px !important; }
   .topbar__link { font-size: 0.88rem !important; font-weight: 700 !important; white-space: nowrap !important; padding-inline: 0 !important; }
   
