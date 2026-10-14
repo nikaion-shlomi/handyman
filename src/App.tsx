@@ -58,7 +58,7 @@ export default function App() {
 
       {/* חלון הצהרת הנגישות הרשמי והחוקי שקופץ על המסך בלחיצה ומכסה אותך ב-100% */}
       {showAccessibility && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 999999, display: 'flex', alignItems: 'center', justifycontent: 'center', padding: '20px' }}>
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 999999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
           <div style={{ background: '#fff', color: '#071e36', padding: '30px', borderRadius: '12px', maxWidth: '500px', width: '100%', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', textAlign: 'right', position: 'relative', direction: 'rtl', margin: 'auto' }}>
             <h3 style={{ fontSize: '1.4rem', marginBottom: '16px', color: '#071e36', fontFamily: 'Suez One, serif', fontWeight: 'bold' }}>הצהרת נגישות - אגם אחזקות</h3>
             <p style={{ fontSize: '1rem', lineHeight: '1.6', marginBottom: '20px', fontFamily: 'Assistant, sans-serif' }}>
