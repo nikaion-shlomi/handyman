@@ -25,12 +25,13 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px;
+  scroll-padding-top: 120px;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
+  padding-top: 84px; /* מפנה מקום קבוע מתחת לסרגל הנעול כדי שלא יסתיר את תחילת האתר */
   background: var(--ground);
   color: var(--ink);
   font-family: var(--body);
@@ -48,12 +49,15 @@ img, svg { display: block; max-width: 100%; }
 
 .shell { width: 100%; max-width: var(--shell); margin-inline: auto; padding-inline: clamp(20px, 5vw, 56px); }
 
-/* ---------- top bar ---------- */
+/* ---------- top bar - נעילה קבועה ואבסולוטית בראש המסך בגלילה ---------- */
 .topbar {
-  position: sticky !important;
+  position: fixed !important;
   top: 0 !important;
-  z-index: 9999 !important;
-  background: rgba(252, 249, 245, 0.96) !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 999999 !important;
+  background: rgba(252, 249, 245, 0.98) !important;
   backdrop-filter: blur(14px);
   border-bottom: 2px solid var(--rule-soft) !important;
   box-shadow: 0 10px 30px -10px rgba(7, 30, 54, 0.08) !important;
@@ -133,6 +137,7 @@ img, svg { display: block; max-width: 100%; }
 
 /* ---------- התאמה מדויקת ונעילת שורה אחת לתפריט העליון בניידים ---------- */
 @media (max-width: 850px) {
+  body { padding-top: 74px; } /* התאמת מרווח עליון מיוחד לניידים */
   .premium-service-card { flex-direction: column-reverse !important; gap: 20px !important; padding: 24px !important; border-radius: 20px !important; width: 100% !important; }
   .premium-card-image { width: 100% !important; height: 200px !important; border-radius: 12px !important; }
   .premium-card-text { width: 100% !important; }
@@ -145,7 +150,7 @@ img, svg { display: block; max-width: 100%; }
     left: 16px !important;
     padding: 4px 10px !important;
     font-size: 0.65rem !important;
-    z-index: 99999 !important;
+    z-index: 999999 !important;
   }
   
   .topbar__nav { display: flex !important; margin-inline-start: 0 !important; gap: 14px !important; justify-content: center !important; flex-wrap: nowrap !important; width: 100% !important; margin-top: 4px !important; }
