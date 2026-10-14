@@ -24,17 +24,17 @@ export function Gallery() {
       <div className="shell" style={{ textAlign: 'right' }}>
         
         <div className="section-head" style={{ marginBottom: '48px', textAlign: 'center' }}>
-          <span className="eyebrow" style={{ color: 'var(--accent)', justifyContent: 'center' }}>{copy.gallery.eyebrow || 'תיק עבודות'}</span>
-          <h2 style={{ color: 'var(--ink)', fontSize: '2.5rem', marginBottom: '14px' }}>{copy.gallery.title || 'עבודות אחרונות מהשטח'}</h2>
-          <p style={{ color: 'var(--ink-soft)', fontSize: '1.1rem' }}>{copy.gallery.lede || 'הצצה לחלק מהפרויקטים והתיקונים שביצענו לאחרונה'}</p>
+          <span className="eyebrow" style={{ color: 'var(--accent)', justifyContent: 'center' }}>{copy.gallery?.eyebrow || 'תיק עבודות'}</span>
+          <h2 style={{ color: 'var(--ink)', fontSize: '2.5rem', marginBottom: '14px' }}>{copy.gallery?.title || 'עבודות אחרונות מהשטח'}</h2>
+          <p style={{ color: 'var(--ink-soft)', fontSize: '1.1rem' }}>{copy.gallery?.lede || 'הצצה לחלק מהפרויקטים והתיקונים שביצענו לאחרונה'}</p>
         </div>
 
         {/* גריד עשיר ומפואר שמציג את כל 9 התמונות בצורה ישרה */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px', width: '100%' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '32px', width: '100%' }}>
           {galleryItems.map((item, index) => (
-            <Reveal key={item.id} delay={index * 40px}>
+            <Reveal key={item.id} delay={index * 40}>
               <article style={{ background: 'var(--ground)', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--rule-soft)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-                <div style={{ width: '100%', height: '24px', backgroundImage: `url(${item.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+                <div style={{ width: '100%', height: '240px', backgroundImage: `url(${item.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
                 <div style={{ padding: '20px', textAlign: 'right' }}>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: 'var(--ink)', margin: '0 0 8px 0' }}>{item.title}</h3>
                   <p style={{ color: 'var(--ink-soft)', fontSize: '0.95rem', lineHeight: '1.5', margin: 0 }}>{item.desc}</p>
