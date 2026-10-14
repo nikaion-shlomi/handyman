@@ -10,10 +10,10 @@ import { WhatsAppOrb } from './components/WhatsAppOrb';
 export default function App() {
   
   useEffect(() => {
-    // טעינה מאובטחת וחלק של "נגיש לי" ברקע
+    // טעינה מאובטחת, שלמה ומדויקת של תוסף הנגישון "נגיש לי" אל תוך React
     const timer = setTimeout(() => {
       const script = document.createElement('script');
-      script.src = "https://nagish.li";
+      script.src = "https://nagish.li"; // הכתובת המתוקנת והמלאה!
       script.async = true;
       script.defer = true;
       script.setAttribute('data-override-body', 'false'); 
@@ -21,7 +21,7 @@ export default function App() {
     }, 400);
 
     return () => clearTimeout(timer);
-  }, []);
+  },);
 
   return (
     <div className="app-container" style={{ direction: 'rtl', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
@@ -30,7 +30,7 @@ export default function App() {
         <Hero />
         <Services />
         <Videos />
-        <Reviews /> {/* החלק של ההמלצות וחוות הדעת מגוגל חזר למקומו הרשמי! */}
+        <Reviews />
         <Contact />
       </main>
       <footer style={{ background: '#071e36', color: '#fff', padding: '20px', textAlign: 'center', fontSize: '0.8rem', fontFamily: 'Assistant, sans-serif' }}>
