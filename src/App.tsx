@@ -8,22 +8,22 @@ import { WhatsAppOrb } from './components/WhatsAppOrb';
 
 export default function App() {
   
-  // הזרקת קוד הנגישות הרשמי של UserWay ברקע ללא כפל קוד
   useEffect(() => {
+    // ♿ הזרקת התוסף הישראלי החלק של "נגיש לי"
     const script = document.createElement('script');
-    script.src = "https://userway.org";
-    script.setAttribute('data-account', 'uW8p3kLX2a');
-    script.setAttribute('data-position', '1'); // סמל הנגישון יופיע למעלה ולא יתנגש עם הוואטסאפ למטה
+    script.src = "https://nagish.li";
+    script.setAttribute('data-position', 'right'); // נועל את אייקון הנגישון בצד ימין של המסך!
     script.async = true;
+    script.defer = true;
     document.body.appendChild(script);
 
     return () => {
       document.body.removeChild(script);
     };
-  }, []); // סגירה יציבה של הזיכרון ב-React
+  }, []);
 
   return (
-    <div className="app-container" style={{ direction: 'rtl', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="app-container" style={{ direction: 'rtl', minHeight: '100vh', display: 'flex', flexDirection: 'column', overflowX: 'hidden' }}>
       <TopBar />
       <main style={{ flex: '1 0 auto' }}>
         <Hero />
@@ -35,7 +35,7 @@ export default function App() {
         © אגם אחזקות - כל הזכויות שמורות
       </footer>
       
-      {/* כפתור הוואטסאפ המקורי, העגול והעובד של האתר שלך */}
+      {/* 🟢 כפתור הוואטסאפ המקורי שיושב ומקובע בצד שמאל למטה */}
       <WhatsAppOrb />
     </div>
   );
