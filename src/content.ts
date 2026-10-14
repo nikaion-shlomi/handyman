@@ -42,6 +42,10 @@ export const CONTENT = {
       lede: 'אחזקת מבנים לוועדי בית, לעסקים ולבתים פרטיים – איטום, אינסטלציה, חשמל, ריתוך ותיקונים. מגיע עם הכלים, מראה מה הבעיה לפני שנוגעים, ומנקה אחרי.',
       cta: 'שלחו הודעה בוואטסאפ',
       call: 'חייגו אליי',
+      phone: '050-380-8067',
+      phoneDisplay: '050-380-8067',
+      avatar: '/shlomi.jpg',
+      photo: '/hero-bg.jpg',
       stats: [
         { value: '30', label: 'שנות ותק' },
         { value: '5000+', label: 'קריאות בשנה' },
@@ -97,6 +101,7 @@ export const CONTENT = {
       lede: 'שלחו לי תמונה או סרטון של התקלה, ותקבלו הערכת מחיר סגורה והגעה מהירה תוך 24 שעות.',
       cta: 'פתחו הודעה בוואטסאפ',
       call: 'חייגו אליי עכשיו',
+      phone: '050-380-8067',
       areaLabel: 'אזורי שירות',
       area: 'באר יעקב, ראשון לציון, נס ציונה, חולון, בת ים, רמלה והסביבה.',
       hoursLabel: 'שעות פעילות',
@@ -130,6 +135,10 @@ export const CONTENT = {
       lede: 'Building maintenance for committees, businesses, and private homes – sealing, plumbing, electricity, welding, and repairs. I arrive fully equipped, explain the issue before starting, and leave the space clean.',
       cta: 'Chat on WhatsApp',
       call: 'Call Me Directly',
+      phone: '050-380-8067',
+      phoneDisplay: '050-380-8067',
+      avatar: '/shlomi.jpg',
+      photo: '/hero-bg.jpg',
       stats: [
         { value: '30', label: 'Years Exp.' },
         { value: '5000+', label: 'Calls / Year' },
@@ -185,6 +194,7 @@ export const CONTENT = {
       lede: 'Send me a photo or video of the issue, and get a guaranteed fixed price quote with rapid arrival within 24 hours.',
       cta: 'Open WhatsApp Chat',
       call: 'Call Me Now',
+      phone: '050-380-8067',
       areaLabel: 'Service Areas',
       area: 'Beer Yaakov, Rishon LeZion, Ness Ziona, Holon, Bat Yam, Ramla, and nearby areas.',
       hoursLabel: 'Working Hours',
@@ -197,7 +207,7 @@ export const CONTENT = {
   }
 };
 
-// ייצוא מפורש עבור קבצים ישנים שמחפשים שיוך ישיר באותיות גדולות
+// יצירת משתנים פשוטים כדי למנוע שגיאות ייצוא בקבצים הפנימיים
 export const GALLERY = CONTENT.he.gallery;
 export const CONTACT = CONTENT.he.contact;
 export const Copy = CONTENT.he;
