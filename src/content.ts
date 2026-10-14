@@ -22,7 +22,9 @@ export const CONTENT = {
   he: {
     meta: {
       title: 'שלומי הגמי · אגם אחזקות',
-      desc: 'אחזקת מבנים ותיקונים — איטום, אינסטלציה, חשמל וריתוך. עבודה נקייה, מחיר סגור מראש, הגעה תוך 24 שעות.'
+      desc: 'אחזקת מבנים ותיקונים — איטום, אינסטלציה, חשמל וריתוך. עבודה נקייה, מחיר סגור מראש, הגעה תוך 24 שעות.',
+      dir: 'rtl',
+      description: 'אחזקת מבנים ותיקונים — איטום, אינסטלציה, חשמל וריתוך. עבודה נקייה, מחיר סגור מראש, הגעה תוך 24 שעות.'
     },
     topbar: {
       name: 'שלומי הגמי',
@@ -108,7 +110,9 @@ export const CONTENT = {
   en: {
     meta: {
       title: 'Shlomi Hegami · Agam Maintenance',
-      desc: 'Building maintenance & repairs — Sealing, plumbing, electricity, and welding. Clean work, fixed price upfront, arrival within 24 hours.'
+      desc: 'Building maintenance & repairs — Sealing, plumbing, electricity, and welding. Clean work, fixed price upfront, arrival within 24 hours.',
+      dir: 'ltr',
+      description: 'Building maintenance & repairs — Sealing, plumbing, electricity, and welding. Clean work, fixed price upfront, arrival within 24 hours.'
     },
     topbar: {
       name: 'Shlomi Hegami',
@@ -192,3 +196,8 @@ export const CONTENT = {
     }
   }
 };
+
+// ייצוא מפורש עבור קבצים ישנים שמחפשים שיוך ישיר באותיות גדולות
+export const GALLERY = CONTENT.he.gallery;
+export const CONTACT = CONTENT.he.contact;
+export const Copy = CONTENT.he;
