@@ -173,10 +173,11 @@ img, svg { display: block; max-width: 100%; }
   display: inline-block !important;
 }
 
-html, body, #root, .app-container, main { max-width: 100vw !important; width: 100% !important; overflow-x: hidden !important; }
-
-  max-height: 24px !important;
-  fill: currentColor !important;
-  display: inline-block !important;
+html, body, #root, .app-container, main { 
+  max-width: 100vw !important; 
+  width: 100% !important; 
+  overflow-x: hidden !important; 
 }
+
+/* סגירת ה-Media Query הכללי של המובייל */
 }
