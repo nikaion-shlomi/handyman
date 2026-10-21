@@ -11,19 +11,86 @@
     <meta property="og:title" content="שלומי הגמי · אגם אחזקות" />
     <meta property="og:description" content="איטום, אינסטלציה, חשמל, ריתוך ותיקונים — 30 שנות ותק. באר יעקב, רמלה, חולון, בת ים, נס ציונה וראשון לציון." />
     <meta property="og:url" content="https://shlomi-repairs.co.il" />
-    <meta property="og:image" content="https://shlomi-repairs.co.ilog.jpg" />
+    <meta property="og:image" content="https://ilog.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="he_IL" />
-    <name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://googleapis.com" />
     <link rel="preconnect" href="https://gstatic.com" crossorigin />
     <link
-      href="https://googleapis.com/css2?family=Suez+One&family=Assistant:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      href="https://googleapis.com"
       rel="stylesheet"
     />
+
+    <!-- 🌐 סגנונות מובנים להסתרת הכפתור המקורי ועיצוב סרגל הנגישות האקטיבי החדש -->
+    <style>
+      /* הסתרת כפתור הנגישות המקורי כדי שלא יפתח את ההצהרה המשפטית בלחיצה עליו */
+      button[aria-label*="נגיש"], button[title*="נגיש"], .accessibility-btn, button:has(svg circle[cx="12"]) {
+        display: none !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      /* כפתור נגישות כחול צף חדש */
+      #new-global-access-btn {
+        position: fixed !important;
+        bottom: 100px !important;
+        left: 24px !important;
+        width: 60px !important;
+        height: 60px !important;
+        z-index: 999999 !important;
+        background-color: #0056b3 !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+        border: 2px solid #fff !important;
+        cursor: pointer !important;
+        color: #fff !important;
+      }
+
+      /* חלון סרגל הנגישות החדש */
+      #custom-access-box {
+        display: none;
+        position: fixed !important;
+        bottom: 175px !important;
+        left: 24px !important;
+        background: #ffffff !important;
+        color: #071e36 !important;
+        padding: 20px !important;
+        border-radius: 14px !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.25) !important;
+        z-index: 9999999 !important;
+        direction: rtl !important;
+        text-align: right !important;
+        width: 280px !important;
+        font-family: 'Assistant', system-ui, sans-serif !important;
+        border: 1px solid #e2e8f0 !important;
+      }
+      #custom-access-box button {
+        width: 100% !important;
+        margin-bottom: 8px !important;
+        padding: 10px !important;
+        background: #f5eee6 !important;
+        border: 1px solid #decbc4 !important;
+        border-radius: 8px !important;
+        cursor: pointer !important;
+        font-weight: bold !important;
+        color: #071e36 !important;
+        font-size: 0.95rem !important;
+      }
+      
+      /* מחלקות להחלת הנגישות על העמוד */
+      .access-large-text p, .access-large-text span, .access-large-text li, .access-large-text div { font-size: 118% !important; }
+      .access-large-text h1, .access-large-text h2, .access-large-text h3 { font-size: 112% !important; }
+      .access-contrast, .access-contrast div, .access-contrast section, .access-contrast main, .access-contrast body, .access-contrast header { background: #000000 !important; color: #ffffff !important; }
+      .access-contrast p, .access-contrast h1, .access-contrast h2, .access-contrast h3, .access-contrast span, .access-contrast li { color: #ffffff !important; }
+      .access-contrast a { color: #ffff00 !important; text-decoration: underline !important; }
+    </style>
   </head>
   <body>
     <script>
@@ -37,67 +104,58 @@
     </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- ♿ יצירת כפתור הנגישות האקטיבי החדש והחלון שלו בדפדפן -->
+    <button id="new-global-access-btn" title="אפשרויות נגישות" aria-label="תפריט נגישות">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 6-2"/><path d="M12 10v4"/></svg>
+    </button>
+
+    <div id="custom-access-box">
+      <h4 style="margin:0 0 14px 0; font-size:1.1rem; border-bottom:2px solid #f2e9e4; padding-bottom:6px; font-weight:bold; color:#071e36;">סרגל כלי נגישות</h4>
+      <button id="btn-inc-text">🔍 הגדל טקסט באתר</button>
+      <button id="btn-dec-text">🔎 גודל טקסט רגיל</button>
+      <button id="btn-contrast">🌓 מצב ניגודיות גבוהה</button>
+      <button id="btn-reset" style="background:#d9534f !important; color:#fff !important; border:none !important;">🔄 איפוס הגדרות</button>
+      <button id="btn-close-access" style="background:#071e36 !important; color:#fff !important; border:none !important; margin-top:4px !important;">סגור תפריט</button>
+    </div>
+
     <script>
-  // מחכה שכל האתר יסיים להיטען בדפדפן
-  window.addEventListener('DOMContentLoaded', () => {
-    // 1. איתור כפתור הנגישות הכחול הצף באתר
-    // (נחפש לפי צבע כחול, אייקון נגישות או מיקום)
-    const findAndFixIcons = () => {
-      const allButtons = document.querySelectorAll('button, div, a');
-      
-      allButtons.forEach(el => {
-        // בודק אם זה כפתור נגישות לפי סימנים נפוצים
-        const isBlue = window.getComputedStyle(el).backgroundColor === 'rgb(0, 86, 179)' || window.getComputedStyle(el).backgroundColor === 'rgb(12, 51, 88)';
-        const hasAria = el.getAttribute('aria-label') && el.getAttribute('aria-label').includes('נגיש');
-        const hasTitle = el.getAttribute('title') && el.getAttribute('title').includes('נגיש');
-        const hasSvg = el.querySelector('svg');
-        
-        if ((isBlue && hasSvg) || hasAria || hasTitle) {
-          // מצאנו את הכפתור הכחול! ננתק אותו מהפונקציה הישנה ונחבר אותו לסרגל כלים אמיתי
-          el.addEventListener('click', (e) => {
-            e.stopPropagation(); // מונע מהחלון המקורי להיפתח
-            
-            // בודק אם הסרגל שלנו כבר קיים, אם לא - יוצר אותו
-            let menu = document.getElementById('custom-access-menu');
-            if (!menu) {
-              menu = document.createElement('div');
-              menu.id = 'custom-access-menu';
-              menu.setAttribute('style', 'position:fixed; bottom:180px; left:24px; background:#fff; color:#071e36; padding:20px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.3); z-index:999999; direction:rtl; text-align:right; width:280px; font-family:sans-serif;');
-              
-              menu.innerHTML = `
-                <h4 style="margin:0 0 15px 0; font-size:1.1rem; border-bottom:1px solid #eee; padding-bottom:8px;">אפשרויות נגישות</h4>
-                <button onclick="document.documentElement.style.fontSize='120%'" style="width:100%; margin-bottom:8px; padding:8px; background:#f5eee6; border:1px solid #decbc4; border-radius:6px; cursor:pointer; font-weight:bold;">🔍 הגדל טקסט</button>
-                <button onclick="document.documentElement.style.fontSize='100%'" style="width:100%; margin-bottom:8px; padding:8px; background:#f5eee6; border:1px solid #decbc4; border-radius:6px; cursor:pointer; font-weight:bold;">🔎 גודל רגיל</button>
-                <button id="toggle-contrast-btn" style="width:100%; margin-bottom:8px; padding:8px; background:#f5eee6; border:1px solid #decbc4; border-radius:6px; cursor:pointer; font-weight:bold;">🌓 ניגודיות גבוהה</button>
-                <button onclick="document.getElementById('custom-access-menu').style.display='none'" style="width:100%; padding:8px; background:#071e36; color:#fff; border:none; border-radius:6px; cursor:pointer; font-weight:bold; margin-top:8px;">סגור</button>
-              `;
-              document.body.appendChild(menu);
-              
-              // לוגיקה לניגודיות גבוהה
-              let contrastActive = false;
-              document.getElementById('toggle-contrast-btn').addEventListener('click', () => {
-                contrastActive = !contrastActive;
-                if (contrastActive) {
-                  document.body.style.background = '#000';
-                  document.body.style.color = '#fff';
-                } else {
-                  document.body.style.background = '';
-                  document.body.style.color = '';
-                }
-              });
-            } else {
-              // אם הוא קיים, נציג או נסתיר אותו בלחיצה
-              menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-            }
-          }, true); // שימוש ב-Capture כדי להקדים את ה-React
+      // ניהול פתיחה וסגירה של חלון הנגישות
+      document.getElementById('new-global-access-btn').addEventListener('click', () => {
+        const box = document.getElementById('custom-access-box');
+        box.style.display = box.style.display === 'block' ? 'none' : 'block';
+      });
+
+      document.getElementById('btn-close-access').addEventListener('click', () => {
+        document.getElementById('custom-access-box').style.display = 'none';
+      });
+
+      document.getElementById('btn-inc-text').addEventListener('click', () => {
+        document.body.classList.add('access-large-text');
+      });
+
+      document.getElementById('btn-dec-text').addEventListener('click', () => {
+        document.body.classList.remove('access-large-text');
+      });
+
+      document.getElementById('btn-contrast').addEventListener('click', () => {
+        document.body.classList.toggle('access-contrast');
+      });
+
+      document.getElementById('btn-reset').addEventListener('click', () => {
+        document.body.classList.remove('access-large-text', 'access-contrast');
+      });
+
+      // 👁️ מנגנון חכם העוקב אחר שינויים באתר ומעלים את הכפתור הישן ברגע ש-React יוצרת אותו
+      const observer = new MutationObserver(() => {
+        const oldBtn = document.querySelector('button[aria-label*="נגיש"], button[title*="נגיש"], .accessibility-btn, button:has(svg circle[cx="12"])');
+        if (oldBtn) {
+          oldBtn.style.setProperty('display', 'none', 'important');
+          oldBtn.style.setProperty('opacity', '0', 'important');
+          oldBtn.style.setProperty('pointer-events', 'none', 'important');
         }
       });
-    };
-
-    // הרצה מיידית והרצה נוספת אחרי שניה לגיבוי
-    setTimeout(findAndFixIcons, 1500);
-  });
-</script>
-
+      observer.observe(document.body, { childList: true, subtree: true });
+    </script>
   </body>
 </html>
