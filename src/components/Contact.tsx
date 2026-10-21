@@ -1,7 +1,6 @@
 import { useCopy } from '../lang';
 
 export function Contact() {
-  // קריאת התוכן בצורה דינמית ובטוחה ללא תלות בקשיחות של הטייפים
   const copy = useCopy() as any;
   const contact = copy.contact;
 
@@ -25,14 +24,14 @@ export function Contact() {
             href={`https://wa.me`}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ display: 'block', background: '#25d366', color: '#fff', textCenter: 'center', padding: '15px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', textAlign: 'center', fontSize: '1.2rem' }}
+            style={{ display: 'block', background: '#25d366', color: '#fff', padding: '15px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', textAlign: 'center', fontSize: '1.2rem' }}
           >
             💬 {contact.cta}
           </a>
 
           <a 
             href={`tel:${contact.phone}`}
-            style={{ display: 'block', background: 'var(--ink)', color: '#fff', textCenter: 'center', padding: '15px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', textAlign: 'center', fontSize: '1.2rem' }}
+            style={{ display: 'block', background: 'var(--ink)', color: '#fff', padding: '15px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', textAlign: 'center', fontSize: '1.2rem' }}
           >
             📞 {contact.call}: {contact.phone}
           </a>
