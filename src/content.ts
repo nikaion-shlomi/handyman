@@ -12,9 +12,16 @@ export interface SiteContent {
   orb: { aria: string; tooltip: string; };
 }
 
-export function waLink(lang?: Lang): string { return 'https://wa.me'; }
+export function waLink(lang?: Lang): string {
+  const currentLang = lang || 'he';
+  const text = currentLang === 'he' 
+    ? 'היי שלומי, הגעתי מהאתר. אשמח לקבל פרטים.' 
+    : 'Hi Shlomi, I reached out from your website. I\'d love to get more details.';
+  return 'https://wa.me' + encodeURIComponent(text);
+}
 
 export const VIDEOS = ['bollard-build', 'sewage-repair', 'drain-clean', 'welding-door', 'pipe-leak', 'roof-sealing', 'electric-box', 'wall-fix'];
+
 
 export const CONTENT: Record<Lang, SiteContent> = {
   he: {
