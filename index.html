@@ -37,5 +37,67 @@
     </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+  // מחכה שכל האתר יסיים להיטען בדפדפן
+  window.addEventListener('DOMContentLoaded', () => {
+    // 1. איתור כפתור הנגישות הכחול הצף באתר
+    // (נחפש לפי צבע כחול, אייקון נגישות או מיקום)
+    const findAndFixIcons = () => {
+      const allButtons = document.querySelectorAll('button, div, a');
+      
+      allButtons.forEach(el => {
+        // בודק אם זה כפתור נגישות לפי סימנים נפוצים
+        const isBlue = window.getComputedStyle(el).backgroundColor === 'rgb(0, 86, 179)' || window.getComputedStyle(el).backgroundColor === 'rgb(12, 51, 88)';
+        const hasAria = el.getAttribute('aria-label') && el.getAttribute('aria-label').includes('נגיש');
+        const hasTitle = el.getAttribute('title') && el.getAttribute('title').includes('נגיש');
+        const hasSvg = el.querySelector('svg');
+        
+        if ((isBlue && hasSvg) || hasAria || hasTitle) {
+          // מצאנו את הכפתור הכחול! ננתק אותו מהפונקציה הישנה ונחבר אותו לסרגל כלים אמיתי
+          el.addEventListener('click', (e) => {
+            e.stopPropagation(); // מונע מהחלון המקורי להיפתח
+            
+            // בודק אם הסרגל שלנו כבר קיים, אם לא - יוצר אותו
+            let menu = document.getElementById('custom-access-menu');
+            if (!menu) {
+              menu = document.createElement('div');
+              menu.id = 'custom-access-menu';
+              menu.setAttribute('style', 'position:fixed; bottom:180px; left:24px; background:#fff; color:#071e36; padding:20px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.3); z-index:999999; direction:rtl; text-align:right; width:280px; font-family:sans-serif;');
+              
+              menu.innerHTML = `
+                <h4 style="margin:0 0 15px 0; font-size:1.1rem; border-bottom:1px solid #eee; padding-bottom:8px;">אפשרויות נגישות</h4>
+                <button onclick="document.documentElement.style.fontSize='120%'" style="width:100%; margin-bottom:8px; padding:8px; background:#f5eee6; border:1px solid #decbc4; border-radius:6px; cursor:pointer; font-weight:bold;">🔍 הגדל טקסט</button>
+                <button onclick="document.documentElement.style.fontSize='100%'" style="width:100%; margin-bottom:8px; padding:8px; background:#f5eee6; border:1px solid #decbc4; border-radius:6px; cursor:pointer; font-weight:bold;">🔎 גודל רגיל</button>
+                <button id="toggle-contrast-btn" style="width:100%; margin-bottom:8px; padding:8px; background:#f5eee6; border:1px solid #decbc4; border-radius:6px; cursor:pointer; font-weight:bold;">🌓 ניגודיות גבוהה</button>
+                <button onclick="document.getElementById('custom-access-menu').style.display='none'" style="width:100%; padding:8px; background:#071e36; color:#fff; border:none; border-radius:6px; cursor:pointer; font-weight:bold; margin-top:8px;">סגור</button>
+              `;
+              document.body.appendChild(menu);
+              
+              // לוגיקה לניגודיות גבוהה
+              let contrastActive = false;
+              document.getElementById('toggle-contrast-btn').addEventListener('click', () => {
+                contrastActive = !contrastActive;
+                if (contrastActive) {
+                  document.body.style.background = '#000';
+                  document.body.style.color = '#fff';
+                } else {
+                  document.body.style.background = '';
+                  document.body.style.color = '';
+                }
+              });
+            } else {
+              // אם הוא קיים, נציג או נסתיר אותו בלחיצה
+              menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+            }
+          }, true); // שימוש ב-Capture כדי להקדים את ה-React
+        }
+      });
+    };
+
+    // הרצה מיידית והרצה נוספת אחרי שניה לגיבוי
+    setTimeout(findAndFixIcons, 1500);
+  });
+</script>
+
   </body>
 </html>
