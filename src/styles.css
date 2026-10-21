@@ -174,33 +174,7 @@ img, svg { display: block; max-width: 100%; }
 }
 
 html, body, #root, .app-container, main { max-width: 100vw !important; width: 100% !important; overflow-x: hidden !important; }
-/* ---------- התאמה מדויקת ונעילת שורה אחת לתפריט העליון בניידים ---------- */
-@media (max-width: 850px) {
-  .topbar__inner { flex-direction: column !important; gap: 4px !important; padding-top: 14px !important; padding-bottom: 8px !important; min-height: auto !important; position: relative !important; align-items: center !important; }
-  
-  /* 🌐 נעילת כפתור השפה אנגלית/עברית בפינה השמאלית העליונה לצד הכותרת */
-  .langtoggle {
-    position: absolute !important;
-    top: 12px !important;
-    left: 16px !important;
-    padding: 4px 10px !important;
-    font-size: 0.65rem !important;
-    z-index: 99999 !important;
-  }
-  
-  /* יישור רשימת התפריט בשורה אחת דקה, רציפה וישרה */
-  .topbar__nav { display: flex !important; margin-inline-start: 0 !important; gap: 14px !important; justify-content: center !important; flex-wrap: nowrap !important; width: 100% !important; margin-top: 4px !important; }
-  .topbar__link { font-size: 0.88rem !important; font-weight: 700 !important; white-space: nowrap !important; padding-inline: 0 !important; }
-  
-  .topbar__name { font-size: 1.15rem !important; text-align: center !important; font-weight: 800 !important; margin-inline-start: 20px !important; }
-  .topbar__trade { font-size: 0.75rem !important; text-align: center !important; margin-top: -2px !important; }
-}
 
-/* 🔒 חסימת מידות מוחלטת לאייקונים המובנים בדף שלא ישתגעו לעולם */
-.btn svg, [id="contact"] svg, footer svg {
-  width: 24px !important;
-  height: 24px !important;
-  max-width: 24px !important;
   max-height: 24px !important;
   fill: currentColor !important;
   display: inline-block !important;
