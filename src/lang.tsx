@@ -5,7 +5,8 @@ export type Lang = 'he' | 'en';
 
 interface LangContextType {
   lang: Lang;
-  setLang: (lang: Lang) => void;
+  copy: any; // מחזיר את התוכן המותאם לשפה הנוכחית עבור TopBar ו-RulerRail
+  toggle: () => void; // פונקציית החלפת השפה עבור כפתור שינוי השפה ב-TopBar
 }
 
 const LangContext = createContext<LangContextType | undefined>(undefined);
@@ -19,9 +20,10 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
     return 'he';
   });
 
-  const setLang = (newLang: Lang) => {
-    setLangState(newLang);
-    localStorage.setItem('handyman.lang', newLang);
+  const toggle = () => {
+    const nextLang = lang === 'he' ? 'en' : 'he';
+    setLangState(nextLang);
+    localStorage.setItem('handyman.lang', nextLang);
   };
 
   useEffect(() => {
@@ -29,8 +31,15 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.dir = lang === 'en' ? 'ltr' : 'rtl';
   }, [lang]);
 
+  // האובייקט שמסופק לרכיבים כולל את copy ואת toggle בדיוק כפי שהם מצפים
+  const value = {
+    lang,
+    copy: CONTENT[lang],
+    toggle
+  };
+
   return (
-    <LangContext.Provider value={{ lang, setLang }}>
+    <LangContext.Provider value={value}>
       {children}
     </LangContext.Provider>
   );
