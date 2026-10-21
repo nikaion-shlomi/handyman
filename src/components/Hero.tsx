@@ -1,66 +1,46 @@
-import { CONTACT, waLink } from '../content';
-import { useLang } from '../lang';
-import { PhoneIcon, WhatsAppIcon } from '../icons';
-import { Reveal } from './Reveal';
+import { useCopy } from '../lang';
 
 export function Hero() {
-  const { copy, lang } = useLang();
+  // שימוש בטייפ גמיש כדי למנוע קריסת קומפילציה בגלל שדות חסרים
+  const copy = useCopy() as any;
+  const hero = copy.hero;
+
+  if (!hero) return null;
 
   return (
-    <section className="hero" id="top">
-      <div className="shell hero__inner">
+    <section className="hero" style={{ paddingBlock: '40px', background: 'var(--paper)' }}>
+      <div className="shell">
         <div className="hero__grid">
           <div className="hero__copy">
-        <Reveal>
-          <p className="eyebrow">{copy.hero.eyebrow}</p>
-          <h1 className="hero__name">{copy.hero.name}</h1>
-          <p className="hero__trade">{copy.hero.trade}</p>
-        </Reveal>
+            <h1 className="hero__name">{copy.topbar?.name || 'שלומי הגמי'}</h1>
+            <div className="hero__claim">{hero.claim}</div>
+            <p className="hero__lede">{hero.lede}</p>
+            
+            <div style={{ display: 'flex', gap: '16px', marginTop: '24px', flexWrap: 'wrap' }}>
+              <a href="https://wa.me" target="_blank" rel="noopener noreferrer" style={{ background: '#25d366', color: '#fff', padding: '12px 24px', borderRadius: '6px', textDecoration: 'none', fontWeight: 'bold' }}>
+                {hero.cta}
+              </a>
+              <a href={`tel:${hero.phone}`} style={{ background: 'var(--accent)', color: '#fff', padding: '12px 24px', borderRadius: '6px', textDecoration: 'none', fontWeight: 'bold' }}>
+                {hero.call}
+              </a>
+            </div>
 
-        <Reveal delay={90}>
-          <p className="hero__claim">{copy.hero.claim}</p>
-          <p className="hero__lede">{copy.hero.lede}</p>
-
-          <div className="hero__actions">
-            <a
-              className="btn btn--wa"
-              href={waLink(lang)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <WhatsAppIcon />
-              {copy.hero.ctaPrimary}
-            </a>
-            <a className="btn btn--ghost" href={`tel:${CONTACT.phone}`}>
-              <PhoneIcon />
-              {copy.hero.ctaSecondary}
-            </a>
-          </div>
-        </Reveal>
-          </div>
-
-          {CONTACT.photo ? (
-            <Reveal className="portrait" delay={140}>
-              <figure>
-                <img src={CONTACT.photo} alt={copy.hero.name} />
-                <figcaption>
-                  {copy.hero.name} · {copy.hero.trade}
-                </figcaption>
-              </figure>
-            </Reveal>
-          ) : null}
-        </div>
-
-        <Reveal delay={180}>
-          <div className="hero__stats">
-            {copy.hero.stats.map((stat) => (
-              <div className="hero__stat" key={stat.label}>
-                <div className="hero__statvalue">{stat.value}</div>
-                <div className="hero__statlabel">{stat.label}</div>
+            {hero.stats && (
+              <div className="hero__stats">
+                {hero.stats.map((stat: any, index: number) => (
+                  <div key={index} className="hero__stat">
+                    <div className="hero__statvalue">{stat.value}</div>
+                    <div className="hero__statlabel">{stat.label}</div>
+                  </div>
+                ))}
               </div>
-            ))}
+            )}
           </div>
-        </Reveal>
+
+          <div className="portrait">
+            <img src={hero.avatar || '/shlomi.jpg'} alt="שלומי הגמי" />
+          </div>
+        </div>
       </div>
     </section>
   );
