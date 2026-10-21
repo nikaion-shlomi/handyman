@@ -12,7 +12,7 @@ export interface SiteContent {
   orb: { aria: string; tooltip: string; };
 }
 
-export function waLink(lang: Lang): string { return 'https://wa.me/972503808067'; }
+export function waLink(): string { return 'https://wa.me'; }
 
 export const VIDEOS = ['bollard-build', 'sewage-repair', 'drain-clean', 'welding-door', 'pipe-leak', 'roof-sealing', 'electric-box', 'wall-fix'];
 
