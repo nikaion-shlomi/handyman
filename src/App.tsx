@@ -8,24 +8,23 @@ import { Contact } from './components/Contact';
 import { WhatsAppOrb } from './components/WhatsAppOrb';
 
 export default function App() {
-  // ניהול חלונות קופצים נפרדים
+  // 1. משתנה להצהרה המשפטית בפוטר (תחתית האתר)
   const [showAccessibilityStatement, setShowAccessibilityStatement] = useState(false);
+  
+  // 2. משתנה לסרגל הנגישות האקטיבי (הסמל הכחול)
   const [showAccessibilityMenu, setShowAccessibilityMenu] = useState(false);
 
-  // מצבי נגישות אקטיביים
+  // 3. מצבי נגישות שהגולש יכול לשנות באתר
   const [fontSizeMultiplier, setFontSizeMultiplier] = useState(100);
   const [highContrast, setHighContrast] = useState(false);
   const [underlineLinks, setUnderlineLinks] = useState(false);
 
-  // החלת מצבי הנגישות על ה-DOM של האתר
+  // החלת שינויי הנגישות על הדפדפן בזמן אמת
   useEffect(() => {
-    // הגדלת/הקטנת פונט
     document.documentElement.style.fontSize = `${fontSizeMultiplier}%`;
 
-    // ניגודיות גבוהה
     if (highContrast) {
       document.body.classList.add('high-contrast-mode');
-      // הוספת סטייל זמני במידה ואין קלאס מוגדר ב-CSS
       const style = document.getElementById('high-contrast-style') || document.createElement('style');
       style.id = 'high-contrast-style';
       style.innerHTML = `
@@ -41,7 +40,6 @@ export default function App() {
       if (style) style.remove();
     }
 
-    // קו תחתון לקישורים
     if (underlineLinks) {
       const style = document.getElementById('underline-links-style') || document.createElement('style');
       style.id = 'underline-links-style';
@@ -53,7 +51,6 @@ export default function App() {
     }
   }, [fontSizeMultiplier, highContrast, underlineLinks]);
 
-  // איפוס הגדרות נגישות
   const resetAccessibility = () => {
     setFontSizeMultiplier(100);
     setHighContrast(false);
@@ -71,7 +68,7 @@ export default function App() {
         <Contact />
       </main>
 
-      {/* פוטר הכולל קישור לחלון הצהרת נגישות */}
+      {/* פוטר - פותח אך ורק את הצהרת הנגישות המשפטית */}
       <footer style={{ background: '#071e36', color: '#fff', padding: '30px 20px', textAlign: 'center', fontSize: '0.9rem', borderTop: '2px solid var(--rule-soft)' }}>
         <div style={{ marginBottom: '10px', fontWeight: 600 }}>
           © אגם אחזקות - כל הזכויות שמורות
@@ -86,7 +83,7 @@ export default function App() {
         </div>
       </footer>
 
-      {/* כפתור נגישות כחול צף מובנה בצד ימין למטה (מעל הוואטסאפ או מולו) */}
+      {/* ♿ סמליל נגישות כחול צף בפינה השמאלית התחתונה */}
       <button
         onClick={() => setShowAccessibilityMenu(true)}
         style={{
@@ -109,7 +106,6 @@ export default function App() {
         title="אפשרויות נגישות"
         aria-label="תפריט נגישות"
       >
-        {/* אייקון נגישות אוניברסלי פשוט */}
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="5" r="1"/>
           <path d="m9 20 3-6 3 6"/>
@@ -118,7 +114,7 @@ export default function App() {
         </svg>
       </button>
 
-      {/* 🟦 תפריט אפשרויות נגישות אקטיבי (סרגל נגישות) */}
+      {/* 🟦 חלון קופץ: סרגל אפשרויות נגישות אקטיבי לגולש */}
       {showAccessibilityMenu && (
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 999999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
           <div style={{ background: '#fff', color: '#071e36', padding: '25px', borderRadius: '12px', maxWidth: '400px', width: '100%', boxShadow: '0 10px 25px rgba(0,0,0,0.3)', textAlign: 'right', direction: 'rtl' }}>
@@ -126,14 +122,14 @@ export default function App() {
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
               <button 
-                onClick={() => setFontSizeMultiplier(prev => Math.min(prev + 10, 150))}
-                style={{ width: '100%', padding: '10px', background: '#f5eee6', border: '1px solid #decbc4', borderRadius: '6px', cursor: 'pointer', fontWeight: 600 }}
+                onClick={() => setFontSizeMultiplier(prev => Math.min(prev + 10, 140))}
+                style={{ width: '100%', padding: '10px', background: '#f5eee6', border: '1px solid #decbc4', borderRadius: '6px', cursor: 'pointer', fontWeight: 600, color: '#071e36' }}
               >
                 🔍 הגדל טקסט באתר (+10%)
               </button>
               <button 
                 onClick={() => setFontSizeMultiplier(prev => Math.max(prev - 10, 90))}
-                style={{ width: '100%', padding: '10px', background: '#f5eee6', border: '1px solid #decbc4', borderRadius: '6px', cursor: 'pointer', fontWeight: 600 }}
+                style={{ width: '100%', padding: '10px', background: '#f5eee6', border: '1px solid #decbc4', borderRadius: '6px', cursor: 'pointer', fontWeight: 600, color: '#071e36' }}
               >
                 🔎 הקטן טקסט באתר (-10%)
               </button>
@@ -167,7 +163,7 @@ export default function App() {
         </div>
       )}
 
-      {/* 📄 חלון קופץ להצהרת נגישות חוקית (מהפוטר בלבד) */}
+      {/* 📄 חלון קופץ: הטקסט המשפטי של הצהרת הנגישות (מהפוטר בלבד) */}
       {showAccessibilityStatement && (
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 999999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
           <div style={{ background: '#fff', color: '#071e36', padding: '30px', borderRadius: '12px', maxWidth: '500px', width: '100%', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', textAlign: 'right', position: 'relative', direction: 'rtl', margin: 'auto' }}>
