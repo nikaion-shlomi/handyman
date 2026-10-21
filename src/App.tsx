@@ -8,56 +8,55 @@ import { Contact } from './components/Contact';
 import { WhatsAppOrb } from './components/WhatsAppOrb';
 
 export default function App() {
-  // ניהול חלונות קופצים נפרדים להצהרת נגישות ולתפריט נגישות
+  // ניהול חלונות קופצים נפרדים
   const [showAccessibilityStatement, setShowAccessibilityStatement] = useState(false);
   const [showAccessibilityMenu, setShowAccessibilityMenu] = useState(false);
 
-  // מצבי נגישות (פונקציות בסיסיות ללא תוספים חיצוניים בתור הגנה והתאמה אישית)
-  const [contrast, setContrast] = useState(false);
-  const [largeText, setLargeText] = useState(false);
-  const [readableFont, setReadableFont] = useState(false);
+  // מצבי נגישות אקטיביים
+  const [fontSizeMultiplier, setFontSizeMultiplier] = useState(100);
+  const [highContrast, setHighContrast] = useState(false);
   const [underlineLinks, setUnderlineLinks] = useState(false);
 
-  // החלת המצבים על ה-body או ה-documentElement בזמן שינוי
+  // החלת מצבי הנגישות על ה-DOM של האתר
   useEffect(() => {
-    const html = document.documentElement;
-    
-    if (contrast) {
-      html.style.setProperty('filter', 'contrast(1.4) saturate(1.2)');
-      html.style.setProperty('background', '#000', 'important');
+    // הגדלת/הקטנת פונט
+    document.documentElement.style.fontSize = `${fontSizeMultiplier}%`;
+
+    // ניגודיות גבוהה
+    if (highContrast) {
+      document.body.classList.add('high-contrast-mode');
+      // הוספת סטייל זמני במידה ואין קלאס מוגדר ב-CSS
+      const style = document.getElementById('high-contrast-style') || document.createElement('style');
+      style.id = 'high-contrast-style';
+      style.innerHTML = `
+        .high-contrast-mode { background: #000000 !important; color: #ffffff !important; }
+        .high-contrast-mode p, .high-contrast-mode h1, .high-contrast-mode h2, .high-contrast-mode h3, .high-contrast-mode span { color: #ffffff !important; }
+        .high-contrast-mode a { color: #ffff00 !important; }
+        .high-contrast-mode button { background: #ffffff !important; color: #000000 !important; border: 2px solid #ffff00 !important; }
+      `;
+      if (!document.getElementById('high-contrast-style')) document.head.appendChild(style);
     } else {
-      html.style.removeProperty('filter');
-      html.style.removeProperty('background');
+      document.body.classList.remove('high-contrast-mode');
+      const style = document.getElementById('high-contrast-style');
+      if (style) style.remove();
     }
 
-    if (largeText) {
-      html.style.setProperty('font-size', '120%', 'important');
-    } else {
-      html.style.removeProperty('font-size');
-    }
-
-    if (readableFont) {
-      html.style.setProperty('--display', "'Assistant', system-ui, sans-serif", 'important');
-    } else {
-      html.style.removeProperty('--display');
-    }
-
-    // הוספת קלאס ייעודי לקווי תחתית בקישורים במידה ונבחר
+    // קו תחתון לקישורים
     if (underlineLinks) {
-      const style = document.createElement('style');
-      style.id = 'accessibility-underline-style';
+      const style = document.getElementById('underline-links-style') || document.createElement('style');
+      style.id = 'underline-links-style';
       style.innerHTML = 'a { text-decoration: underline !important; }';
-      document.head.appendChild(style);
+      if (!document.getElementById('underline-links-style')) document.head.appendChild(style);
     } else {
-      document.getElementById('accessibility-underline-style')?.remove();
+      const style = document.getElementById('underline-links-style');
+      if (style) style.remove();
     }
-  }, [contrast, largeText, readableFont, underlineLinks]);
+  }, [fontSizeMultiplier, highContrast, underlineLinks]);
 
-  // איפוס כל הגדרות הנגישות
+  // איפוס הגדרות נגישות
   const resetAccessibility = () => {
-    setContrast(false);
-    setLargeText(false);
-    setReadableFont(false);
+    setFontSizeMultiplier(100);
+    setHighContrast(false);
     setUnderlineLinks(false);
   };
 
@@ -72,7 +71,7 @@ export default function App() {
         <Contact />
       </main>
 
-      {/* פוטר הכולל קישור להצהרת הנגישות בנפרד בתחתית האתר כמחויב בחוק */}
+      {/* פוטר הכולל קישור לחלון הצהרת נגישות */}
       <footer style={{ background: '#071e36', color: '#fff', padding: '30px 20px', textAlign: 'center', fontSize: '0.9rem', borderTop: '2px solid var(--rule-soft)' }}>
         <div style={{ marginBottom: '10px', fontWeight: 600 }}>
           © אגם אחזקות - כל הזכויות שמורות
@@ -87,10 +86,9 @@ export default function App() {
         </div>
       </footer>
 
-      {/* ♿ סמליל הנגישות הכחול הצף - פותח כעת אך ורק את אפשרויות ותפריט הנגישות! */}
+      {/* כפתור נגישות כחול צף מובנה בצד ימין למטה (מעל הוואטסאפ או מולו) */}
       <button
         onClick={() => setShowAccessibilityMenu(true)}
-        aria-label="תפריט נגישות"
         style={{
           position: 'fixed',
           bottom: '100px',
@@ -104,72 +102,72 @@ export default function App() {
           alignItems: 'center',
           justifyContent: 'center',
           boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
-          border: '2px solid #ffffff',
-          cursor: 'pointer'
+          border: 'none',
+          cursor: 'pointer',
+          color: '#fff'
         }}
+        title="אפשרויות נגישות"
+        aria-label="תפריט נגישות"
       >
-        {/* אייקון נגישות נקי ובינלאומי */}
-        <svg viewBox="0 0 24 24" style={{ width: '32px', height: '32px', fill: '#ffffff' }}>
-          <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
+        {/* אייקון נגישות אוניברסלי פשוט */}
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="5" r="1"/>
+          <path d="m9 20 3-6 3 6"/>
+          <path d="m6 8 6 2 6-2"/>
+          <path d="M12 10v4"/>
         </svg>
       </button>
 
-      {/* 🛠️ חלון קופץ 1: תפריט אפשרויות נגישות (נפתח מהכפתור הכחול) */}
+      {/* 🟦 תפריט אפשרויות נגישות אקטיבי (סרגל נגישות) */}
       {showAccessibilityMenu && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 999999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
-          <div style={{ background: '#fff', color: '#071e36', padding: '30px', borderRadius: '12px', maxWidth: '450px', width: '100%', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', textAlign: 'right', position: 'relative', direction: 'rtl', margin: 'auto' }}>
-            <h3 style={{ fontSize: '1.4rem', marginBottom: '20px', color: '#071e36', fontFamily: 'Suez One, serif', fontWeight: 'bold', borderBottom: '2px solid #f2e9e4', paddingBottom: '10px' }}>
-              🔧 סרגל אפשרויות נגישות
-            </h3>
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 999999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+          <div style={{ background: '#fff', color: '#071e36', padding: '25px', borderRadius: '12px', maxWidth: '400px', width: '100%', boxShadow: '0 10px 25px rgba(0,0,0,0.3)', textAlign: 'right', direction: 'rtl' }}>
+            <h3 style={{ fontSize: '1.3rem', marginBottom: '20px', fontFamily: 'Suez One, serif', fontWeight: 'bold', borderBottom: '2px solid #f2e9e4', paddingBottom: '10px' }}>סרגל כלי נגישות</h3>
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '24px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
               <button 
-                onClick={() => setContrast(!contrast)} 
-                style={{ padding: '12px', borderRadius: '6px', border: '1px solid #ccc', background: contrast ? '#071e36' : '#f5eee6', color: contrast ? '#fff' : '#071e36', fontWeight: 'bold', cursor: 'pointer', textAlign: 'right' }}
+                onClick={() => setFontSizeMultiplier(prev => Math.min(prev + 10, 150))}
+                style={{ width: '100%', padding: '10px', background: '#f5eee6', border: '1px solid #decbc4', borderRadius: '6px', cursor: 'pointer', fontWeight: 600 }}
               >
-                {contrast ? '✓ ניגודיות גבוהה פעילה' : '◐ הפעל ניגודיות גבוהה'}
+                🔍 הגדל טקסט באתר (+10%)
               </button>
-
               <button 
-                onClick={() => setLargeText(!largeText)} 
-                style={{ padding: '12px', borderRadius: '6px', border: '1px solid #ccc', background: largeText ? '#071e36' : '#f5eee6', color: largeText ? '#fff' : '#071e36', fontWeight: 'bold', cursor: 'pointer', textAlign: 'right' }}
+                onClick={() => setFontSizeMultiplier(prev => Math.max(prev - 10, 90))}
+                style={{ width: '100%', padding: '10px', background: '#f5eee6', border: '1px solid #decbc4', borderRadius: '6px', cursor: 'pointer', fontWeight: 600 }}
               >
-                {largeText ? '✓ הגדלת גופן פעילה (120%)' : 'A+ הגדל טקסט באתר'}
+                🔎 הקטן טקסט באתר (-10%)
               </button>
-
               <button 
-                onClick={() => setReadableFont(!readableFont)} 
-                style={{ padding: '12px', borderRadius: '6px', border: '1px solid #ccc', background: readableFont ? '#071e36' : '#f5eee6', color: readableFont ? '#fff' : '#071e36', fontWeight: 'bold', cursor: 'pointer', textAlign: 'right' }}
+                onClick={() => setHighContrast(!highContrast)}
+                style={{ width: '100%', padding: '10px', background: highContrast ? '#071e36' : '#f5eee6', color: highContrast ? '#fff' : '#071e36', border: '1px solid #decbc4', borderRadius: '6px', cursor: 'pointer', fontWeight: 600 }}
               >
-                {readableFont ? '✓ גופן קריא פעיל' : '🔤 החלף לגופן קריא (אסיסטנט)'}
+                🌓 {highContrast ? 'ביטול ניגודיות גבוהה' : 'מצב ניגודיות גבוהה (שחור-לבן)'}
               </button>
-
               <button 
-                onClick={() => setUnderlineLinks(!underlineLinks)} 
-                style={{ padding: '12px', borderRadius: '6px', border: '1px solid #ccc', background: underlineLinks ? '#071e36' : '#f5eee6', color: underlineLinks ? '#fff' : '#071e36', fontWeight: 'bold', cursor: 'pointer', textAlign: 'right' }}
+                onClick={() => setUnderlineLinks(!underlineLinks)}
+                style={{ width: '100%', padding: '10px', background: underlineLinks ? '#071e36' : '#f5eee6', color: underlineLinks ? '#fff' : '#071e36', border: '1px solid #decbc4', borderRadius: '6px', cursor: 'pointer', fontWeight: 600 }}
               >
-                {underlineLinks ? '✓ קו תחתון בקישורים פעיל' : '🔗 הדגש קישורים בקו תחתון'}
+                🔗 {underlineLinks ? 'הסר קו תחתון מקישורים' : 'הדגש קישורים בקו תחתון'}
               </button>
-
               <button 
-                onClick={resetAccessibility} 
-                style={{ padding: '10px', borderRadius: '6px', border: 'none', background: '#e63946', color: '#fff', fontWeight: 'bold', cursor: 'pointer', marginTop: '10px' }}
+                onClick={resetAccessibility}
+                style={{ width: '100%', padding: '10px', background: '#d9534f', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', marginTop: '10px' }}
               >
-                ✕ איפוס כל הגדרות הנגישות
+                🔄 איפוס כל הגדרות הנגישות
               </button>
             </div>
 
             <button 
               onClick={() => setShowAccessibilityMenu(false)} 
-              style={{ background: '#071e36', color: '#fff', border: 'none', padding: '12px 20px', borderRadius: '6px', cursor: 'pointer', width: '100%', fontWeight: 'bold', fontSize: '1rem', fontFamily: 'Assistant, sans-serif' }}
+              style={{ background: '#071e36', color: '#fff', border: 'none', padding: '10px', borderRadius: '6px', cursor: 'pointer', width: '100%', fontWeight: 'bold' }}
             >
-              סגור תפריט נגישות
+              סגור תפריט
             </button>
           </div>
         </div>
       )}
 
-      {/* 📄 חלון קופץ 2: הצהרת הנגישות הרשמית (נפתח אך ורק מהקישור בפוטר) */}
+      {/* 📄 חלון קופץ להצהרת נגישות חוקית (מהפוטר בלבד) */}
       {showAccessibilityStatement && (
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 999999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
           <div style={{ background: '#fff', color: '#071e36', padding: '30px', borderRadius: '12px', maxWidth: '500px', width: '100%', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', textAlign: 'right', position: 'relative', direction: 'rtl', margin: 'auto' }}>
@@ -190,7 +188,6 @@ export default function App() {
         </div>
       )}
       
-      {/* כפתור הוואטסאפ המקורי, העגול והעובד שלך בצד שמאל למטה */}
       <WhatsAppOrb />
     </div>
   );
