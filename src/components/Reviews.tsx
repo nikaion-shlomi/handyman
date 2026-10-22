@@ -1,6 +1,10 @@
 import { CONTENT, type Lang } from '../content';
 import { useState } from 'react';
 
+// להחליף בקישור הישיר לכתיבת ביקורת בגוגל של העסק (מפרופיל העסק בגוגל)
+const GOOGLE_REVIEW_URL =
+  'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('שלומי הגמי אגם אחזקות');
+
 export function Reviews() {
   const [lang] = useState<Lang>('he');
   const copy = CONTENT[lang].reviews;
@@ -18,7 +22,7 @@ export function Reviews() {
           <div style={{ borderTop: '1px solid var(--rule)', paddingTop: '20px' }}>
             <h4 style={{ margin: '0 0 8px 0', fontSize: '1.2rem', color: 'var(--ink)' }}>{copy.formTitle}</h4>
             <p style={{ margin: '0 0 20px 0', fontSize: '0.95rem', color: 'var(--ink-faint)' }}>{copy.formLede}</p>
-            <a href="https://goo.gl" target="_blank" rel="noreferrer" className="btn btn--primary">
+            <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', background: 'var(--accent)', color: '#fff', padding: '12px 24px', borderRadius: '6px', textDecoration: 'none', fontWeight: 700 }}>
               {copy.googleCta}
             </a>
           </div>
