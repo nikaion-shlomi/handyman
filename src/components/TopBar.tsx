@@ -1,41 +1,45 @@
-import { GALLERY } from '../content';
 import { useLang } from '../lang';
-import { GlobeIcon } from '../icons';
+
+function GlobeIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" />
+    </svg>
+  );
+}
 
 export function TopBar() {
-  const { copy, toggle } = useLang();
+  const { lang, copy, toggle } = useLang();
+  const hasGallery = (copy.gallery?.items?.length ?? 0) > 0;
+  const nav = (copy.topbar?.nav ?? []).filter(
+    (item: { href: string }) => item.href !== '#gallery' || hasGallery
+  );
 
   return (
     <header className="topbar">
       <div className="shell topbar__inner">
         <a className="topbar__mark" href="#top">
-          <span className="topbar__name">{copy.hero.name}</span>
-          <span className="topbar__trade">{copy.hero.trade}</span>
+          <span className="topbar__name">{copy.topbar?.name}</span>
+          <span className="topbar__trade">{copy.topbar?.trade}</span>
         </a>
 
         <nav className="topbar__nav">
-          <a className="topbar__link" href="#services">
-            {copy.nav.services}
-          </a>
-          {GALLERY.length > 0 ? (
-            <a className="topbar__link" href="#gallery">
-              {copy.nav.gallery}
+          {nav.map((item: { label: string; href: string }) => (
+            <a key={item.href} className="topbar__link" href={item.href}>
+              {item.label}
             </a>
-          ) : null}
-          <a className="topbar__link" href="#reviews">
-            {copy.nav.reviews}
-          </a>
-          <a className="topbar__link" href="#videos">
-            {copy.nav.videos}
-          </a>
-          <a className="topbar__link" href="#contact">
-            {copy.nav.contact}
-          </a>
+          ))}
         </nav>
 
-        <button type="button" className="langtoggle" onClick={toggle} aria-label={copy.toggle.aria}>
+        <button
+          type="button"
+          className="langtoggle"
+          onClick={toggle}
+          aria-label={lang === 'he' ? 'Switch to English' : 'החלפה לעברית'}
+        >
           <GlobeIcon />
-          {copy.toggle.label}
+          {lang === 'he' ? 'EN' : 'עב'}
         </button>
       </div>
     </header>
