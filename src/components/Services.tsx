@@ -1,8 +1,8 @@
-import { CONTENT, type Lang } from '../content';
-import { useState } from 'react';
+import { CONTENT } from '../content';
+import { useLang } from '../lang';
 
 export function Services() {
-  const [lang] = useState<Lang>('he');
+  const { lang } = useLang();
   const copy = CONTENT[lang].services;
 
   // פנייה ישירה לשמות הקבצים המדויקים שרואים בצילום המסך שלך
