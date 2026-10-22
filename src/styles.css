@@ -1,16 +1,18 @@
 :root {
-  --ink: #071e36;
-  --ink-soft: #233950;
-  --ink-faint: #566c83;
-  --ground: #fcf9f5;
-  --ground-deep: #f5eee6;
-  --paper: #ffffff;
-  --accent: #967844;
-  --accent-deep: #755c32;
-  --accent-wash: #fbf9f6;
-  --rule: #decbc4;
-  --rule-soft: #f2e9e4;
-  --accent-bright: #b3945d;
+  /* פלטת הכרטיס: כחול כהה + צהוב */
+  --ink: #ffffff;
+  --ink-soft: #dbe7f4;
+  --ink-faint: #b9cbe0;
+  --ground: #071a2e;
+  --ground-deep: #0a2340;
+  --paper: #0f2f52;
+  --accent: #ffc72c;
+  --accent-deep: #ffc72c;
+  --accent-wash: #0f2f52;
+  --rule: rgba(255, 199, 44, 0.38);
+  --rule-soft: rgba(255, 255, 255, 0.18);
+  --accent-bright: #ffd75e;
+  --on-accent: #071a2e;
   --wa: #25d366;
   --wa-deep: #128c7e;
   --rail: 64px;
@@ -57,10 +59,10 @@ img, svg { display: block; max-width: 100%; }
   right: 0 !important;
   width: 100% !important;
   z-index: 999999 !important;
-  background: rgba(252, 249, 245, 0.98) !important;
+  background: rgba(7, 26, 46, 0.97) !important;
   backdrop-filter: blur(14px);
   border-bottom: 2px solid var(--rule-soft) !important;
-  box-shadow: 0 10px 30px -10px rgba(7, 30, 54, 0.08) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important;
 }
 
 .topbar__inner { display: flex; align-items: center; gap: 40px !important; min-height: 84px !important; padding-block: 12px !important; max-width: 100% !important; padding-inline: clamp(24px, 5vw, 64px) !important; position: relative !important; }
@@ -74,6 +76,7 @@ img, svg { display: block; max-width: 100%; }
   align-items: center;
   gap: 7px;
   background: transparent;
+  color: var(--ink);
   border: 1.5px solid var(--ink);
   border-radius: 999px;
   padding: 6px 14px;
@@ -119,7 +122,7 @@ img, svg { display: block; max-width: 100%; }
 /* ---------- כרטיסיות שירות פרימיום זיג-זג ---------- */
 .premium-services-section { background: var(--ground); padding-block: 60px; width: 100%; }
 .premium-services-container { display: flex; flex-direction: column; gap: 40px; width: 100%; }
-.premium-service-card { background: #ffffff; border-radius: 24px; padding: 32px; border: 1px solid #f1f5f9; box-shadow: 0 15px 35px -15px rgba(7, 30, 54, 0.05); display: flex; align-items: center; justify-content: space-between; gap: 32px; width: 100%; }
+.premium-service-card { background: var(--paper); border-radius: 24px; padding: 32px; border: 1px solid var(--rule); box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: space-between; gap: 32px; width: 100%; }
 
 .layout-normal { flex-direction: row; }
 .layout-reverse { flex-direction: row-reverse; }
@@ -128,7 +131,7 @@ img, svg { display: block; max-width: 100%; }
 .premium-card-text h3 { font-size: 1.6rem; font-weight: 700; color: var(--ink); margin: 0 0 8px 0; }
 .premium-card-text p { color: var(--ink-soft); font-size: 1.05rem; line-height: 1.6; margin: 0; }
 .premium-card-number { display: block; font-family: var(--mono); font-size: 1.1rem; color: var(--accent); font-weight: 700; margin-bottom: 6px; opacity: 0.5; }
-.premium-card-image { flex: none; width: 45%; height: 280px; background-size: cover; background-position: center; border-radius: 16px; border: 1px solid #e2e8f0; }
+.premium-card-image { flex: none; width: 45%; height: 280px; background-size: cover; background-position: center; border-radius: 16px; border: 1px solid var(--rule); }
 
 /* ---------- התאמה מדויקת ונעילת שורה אחת לתפריט העליון בניידים ---------- */
 @media (max-width: 850px) {
