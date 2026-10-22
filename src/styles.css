@@ -1,17 +1,17 @@
 :root {
-  /* פלטת הכרטיס: כחול כהה + צהוב */
+  /* פלטה: כחול כהה + תכלת רגוע */
   --ink: #ffffff;
   --ink-soft: #dbe7f4;
   --ink-faint: #b9cbe0;
   --ground: #071a2e;
   --ground-deep: #0a2340;
   --paper: #0f2f52;
-  --accent: #ffc72c;
-  --accent-deep: #ffc72c;
+  --accent: #8fc1e3;
+  --accent-deep: #8fc1e3;
   --accent-wash: #0f2f52;
-  --rule: rgba(255, 199, 44, 0.38);
+  --rule: rgba(143, 193, 227, 0.35);
   --rule-soft: rgba(255, 255, 255, 0.18);
-  --accent-bright: #ffd75e;
+  --accent-bright: #b5d8ee;
   --on-accent: #071a2e;
   --wa: #25d366;
   --wa-deep: #128c7e;
