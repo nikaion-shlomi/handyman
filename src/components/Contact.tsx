@@ -9,7 +9,7 @@ export function Contact() {
 
   return (
     <section id="contact" style={{ padding: '60px 20px', background: 'var(--ground-deep)' }}>
-      <div className="shell" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'right' }}>
+      <div className="shell" style={{ maxWidth: '800px', margin: '0 auto', textAlign: lang === 'en' ? 'left' : 'right' }}>
         <span style={{ color: 'var(--accent)', fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>
           {contact.eyebrow}
         </span>
