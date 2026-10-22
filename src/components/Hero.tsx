@@ -21,7 +21,7 @@ export function Hero() {
               <a href={waLink(lang)} target="_blank" rel="noopener noreferrer" style={{ background: '#25d366', color: '#fff', padding: '12px 24px', borderRadius: '6px', textDecoration: 'none', fontWeight: 'bold' }}>
                 {hero.cta}
               </a>
-              <a href={`tel:${hero.phone}`} style={{ background: 'var(--accent)', color: '#fff', padding: '12px 24px', borderRadius: '6px', textDecoration: 'none', fontWeight: 'bold' }}>
+              <a href={`tel:${hero.phone}`} style={{ background: 'var(--accent)', color: 'var(--on-accent)', padding: '12px 24px', borderRadius: '6px', textDecoration: 'none', fontWeight: 'bold' }}>
                 {hero.call}
               </a>
             </div>
