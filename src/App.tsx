@@ -6,10 +6,12 @@ import { Videos } from './components/Videos';
 import { Reviews } from './components/Reviews';
 import { Contact } from './components/Contact';
 import { WhatsAppOrb } from './components/WhatsAppOrb';
+import { useLang } from './lang';
 import AccessibilityModal from './components/AccessibilityModal'; // חיבור הקובץ הקיים שלך של ההצהרה
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { lang } = useLang();
 
   // הזרקת סרגל הנגישות המקצועי של UserWay ישירות ברקע ללא תקלות עיצוב
   useEffect(() => {
@@ -26,7 +28,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="app-container" style={{ direction: 'rtl', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="app-container" style={{ direction: lang === 'en' ? 'ltr' : 'rtl', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <TopBar />
       <main style={{ flex: '1 0 auto' }}>
         <Hero />
@@ -38,12 +40,12 @@ export default function App() {
       
       {/* פוטר נקי עם כפתור מובנה לפתיחת חלון הצהרת הנגישות הקיים שלך */}
       <footer style={{ background: '#071e36', color: '#fff', padding: '30px 20px', textAlign: 'center', fontSize: '0.85rem', fontFamily: 'Assistant, sans-serif' }}>
-        <div style={{ marginBottom: '8px' }}>© אגם אחזקות - כל הזכויות שמורות</div>
+        <div style={{ marginBottom: '8px' }}>{lang === 'en' ? '© Agam Maintenance - All rights reserved' : '© אגם אחזקות - כל הזכויות שמורות'}</div>
         <button 
           onClick={() => setIsModalOpen(true)}
           style={{ background: 'none', border: 'none', color: '#a8c4dc', textDecoration: 'underline', cursor: 'pointer', font: 'inherit', fontWeight: 'bold' }}
         >
-          הצהרת ננגישות העסק
+          {lang === 'en' ? 'Accessibility Statement' : 'הצהרת נגישות העסק'}
         </button>
       </footer>
       
