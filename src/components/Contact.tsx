@@ -1,7 +1,8 @@
-import { useCopy } from '../lang';
+import { useLang } from '../lang';
+import { waLink } from '../content';
 
 export function Contact() {
-  const copy = useCopy() as any;
+  const { lang, copy } = useLang();
   const contact = copy.contact;
 
   if (!contact) return null;
@@ -21,7 +22,7 @@ export function Contact() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <a 
-            href={`https://wa.me`}
+            href={waLink(lang)}
             target="_blank"
             rel="noopener noreferrer"
             style={{ display: 'block', background: '#25d366', color: '#fff', padding: '15px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', textAlign: 'center', fontSize: '1.2rem' }}
