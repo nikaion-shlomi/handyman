@@ -1,17 +1,17 @@
-import { CONTENT, type Lang } from '../content';
-import { useState } from 'react';
+import { CONTENT } from '../content';
+import { useLang } from '../lang';
 
 // להחליף בקישור הישיר לכתיבת ביקורת בגוגל של העסק (מפרופיל העסק בגוגל)
 const GOOGLE_REVIEW_URL =
   'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('שלומי הגמי אגם אחזקות');
 
 export function Reviews() {
-  const [lang] = useState<Lang>('he');
+  const { lang } = useLang();
   const copy = CONTENT[lang].reviews;
 
   return (
     <section id="reviews" style={{ paddingBlock: '60px', background: 'var(--paper)' }}>
-      <div className="shell" style={{ textAlign: 'right' }}>
+      <div className="shell" style={{ textAlign: lang === 'en' ? 'left' : 'right' }}>
         <div style={{ marginBottom: '32px' }}>
           <span className="eyebrow">{copy.eyebrow}</span>
           <h2 style={{ fontSize: '2rem', marginTop: '8px', color: 'var(--ink)' }}>{copy.title}</h2>
