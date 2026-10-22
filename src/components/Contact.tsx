@@ -32,7 +32,7 @@ export function Contact() {
 
           <a 
             href={`tel:${contact.phone}`}
-            style={{ display: 'block', background: 'var(--ink)', color: '#fff', padding: '15px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', textAlign: 'center', fontSize: '1.2rem' }}
+            style={{ display: 'block', background: 'var(--accent)', color: 'var(--on-accent)', padding: '15px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', textAlign: 'center', fontSize: '1.2rem' }}
           >
             📞 {contact.call}: {contact.phone}
           </a>
