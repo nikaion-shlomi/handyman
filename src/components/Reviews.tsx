@@ -22,7 +22,7 @@ export function Reviews() {
           <div style={{ borderTop: '1px solid var(--rule)', paddingTop: '20px' }}>
             <h4 style={{ margin: '0 0 8px 0', fontSize: '1.2rem', color: 'var(--ink)' }}>{copy.formTitle}</h4>
             <p style={{ margin: '0 0 20px 0', fontSize: '0.95rem', color: 'var(--ink-faint)' }}>{copy.formLede}</p>
-            <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', background: 'var(--accent)', color: '#fff', padding: '12px 24px', borderRadius: '6px', textDecoration: 'none', fontWeight: 700 }}>
+            <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', background: 'var(--accent)', color: 'var(--on-accent)', padding: '12px 24px', borderRadius: '6px', textDecoration: 'none', fontWeight: 700 }}>
               {copy.googleCta}
             </a>
           </div>
