@@ -1,13 +1,17 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "$schema": "https://vercel.sh",
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/((?!sitemap\\.xml).* )",
-      "destination": "/"
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
