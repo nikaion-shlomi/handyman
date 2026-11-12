@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { TopBar } from './components/TopBar';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
+import { Committees } from './components/Committees';
 import { Videos } from './components/Videos';
 import { Reviews } from './components/Reviews';
+import { FAQ } from './components/FAQ';
 import { Contact } from './components/Contact';
 import { WhatsAppOrb } from './components/WhatsAppOrb';
 import { useLang } from './lang';
@@ -21,8 +23,10 @@ export default function App() {
       <main style={{ flex: '1 0 auto' }}>
         <Hero />
         <Services />
+        <Committees />
         <Videos />
         <Reviews />
+        <FAQ />
         <Contact />
       </main>
       
