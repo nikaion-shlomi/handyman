@@ -47,6 +47,22 @@ export function Services() {
           })}
         </div>
 
+        {copy.more && copy.more.length > 0 && (
+          <div style={{ marginTop: '36px', textAlign: lang === 'en' ? 'left' : 'right' }}>
+            <h3 style={{ fontSize: '1.3rem', marginBottom: '14px', color: 'var(--ink)' }}>{copy.moreTitle}</h3>
+            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              {copy.more.map((service, i) => (
+                <li
+                  key={i}
+                  style={{ border: '1px solid var(--rule)', background: 'var(--paper)', color: 'var(--ink)', padding: '8px 16px', borderRadius: '999px', fontSize: '1rem' }}
+                >
+                  {service}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <div className="services-bottom-note">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="12" cy="12" r="10" />
