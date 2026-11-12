@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CONTENT, VIDEOS } from '../content';
 import { useLang } from '../lang';
 
-const INITIAL_COUNT = 3;
+const INITIAL_COUNT = 4;
 
 export function Videos() {
   const { lang } = useLang();
@@ -25,7 +25,7 @@ export function Videos() {
           <p style={{ color: 'var(--ink-soft)', marginTop: '8px' }}>{copy.lede}</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '24px' }}>
+        <div className="videos-grid">
           {visible.map((id) => {
             // האינדקס נלקח מהרשימה המלאה כדי שהכותרת תמיד תתאים לסרטון
             const index = VIDEOS.indexOf(id);
@@ -34,9 +34,9 @@ export function Videos() {
 
             return (
               <div key={id} style={{ background: 'var(--paper)', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--rule-soft)', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-                <div style={{ padding: '16px', borderBottom: '1px solid var(--rule-soft)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', direction: lang === 'en' ? 'ltr' : 'rtl' }}>
+                <div style={{ padding: '14px', borderBottom: '1px solid var(--rule-soft)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px', direction: lang === 'en' ? 'ltr' : 'rtl' }}>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: '0.8rem', color: 'var(--accent)' }}>0{index + 1}</span>
-                  <h3 style={{ fontSize: '1.05rem', margin: 0, color: 'var(--ink)', fontWeight: '600' }}>{copy.items[index]}</h3>
+                  <h3 style={{ fontSize: '1rem', margin: 0, color: 'var(--ink)', fontWeight: '600', lineHeight: 1.3 }}>{copy.items[index]}</h3>
                 </div>
                 <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', background: '#000' }}>
                   <video
