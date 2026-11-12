@@ -31,7 +31,7 @@ export default function App() {
         <div style={{ marginBottom: '8px' }}>{lang === 'en' ? '© Agam Maintenance - All rights reserved' : '© אגם אחזקות - כל הזכויות שמורות'}</div>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
           <a
-            href="https://www.facebook.com/share/1DiD49Jv1G/"
+            href="https://www.facebook.com/nikaion/"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: '#a8c4dc', textDecoration: 'underline', fontWeight: 'bold' }}
