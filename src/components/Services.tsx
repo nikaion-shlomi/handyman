@@ -38,6 +38,8 @@ export function Services() {
                 </div>
                 <div 
                   className="premium-card-image" 
+                  role="img"
+                  aria-label={item.title}
                   style={{ backgroundImage: `url(${serviceImages[index]})` }}
                 />
               </article>

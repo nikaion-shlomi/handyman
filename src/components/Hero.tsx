@@ -13,7 +13,10 @@ export function Hero() {
       <div className="shell">
         <div className="hero__grid">
           <div className="hero__copy">
-            <h1 className="hero__name">{copy.topbar?.name || 'שלומי הגמי'}</h1>
+            <h1 className="hero__name">
+              {copy.topbar?.name || 'שלומי הגמי'}
+              {copy.topbar?.trade && <span className="hero__trade">{copy.topbar.trade}</span>}
+            </h1>
             <div className="hero__claim">{hero.claim}</div>
             <p className="hero__lede">{hero.lede}</p>
             
@@ -39,7 +42,7 @@ export function Hero() {
           </div>
 
           <div className="portrait">
-            <img src={hero.avatar || '/shlomi.jpg'} alt="שלומי הגמי" />
+            <img src={hero.avatar || '/shlomi.jpg'} alt={`${copy.topbar?.name || 'שלומי הגמי'} - ${copy.topbar?.trade || 'אגם אחזקות'}`} />
           </div>
         </div>
       </div>
