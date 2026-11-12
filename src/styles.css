@@ -188,3 +188,6 @@ html[dir="ltr"] .premium-card-text { text-align: left; }
 
 /* שם העסק מתחת לשם הראשי בראש העמוד */
 .hero__trade { display: block; margin-top: 10px; font-family: var(--body); font-size: clamp(1.2rem, 4vw, 1.7rem); font-weight: 700; line-height: 1.2; letter-spacing: 0.02em; color: var(--accent); }
+
+/* רווח בין השם לשם העסק בסרגל העליון */
+.topbar__trade { margin-inline-start: 10px; }
