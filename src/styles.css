@@ -191,3 +191,12 @@ html[dir="ltr"] .premium-card-text { text-align: left; }
 
 /* רווח בין השם לשם העסק בסרגל העליון */
 .topbar__trade { margin-inline-start: 10px; }
+
+/* ---------- קרוסלה אופקית (סרטונים והמלצות) ---------- */
+.carousel-nav { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 10px; }
+.carousel-btn { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--accent); background: transparent; color: var(--accent); font-size: 1.2rem; font-weight: 700; line-height: 1; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.carousel-btn:active { background: var(--accent); color: var(--on-accent); }
+.carousel { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; }
+.carousel::-webkit-scrollbar { display: none; }
+.carousel > * { flex: 0 0 min(300px, 84%); scroll-snap-align: start; }
+.carousel--text > * { flex-basis: min(340px, 86%); }
