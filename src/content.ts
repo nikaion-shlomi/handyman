@@ -33,7 +33,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
       description: 'הנדימן ואחזקת מבנים באזור המרכז: איטום, אינסטלציה, חשמל, ריתוך ותיקונים. 28 שנות ותק, מחיר סגור מראש, הגעה תוך 24 שעות.'
     },
     topbar: { name: 'שלומי הגמי', trade: 'אגם אחזקות', nav: [{ label: 'מה אני עושה', href: '#services' }, { label: 'לוועדי בית', href: '#committees' }, { label: 'חוות דעת', href: '#reviews' }, { label: 'יצירת קשר', href: '#contact' }] },
-    hero: { claim: 'מהביוב ועד לגג.', lede: 'אחזקת מבנים לוועדי בית, לעסקים ולבתים פרטיים – איטום, אינסטלציה, חשמל, ריתוך ותיקונים. מגיע עם הכלים, מראה מה הבעיה, מנקה אחרי, והמחיר סגור מראש. את העבודה אני מבצע בעצמי.', cta: 'שלחו הודעה בוואטסאפ', call: 'חייגו אליי', phone: '050-380-8067', phoneDisplay: '050-380-8067', avatar: '/shlomi.jpg', photo: '/hero-bg.jpg', stats: [{ value: '28', label: 'שנות ותק' }, { value: '3000+', label: 'קריאות בשנה' }, { value: '24 ש׳', label: 'זמן הגעה' }] },
+    hero: { claim: 'הנדימן מהביוב ועד לגג.', lede: 'אחזקת מבנים לוועדי בית, לעסקים ולבתים פרטיים – איטום, אינסטלציה, חשמל, ריתוך ותיקונים. מגיע עם הכלים, מראה מה הבעיה, מנקה אחרי, והמחיר סגור מראש. את העבודה אני מבצע בעצמי.', cta: 'שלחו הודעה בוואטסאפ', call: 'חייגו אליי', phone: '050-380-8067', phoneDisplay: '050-380-8067', avatar: '/shlomi.jpg', photo: '/hero-bg.jpg', stats: [{ value: '28', label: 'שנות ותק' }, { value: '3000+', label: 'קריאות בשנה' }, { value: '24 ש׳', label: 'זמן הגעה' }] },
     services: {
       eyebrow: 'התמחויות',
       title: 'שירותי אחזקה מקיפים',
@@ -47,7 +47,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
         { title: 'איטום ורטיבות', body: 'איטום גגות, פתרון נזילות קשות, שיקום קירות לאחר פגיעות מים וטיפול ברטיבות.' },
         { title: 'ריתוך ומסגרות', body: 'תיקון והקמת קונסטרוקציות, מסגרות כבדה וקלה, ריתוך עמודי חירום ושערים.' },
         { title: 'שטחים משותפים לוועדים', body: 'תחזוקה שוטפת של בנייני מגורים, תיקוני לובי, מערכות שאיבה ותקלות דחופות.' },
-        { title: 'עבודות ותיקונים בבית', body: 'התקנה ותיקון דלתות, התקנת מזגנים, מצלמות אבטחה ואינטרקום, החלפת גופי תאורה, תליית טלוויזיות ומדפים והרכבת רהיטים.' }
+        { title: 'עבודות הנדימן ותיקונים בבית', body: 'התקנה ותיקון דלתות, התקנת מזגנים, מצלמות אבטחה ואינטרקום, החלפת גופי תאורה, תליית טלוויזיות ומדפים והרכבת רהיטים.' }
       ]
     },
     committees: {
@@ -93,7 +93,7 @@ export const CONTENT: Record<Lang, SiteContent> = {
       description: 'Handyman and building maintenance in central Israel: waterproofing, plumbing, electrical, welding and repairs. 28 years of experience, fixed price upfront, arrival within 24 hours.'
     },
     topbar: { name: 'Shlomi Hagami', trade: 'Agam Maintenance', nav: [{ label: 'Services', href: '#services' }, { label: 'Committees', href: '#committees' }, { label: 'Reviews', href: '#reviews' }, { label: 'Contact', href: '#contact' }] },
-    hero: { claim: 'From Sewage to Roof.', lede: "Building maintenance for committees, businesses and private homes – waterproofing, plumbing, electrical, welding and repairs. I arrive with the tools, show you what's wrong, clean up afterwards, and agree on a fixed price upfront. I do the work myself.", cta: 'Chat on WhatsApp', call: 'Call Me Directly', phone: '050-380-8067', phoneDisplay: '050-380-8067', avatar: '/shlomi.jpg', photo: '/hero-bg.jpg', stats: [{ value: '28', label: 'Years Exp.' }, { value: '3000+', label: 'Calls / Year' }, { value: '24h', label: 'Response Time' }] },
+    hero: { claim: 'Handyman, from sewage to roof.', lede: "Building maintenance for committees, businesses and private homes – waterproofing, plumbing, electrical, welding and repairs. I arrive with the tools, show you what's wrong, clean up afterwards, and agree on a fixed price upfront. I do the work myself.", cta: 'Chat on WhatsApp', call: 'Call Me Directly', phone: '050-380-8067', phoneDisplay: '050-380-8067', avatar: '/shlomi.jpg', photo: '/hero-bg.jpg', stats: [{ value: '28', label: 'Years Exp.' }, { value: '3000+', label: 'Calls / Year' }, { value: '24h', label: 'Response Time' }] },
     services: {
       eyebrow: 'Expertise',
       title: 'My Professional Services',
