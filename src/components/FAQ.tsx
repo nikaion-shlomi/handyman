@@ -6,7 +6,7 @@ export function FAQ() {
   const copy = CONTENT[lang].faq;
 
   return (
-    <section id="faq" style={{ paddingBlock: '60px', background: 'var(--ground)' }}>
+    <section id="faq" style={{ paddingBlock: '48px', background: 'var(--ground)' }}>
       <div className="shell" style={{ textAlign: lang === 'en' ? 'left' : 'right' }}>
         <div style={{ marginBottom: '32px' }}>
           <span className="eyebrow">{copy.eyebrow}</span>
