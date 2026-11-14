@@ -6,6 +6,7 @@ export interface SiteContent {
   hero: { claim: string; lede: string; cta: string; call: string; phone: string; phoneDisplay: string; avatar: string; photo: string; stats: { value: string; label: string; }[]; };
   services: { eyebrow: string; title: string; lede: string; note: string; items: { title: string; body: string; }[]; moreTitle?: string; more?: string[]; };
   committees: { eyebrow: string; title: string; lede: string; points: { title: string; body: string; }[]; cta: string; waText: string; };
+  audiences: { eyebrow: string; title: string; lede: string; tabs: { id: string; label: string; title: string; body: string; items: string[]; cta: string; waText: string; }[]; };
   faq: { eyebrow: string; title: string; items: { q: string; a: string; }[]; };
   gallery: { eyebrow: string; title: string; lede: string; length: number; items: any[]; };
   videos: { eyebrow: string; title: string; lede: string; playLabel: string; items: string[]; };
@@ -32,8 +33,8 @@ export const CONTENT: Record<Lang, SiteContent> = {
       dir: 'rtl',
       description: 'הנדימן ואחזקת מבנים באזור המרכז: איטום, אינסטלציה, חשמל, ריתוך ותיקונים. 28 שנות ותק, מחיר סגור מראש, הגעה תוך 24 שעות.'
     },
-    topbar: { name: 'שלומי הגמי', trade: 'אגם אחזקות', nav: [{ label: 'מה אני עושה', href: '#services' }, { label: 'לוועדי בית', href: '#committees' }, { label: 'חוות דעת', href: '#reviews' }, { label: 'יצירת קשר', href: '#contact' }] },
-    hero: { claim: 'הנדימן מהביוב ועד לגג.', lede: 'אחזקת מבנים לוועדי בית, לעסקים ולבתים פרטיים – איטום, אינסטלציה, חשמל, ריתוך ותיקונים. מגיע עם הכלים, מראה מה הבעיה, מנקה אחרי, והמחיר סגור מראש. את העבודה אני מבצע בעצמי.', cta: 'שלחו הודעה בוואטסאפ', call: 'חייגו אליי', phone: '050-380-8067', phoneDisplay: '050-380-8067', avatar: '/shlomi.jpg', photo: '/hero-bg.jpg', stats: [{ value: '28', label: 'שנות ותק' }, { value: '3000+', label: 'קריאות בשנה' }, { value: '24 ש׳', label: 'זמן הגעה' }] },
+    topbar: { name: 'שלומי הגמי', trade: 'אגם אחזקות', nav: [{ label: 'מה אני עושה', href: '#services' }, { label: 'בית · ועד · עסק', href: '#audiences' }, { label: 'חוות דעת', href: '#reviews' }, { label: 'יצירת קשר', href: '#contact' }] },
+    hero: { claim: 'הנדימן מהביוב ועד לגג.', lede: 'לבית פרטי, לוועד בית ולעסק – כל תיקון והתקנה: איטום, אינסטלציה, חשמל, ריתוך, מזגנים, דלתות ועוד. מגיע עם הכלים, מנקה אחרי, והמחיר סגור מראש. את העבודה אני מבצע בעצמי.', cta: 'שלחו הודעה בוואטסאפ', call: 'חייגו אליי', phone: '050-380-8067', phoneDisplay: '050-380-8067', avatar: '/shlomi.jpg', photo: '/hero-bg.jpg', stats: [{ value: '28', label: 'שנות ותק' }, { value: '3000+', label: 'קריאות בשנה' }, { value: '24 ש׳', label: 'זמן הגעה' }] },
     services: {
       eyebrow: 'התמחויות',
       title: 'שירותי אחזקה מקיפים',
@@ -74,9 +75,43 @@ export const CONTENT: Record<Lang, SiteContent> = {
         { q: 'האם אתה מבצע את העבודה בעצמך?', a: 'כן. אני עצמי מגיע ומבצע את העבודה, ולא שולח מישהו אחר במקומי.' },
         { q: 'באילו אזורים אתה עובד?', a: 'באר יעקב, ראשון לציון, נס ציונה, רחובות, חולון, בת ים, רמלה והסביבה.' },
         { q: 'אילו עבודות אתה עושה בבית פרטי?', a: 'תליית טלוויזיות ומדפים, הרכבת רהיטים, התקנה ותיקון דלתות, החלפת גופי תאורה, התקנת מזגנים, מצלמות אבטחה ואינטרקום, תיקון שערים חשמליים, וגם אינסטלציה, חשמל, איטום וריתוך.' },
-        { q: 'האם אתה עובד עם ועדי בית ועסקים?', a: 'כן, עם ועדי בית, עסקים ובתים פרטיים.' },
+        { q: 'עם מי אתה עובד?', a: 'עם כולם: בתים פרטיים, ועדי בית, עסקים ומוסדות. מתליית טלוויזיה ועד איטום גג.' },
         { q: 'מה עושים בנזילה או בתקלת חשמל עד שאתה מגיע?', a: 'בנזילה חזקה סגרו את מגופי המים הראשיים. בתקלת חשמל נתקו את המפסק הראשי בלוח. אחר כך שלחו לי תמונה או סרטון. בסכנה מיידית פנו לשירותי החירום.' },
         { q: 'באילו שעות אתה זמין?', a: 'ימים א׳-ה׳: 08:00 - 19:00, יום ו׳: 08:00 - 14:00.' }
+      ]
+    },
+    audiences: {
+      eyebrow: 'מי אני עובד איתו',
+      title: 'לבית, לוועד ולעסק – אותו שירות מהיר',
+      lede: 'מתליית טלוויזיה ועד איטום גג: אני מגיע, מתקן ומנקה אחרי, ואת העבודה אני מבצע בעצמי.',
+      tabs: [
+        {
+          id: 'home',
+          label: 'בית פרטי',
+          title: 'לבית שלכם',
+          body: 'תיקונים והתקנות קטנות וגדולות. שלחו תמונה בוואטסאפ ותקבלו מחיר סגור.',
+          items: ['תליית טלוויזיות ומדפים', 'הרכבת רהיטים', 'החלפת גופי תאורה', 'התקנת מזגנים', 'תיקון והתקנת דלתות', 'נזילות וסתימות', 'איטום גג ורטיבות', 'מצלמות ואינטרקום'],
+          cta: 'שלחו הודעה לתיקון בבית',
+          waText: 'היי שלומי, אני מחפש/ת הנדימן לבית ואשמח להצעת מחיר.'
+        },
+        {
+          id: 'committee',
+          label: 'ועד בית',
+          title: 'לוועד הבית',
+          body: 'אחזקה שוטפת ותקלות דחופות בבניין ובשטחים המשותפים. הגעה תוך 24 שעות.',
+          items: ['חדר משאבות ומערכות מים', 'תיקוני לובי ותאורה', 'שערים חשמליים', 'מצלמות אבטחה ו-DVR', 'איטום גגות ורטיבות', 'ריתוך ומסגרות', 'עמודי בטיחות', 'פתיחת סתימות בקווי ביוב'],
+          cta: 'שלחו הודעה בשם הוועד',
+          waText: 'היי שלומי, אני מוועד הבית ואשמח לדבר על אחזקה לבניין.'
+        },
+        {
+          id: 'business',
+          label: 'עסקים ומוסדות',
+          title: 'לעסק או למוסד',
+          body: 'תיקונים והתקנות לחנויות, משרדים ומבנים ציבוריים.',
+          items: ['חשמל ותאורה', 'אינסטלציה וסתימות', 'התקנת מזגנים', 'מצלמות ואינטרקום', 'ריתוך ומסגרות', 'תיקון דלתות ושערים', 'איטום ורטיבות'],
+          cta: 'שלחו הודעה בשם העסק',
+          waText: 'היי שלומי, אני מעסק/מוסד ואשמח לדבר על תיקונים ואחזקה.'
+        }
       ]
     },
     gallery: { eyebrow: 'מהשטח', title: 'עבודות אחרונות שביצעתי', lede: 'מבחר פרויקטים ותיקונים שצולמו בזמן אמת.', length: 0, items: [] },
@@ -92,8 +127,8 @@ export const CONTENT: Record<Lang, SiteContent> = {
       dir: 'ltr',
       description: 'Handyman and building maintenance in central Israel: waterproofing, plumbing, electrical, welding and repairs. 28 years of experience, fixed price upfront, arrival within 24 hours.'
     },
-    topbar: { name: 'Shlomi Hagami', trade: 'Agam Maintenance', nav: [{ label: 'Services', href: '#services' }, { label: 'Committees', href: '#committees' }, { label: 'Reviews', href: '#reviews' }, { label: 'Contact', href: '#contact' }] },
-    hero: { claim: 'Handyman, from sewage to roof.', lede: "Building maintenance for committees, businesses and private homes – waterproofing, plumbing, electrical, welding and repairs. I arrive with the tools, show you what's wrong, clean up afterwards, and agree on a fixed price upfront. I do the work myself.", cta: 'Chat on WhatsApp', call: 'Call Me Directly', phone: '050-380-8067', phoneDisplay: '050-380-8067', avatar: '/shlomi.jpg', photo: '/hero-bg.jpg', stats: [{ value: '28', label: 'Years Exp.' }, { value: '3000+', label: 'Calls / Year' }, { value: '24h', label: 'Response Time' }] },
+    topbar: { name: 'Shlomi Hagami', trade: 'Agam Maintenance', nav: [{ label: 'Services', href: '#services' }, { label: 'Who I serve', href: '#audiences' }, { label: 'Reviews', href: '#reviews' }, { label: 'Contact', href: '#contact' }] },
+    hero: { claim: 'Handyman, from sewage to roof.', lede: "For private homes, building committees and businesses – any repair or installation: waterproofing, plumbing, electrical, welding, air conditioners, doors and more. I arrive with the tools, clean up afterwards, and agree on a fixed price upfront. I do the work myself.", cta: 'Chat on WhatsApp', call: 'Call Me Directly', phone: '050-380-8067', phoneDisplay: '050-380-8067', avatar: '/shlomi.jpg', photo: '/hero-bg.jpg', stats: [{ value: '28', label: 'Years Exp.' }, { value: '3000+', label: 'Calls / Year' }, { value: '24h', label: 'Response Time' }] },
     services: {
       eyebrow: 'Expertise',
       title: 'My Professional Services',
@@ -134,9 +169,43 @@ export const CONTENT: Record<Lang, SiteContent> = {
         { q: 'Do you do the work yourself?', a: "Yes. I come and do the work myself, I don't send someone else in my place." },
         { q: 'Which areas do you cover?', a: "Be'er Ya'akov, Rishon LeZion, Ness Ziona, Rehovot, Holon, Bat Yam, Ramla and nearby areas." },
         { q: 'What do you do in private homes?', a: 'TV and shelf mounting, furniture assembly, door installation and repair, light fixture replacement, air conditioners, security cameras and intercoms, electric gate repair, plus plumbing, electrical work, waterproofing and welding.' },
-        { q: 'Do you work with building committees and businesses?', a: 'Yes: building committees, businesses and private homes.' },
+        { q: 'Who do you work with?', a: 'Everyone: private homes, building committees, businesses and institutions. From TV mounting to roof sealing.' },
         { q: 'What should I do about a leak or an electrical fault until you arrive?', a: 'For a heavy leak, close the main water valve. For an electrical fault, switch off the main breaker at the panel. Then send me a photo or video. In case of immediate danger, call the emergency services.' },
         { q: 'What are your working hours?', a: 'Sun-Thu: 08:00 - 19:00, Fri: 08:00 - 14:00.' }
+      ]
+    },
+    audiences: {
+      eyebrow: 'Who I work with',
+      title: 'Homes, committees and businesses – the same fast service',
+      lede: 'From TV mounting to roof sealing: I arrive, fix it and clean up afterwards, and I do the work myself.',
+      tabs: [
+        {
+          id: 'home',
+          label: 'Private home',
+          title: 'For your home',
+          body: 'Small and big repairs and installations. Send a photo on WhatsApp and get a fixed-price quote.',
+          items: ['TV and shelf mounting', 'Furniture assembly', 'Light fixture replacement', 'Air conditioner installation', 'Door repair & installation', 'Leaks and blockages', 'Roof sealing & moisture', 'Cameras and intercoms'],
+          cta: 'Message me about a home repair',
+          waText: "Hi Shlomi, I'm looking for a handyman for my home and would like a quote."
+        },
+        {
+          id: 'committee',
+          label: 'Building committee',
+          title: 'For the building committee',
+          body: 'Routine maintenance and urgent faults in the building and common areas. Arrival within 24 hours.',
+          items: ['Pump room & water systems', 'Lobby repairs and lighting', 'Electric gates', 'Security cameras & DVR', 'Roof sealing & moisture', 'Welding & metalwork', 'Safety bollards', 'Clearing sewer line blockages'],
+          cta: 'Message me on behalf of the committee',
+          waText: "Hi Shlomi, I'm from a building committee and I'd like to talk about maintenance for our building."
+        },
+        {
+          id: 'business',
+          label: 'Business / institution',
+          title: 'For a business or institution',
+          body: 'Repairs and installations for shops, offices and public buildings.',
+          items: ['Electrical & lighting', 'Plumbing & blockages', 'Air conditioner installation', 'Cameras and intercoms', 'Welding & metalwork', 'Door and gate repair', 'Waterproofing & moisture'],
+          cta: 'Message me on behalf of the business',
+          waText: "Hi Shlomi, I'm from a business/institution and I'd like to talk about repairs and maintenance."
+        }
       ]
     },
     gallery: { eyebrow: 'From the Field', title: 'Recent Work', lede: 'A selection of real-time project photos.', length: 0, items: [] },
