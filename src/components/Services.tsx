@@ -44,19 +44,31 @@ export function Services() {
           ))}
         </Carousel>
 
-        {copy.more && copy.more.length > 0 && (
+        {copy.moreGroups && copy.moreGroups.length > 0 && (
           <div style={{ marginTop: '24px' }}>
             <h3 style={{ fontSize: '1.15rem', margin: '0 0 12px 0', color: 'var(--ink)' }}>{copy.moreTitle}</h3>
-            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-              {copy.more.map((service, i) => (
-                <li
-                  key={i}
-                  style={{ border: '1px solid var(--rule)', background: 'var(--paper)', color: 'var(--ink)', padding: '6px 14px', borderRadius: '999px', fontSize: '0.95rem' }}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {copy.moreGroups.map((group, g) => (
+                <details
+                  key={g}
+                  style={{ background: 'var(--paper)', border: '1px solid var(--rule)', borderRadius: '12px', padding: '12px 16px' }}
                 >
-                  {service}
-                </li>
+                  <summary style={{ cursor: 'pointer', fontWeight: 700, color: 'var(--ink)', fontSize: '1.05rem', lineHeight: 1.4 }}>
+                    {group.title}
+                  </summary>
+                  <ul style={{ listStyle: 'none', margin: '12px 0 0 0', padding: 0, display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    {group.items.map((service, i) => (
+                      <li
+                        key={i}
+                        style={{ border: '1px solid var(--rule)', background: 'var(--ground-deep)', color: 'var(--ink)', padding: '6px 14px', borderRadius: '999px', fontSize: '0.95rem' }}
+                      >
+                        {service}
+                      </li>
+                    ))}
+                  </ul>
+                </details>
               ))}
-            </ul>
+            </div>
           </div>
         )}
 
