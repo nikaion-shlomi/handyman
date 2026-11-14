@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { TopBar } from './components/TopBar';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
-import { Committees } from './components/Committees';
+import { Audiences } from './components/Audiences';
 import { Videos } from './components/Videos';
 import { Reviews } from './components/Reviews';
 import { FAQ } from './components/FAQ';
@@ -23,7 +23,7 @@ export default function App() {
       <main style={{ flex: '1 0 auto' }}>
         <Hero />
         <Services />
-        <Committees />
+        <Audiences />
         <Videos />
         <Reviews />
         <FAQ />
